@@ -5,7 +5,6 @@
 </head>
 <body class="js">
 	
-
 	
 	<!-- End Preloader -->
 	@include('frontend.layouts.notification')
