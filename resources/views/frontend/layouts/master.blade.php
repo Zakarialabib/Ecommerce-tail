@@ -6,15 +6,16 @@
 <body class="js">
 	
 	<div class="main-wrapper">
-	<!-- End Preloader -->
-	@include('frontend.layouts.notification')
-	<!-- Header -->
-	@include('frontend.layouts.header')
-	<!--/ End Header -->
 
-	@yield('main-content')
+		@include('frontend.layouts.notification')
+		<!-- Header -->
+		@include('frontend.layouts.header')
+		<!--/ End Header -->
 
-	@include('frontend.layouts.footer')
-</div>
+		@yield('main-content')
+
+		@include('frontend.layouts.footer')
+	
+	</div>
 </body>
 </html>

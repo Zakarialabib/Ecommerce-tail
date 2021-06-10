@@ -143,7 +143,7 @@
 <!-- End Small Banner -->
 
 <!-- Start Product Area -->
-<section class="product-area section">
+<section class="product-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -265,7 +265,7 @@
 <!-- End Midium Banner -->
 
 <!-- Start Most Popular -->
-<section class="product-area most-popular section">
+<section class="product-area most-popular">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -323,7 +323,7 @@
 <!-- End Most Popular Area -->
 
 <!-- Start Shop Home List  -->
-<section class="shop-home-list section">
+<section class="shop-home-list">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
@@ -409,7 +409,7 @@
     <!-- /End Cowndown Area -->
 @endforeach --}}
 <!-- Start Shop Blog  -->
-<section class="shop-blog section">
+<section class="shop-blog">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -441,8 +441,6 @@
     </div>
 </section>
 <!-- End Shop Blog  -->
-
-@include('frontend.layouts.newsletter')
 
 <!-- Modal -->
 @if($product_lists)
