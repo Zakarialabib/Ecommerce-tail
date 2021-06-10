@@ -50,6 +50,7 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
+							<div class="collapse dont-collapse-sm" id="collapse_4">
 							<h4>Get In Tuch</h4>
 							<!-- Single Widget -->
 							<div class="contact">
@@ -60,7 +61,17 @@
 								</ul>
 							</div>
 							<!-- End Single Widget -->
-							<div class="sharethis-inline-follow-buttons"></div>
+								
+								<div class="follow_us">
+									<h5>Follow Us</h5>
+									<ul>
+										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/twitter_icon.svg')}}" alt="" class="lazy"></a></li>
+										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
+										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/instagram_icon.svg')}}" alt="" class="lazy"></a></li>
+										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/youtube_icon.svg')}}" alt="" class="lazy"></a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -107,8 +118,8 @@
 	<script src="{{asset('frontend/js/waypoints.min.js')}}"></script>
 	<!-- Countdown JS -->
 	<script src="{{asset('frontend/js/finalcountdown.min.js')}}"></script>
-	<!-- Nice Select JS -->
-	<script src="{{asset('frontend/js/nicesellect.js')}}"></script>
+	<!-- Select JS -->
+	<script src="{{ asset('frontend/js/select2/js/select2.min.js') }}"></script>
 	<!-- Flex Slider JS -->
 	<script src="{{asset('frontend/js/flex-slider.js')}}"></script>
 	<!-- ScrollUp JS -->
@@ -123,9 +134,15 @@
 	<script src="{{asset('frontend/js/active.js')}}"></script>
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-	<!-- dataTables -->
-	<script src="{{asset('backend/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-	<script src="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+	<script src="assets/js/vendor/vendor.min.js"></script>
+	<script src="assets/js/plugins/plugins.min.js"></script> 
+	<!-- Main JS -->
+	<script src="assets/js/main.js"></script>
+	
+	<!-- COMMON SCRIPTS -->
+    <script src="{{asset('frontend/js/common_scripts.min.js')}}"></script>
+    <script src="{{asset('frontend/js/main.js')}}"></script>
 
 	@stack('scripts')
 	<script>

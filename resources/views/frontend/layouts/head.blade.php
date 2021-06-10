@@ -1,4 +1,9 @@
 <!-- Meta Tag -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
 @yield('meta')
 <!-- Title Tag  -->
 <title>@yield('title')</title>
@@ -7,26 +12,11 @@
 <!-- Web Font -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-<!-- StyleSheet -->
-<link rel="manifest" href="/manifest.json">
+
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- Magnific Popup -->
-<link rel="stylesheet" href="{{asset('frontend/css/magnific-popup.min.css')}}">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.css')}}">
-<!-- Fancybox -->
-<link rel="stylesheet" href="{{asset('frontend/css/jquery.fancybox.min.css')}}">
-<!-- Themify Icons -->
-<link rel="stylesheet" href="{{asset('frontend/css/themify-icons.css')}}">
-<!-- Nice Select CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/niceselect.css')}}">
-<!-- Animate CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
-<!-- Flex Slider CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/flex-slider.min.css')}}">
-<!-- Owl Carousel -->
-<link rel="stylesheet" href="{{asset('frontend/css/owl-carousel.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/vendor/vendor.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/plugins/plugins.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}"> 
 <!-- Slicknav -->
 <link rel="stylesheet" href="{{asset('frontend/css/slicknav.min.css')}}">
 <!-- Jquery Ui -->
@@ -38,8 +28,11 @@
 <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
 
-<link href="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<!-- BASE CSS -->
+<link href="{{asset('frontend/css/bootstrap.custom.min.css')}}" rel="stylesheet">
 
+<!-- YOUR CUSTOM CSS -->
+<link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet">
 
 <style>
     /* Multilevel dropdown */

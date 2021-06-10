@@ -20,27 +20,14 @@
               <th>S.N.</th>
               <th>Order No.</th>
               <th>{{ __('NAME')}}</th>
-              <th>Email</th>
-              <th>Quantity</th>
-              <th>Charge</th>
-              <th>Total Amount</th>
+              <th>{{ __('Email')}}</th>
+              <th>{{ __('Quantity')}}</th>
+              <th>{{ __('Charge')}}</th>
+              <th>{{ __('Total Amount')}}</th>
               <th>{{ __('Status')}}</th>
               <th>Action</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>S.N.</th>
-              <th>Order No.</th>
-              <th>{{ __('NAME')}}</th>
-              <th>Email</th>
-              <th>Quantity</th>
-              <th>Charge</th>
-              <th>Total Amount</th>
-              <th>{{ __('Status')}}</th>
-              <th>Action</th>
-              </tr>
-          </tfoot>
           <tbody>
             @foreach($orders as $order)  
             @php
@@ -53,7 +40,7 @@
                     <td>{{$order->email}}</td>
                     <td>{{$order->quantity}}</td>
                     <td>@foreach($shipping_charge as $data) $ {{number_format($data,2)}} @endforeach</td>
-                    <td>${{number_format($order->total_amount,2)}}</td>
+                    <td>{{number_format($order->total_amount,2)}}DH</td>
                     <td>
                         @if($order->status=='new')
                           <span class="badge badge-primary">{{$order->status}}</span>
@@ -79,7 +66,7 @@
         </table>
         <span style="float:right">{{$orders->links()}}</span>
         @else
-          <h6 class="text-center">No orders found!!! Please order some products</h6>
+          <h6 class="text-center">{{ __('No orders found')}}!!! {{ __('Please order some products')}}</h6>
         @endif
       </div>
     </div>
@@ -87,8 +74,6 @@
 @endsection
 
 @push('styles')
-  
-
   <style>
       div.dataTables_wrapper div.dataTables_paginate{
           display: none;
@@ -97,11 +82,6 @@
 @endpush
 
 @push('scripts')
-
-
-
-
-
 
   <!-- Page level custom scripts -->
   <script>

@@ -14,10 +14,10 @@
             <th>S.N.</th>
             <th>Order No.</th>
             <th>{{ __('NAME')}}</th>
-            <th>Email</th>
-            <th>Quantity</th>
-            <th>Charge</th>
-            <th>Total Amount</th>
+            <th>{{ __('Email')}}</th>
+            <th>{{ __('Quantity')}}</th>
+            <th>{{ __('Charge')}}</th>
+            <th>{{ __('Total Amount')}}</th>
             <th>{{ __('Status')}}</th>
             <th>Action</th>
         </tr>
@@ -29,8 +29,8 @@
             <td>{{$order->first_name}} {{$order->last_name}}</td>
             <td>{{$order->email}}</td>
             <td>{{$order->quantity}}</td>
-            <td>${{number_format($order->delivery_charge,2)}}</td>
-            <td>${{number_format($order->total_amount,2)}}</td>
+            <td>{{number_format($order->delivery_charge,2)}}DH</td>
+            <td>{{number_format($order->total_amount,2)}}DH</td>
             <td>
                 @if($order->status=='new')
                   <span class="badge badge-primary">{{$order->status}}</span>

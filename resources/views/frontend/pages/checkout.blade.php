@@ -5,7 +5,7 @@
 @section('main-content')
 
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
+    <section  class="breadcrumbs">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- End Breadcrumbs -->
             
     <!-- Start Checkout -->
@@ -118,14 +118,14 @@
                                     <h2>{{ __('CART  TOTALS')}}</h2>
                                     <div class="content">
                                         <ul>
-										    <li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
+										    <li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span>{{number_format(Helper::totalCartPrice(),2)}}DH</span></li>
                                             <li class="shipping">
                                             {{ __('Shipping Cost')}}
                                                 @if(count(Helper::shipping())>0 && Helper::cartCount()>0)
-                                                    <select name="shipping" class="nice-select">
-                                                        <option value="">{{ __('Select your address</option>
+                                                    <select name="shipping" class="select2">
+                                                        <option value="">{{ __('Select your address')}}</option>
                                                         @foreach(Helper::shipping() as $shipping)
-                                                        <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: ${{$shipping->price}}</option>
+                                                        <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
                                                         @endforeach
                                                     </select>
                                                 @else 
@@ -134,7 +134,7 @@
                                             </li>
                                             
                                             @if(session('coupon'))
-                                            <li class="coupon_price" data-price="{{session('coupon')['value']}}">{{ __('You Save')}}<span>${{number_format(session('coupon')['value'],2)}}</span></li>
+                                            <li class="coupon_price" data-price="{{session('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(session('coupon')['value'],2)}}DH</span></li>
                                             @endif
                                             @php
                                                 $total_amount=Helper::totalCartPrice();
@@ -143,9 +143,9 @@
                                                 }
                                             @endphp
                                             @if(session('coupon'))
-                                                <li class="last"  id="order_total_price">Total<span>${{number_format($total_amount,2)}}</span></li>
+                                                <li class="last"  id="order_total_price">Total<span>{{number_format($total_amount,2)}}DH</span></li>
                                             @else
-                                                <li class="last"  id="order_total_price">Total<span>${{number_format($total_amount,2)}}</span></li>
+                                                <li class="last"  id="order_total_price">Total<span>{{number_format($total_amount,2)}}DH</span></li>
                                             @endif
                                         </ul>
                                     </div>
@@ -190,73 +190,14 @@
     </section>
     <!--/ End Checkout -->
     
-    <!-- Start Shop Services Area  -->
-    <section class="shop-services section home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
-                    <!-- Start Single Service -->
-                    <div class="single-service">
-                        <i class="ti-rocket"></i>
-                        <h4>Free shiping</h4>
-                        <p>Orders over $100</p>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <!-- Start Single Service -->
-                    <div class="single-service">
-                        <i class="ti-reload"></i>
-                        <h4>Free Return</h4>
-                        <p>Within 30 days returns</p>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <!-- Start Single Service -->
-                    <div class="single-service">
-                        <i class="ti-lock"></i>
-                        <h4>Sucure Payment</h4>
-                        <p>100% secure payment</p>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <!-- Start Single Service -->
-                    <div class="single-service">
-                        <i class="ti-tag"></i>
-                        <h4>Best Peice</h4>
-                        <p>Guaranteed price</p>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Shop Services -->
+   	<!-- Start Shop Services Area  -->
+	@include('frontend.layouts.services')
+	<!-- End Shop Newsletter -->
+	
+	<!-- Start Shop Newsletter  -->
+	@include('frontend.layouts.newsletter')
+	<!-- End Shop Newsletter -->
     
-    <!-- Start Shop Newsletter  -->
-    <section class="shop-newsletter section">
-        <div class="container">
-            <div class="inner-top">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 col-12">
-                        <!-- Start Newsletter Inner -->
-                        <div class="inner">
-                            <h4>{{ __('Newsletter')}}</h4>
-                            <p> {{ __('Subscribe to our newsletter and get')}} <span>10%</span> {{ __('off your first purchase')}}</p>
-                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                                <input name="EMAIL" placeholder="Your email address" required="" type="email">
-                                <button class="btn">{{ __('Subscribe')}}</button>
-                            </form>
-                        </div>
-                        <!-- End Newsletter Inner -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Shop Newsletter -->
 @endsection
 @push('styles')
 	<style>
@@ -280,7 +221,7 @@
 			height: 30px;
 			width: 100%;
 		}
-		.form-select .nice-select {
+		.form-select .select2 {
 			border: none;
 			border-radius: 0px;
 			height: 40px;
@@ -296,17 +237,14 @@
 			background:#F7941D !important;
 			color:white !important;
 		}
-		.form-select .nice-select::after {
+		.form-select .select2::after {
 			top: 14px;
 		}
 	</style>
 @endpush
 @push('scripts')
-	<script src="{{asset('frontend/js/nice-select/js/jquery.nice-select.min.js')}}"></script>
-	<script src="{{ asset('frontend/js/select2/js/select2.min.js') }}"></script>
 	<script>
 		$(document).ready(function() { $("select.select2").select2(); });
-  		$('select.nice-select').niceSelect();
 	</script>
 	<script>
 		function showMe(box){

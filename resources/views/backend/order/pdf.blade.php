@@ -99,7 +99,7 @@
        </div>
     </div>
     <div class="invoice-right-top float-right" class="text-right">
-      <h3>{{ __('Invoice #{{$order->order_number}}</h3>
+      <h3>{{ __('Invoice')}} #{{$order->order_number}}</h3>
       <p>{{ $order->created_at->format('D d m Y') }}</p>
       {{-- <img class="img-responsive" src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(150)->generate(route('admin.product.order.show', $order->id )))}}"> --}}
     </div>
@@ -129,7 +129,7 @@
               @endforeach
             </span></td>
           <td>x{{$cart->quantity}}</td>
-          <td><span>${{number_format($cart->price,2)}}</span></td>
+          <td><span>{{number_format($cart->price,2)}}DH</span></td>
         </tr>
       @endforeach
       </tbody>
@@ -137,7 +137,7 @@
         <tr>
           <th scope="col" class="empty"></th>
           <th scope="col" class="text-right">{{ __('Subtotal')}}:</th>
-          <th scope="col"> <span>${{number_format($order->sub_total,2)}}</span></th>
+          <th scope="col"> <span>{{number_format($order->sub_total,2)}}DH</span></th>
         </tr>
       {{-- @if(!empty($order->coupon))
         <tr>
@@ -152,14 +152,14 @@
             $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
           @endphp
           <th scope="col" class="text-right ">{{ __('Shipping')}}:</th>
-          <th><span>${{number_format($shipping_charge[0],2)}}</span></th>
+          <th><span>{{number_format($shipping_charge[0],2)}}DH</span></th>
         </tr>
         <tr>
           <th scope="col" class="empty"></th>
           <th scope="col" class="text-right">{{ __('Total')}}:</th>
           <th>
             <span>
-                ${{number_format($order->total_amount,2)}}
+                {{number_format($order->total_amount,2)}}DH
             </span>
           </th>
         </tr>

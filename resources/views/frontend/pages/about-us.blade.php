@@ -5,7 +5,7 @@
 @section('main-content')
 
 	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
+	<section  class="breadcrumbs">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -18,9 +18,57 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- End Breadcrumbs -->
-	
+				<section class="container margin_60_35 add_bottom_30">
+					<div class="main_title">
+						<h2>{{ __('About Us')}}</h2>
+						<p>Euismod phasellus ac lectus fusce parturient cubilia a nisi blandit sem cras nec tempor adipiscing rcu ullamcorper ligula.</p>
+					</div>
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-5">
+							<div class="box_about">
+								<h2>Top Products</h2>
+								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+								<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_1">
+							</div>
+						</div>
+						<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+								<img src="{{asset('photos/about_1.svg')}}" alt="" class="img-fluid" width="350" height="268">
+						</div>
+					</div>
+					<!-- /row -->
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
+								<img src="{{asset('photos/about_2.svg')}}" alt="" class="img-fluid" width="350" height="268">
+						</div>
+						<div class="col-lg-5">
+							<div class="box_about">
+								<h2>Top Brands</h2>
+								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+								<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_2">
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-lg-5">
+							<div class="box_about">
+								<h2>+5000 products</h2>
+								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+							</div>
+
+						</div>
+						<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+								<img src="{{asset('photos/about_3.svg')}}" alt="" class="img-fluid" width="350" height="316">
+						</div>
+					</div>
+					<!-- /row -->
+				</section>
+				<!-- /container -->
 	<!-- About Us -->
 	<section class="about-us section">
 			<div class="container">
@@ -30,7 +78,6 @@
 							@php
 								$settings=DB::table('settings')->get();
 							@endphp
-							<h3>{{ __('Welcome to')}}DropshippingSupplier</span></h3>
 							<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
 							<div class="button">
 								<a href="{{route('blog')}}" class="btn">{{ __('Our Blog')}}</a>
@@ -40,9 +87,9 @@
 					</div>
 					<div class="col-lg-6 col-12">
 						<div class="about-img overlay">
-							{{-- <div class="button">
+							 <div class="button">
 								<a href="https://www.youtube.com/watch?v=nh2aYrGMrIE" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
-							</div> --}}
+							</div>
 							<img src="@foreach($settings as $data) {{$data->photo}} @endforeach" alt="@foreach($settings as $data) {{$data->photo}} @endforeach">
 						</div>
 					</div>

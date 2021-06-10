@@ -4,7 +4,7 @@
 
 @section('main-content')
 	<!-- Breadcrumbs -->
-    <div class="breadcrumbs">
+    <section  class="breadcrumbs">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- End Breadcrumbs -->
     
     <!-- Product Style -->
@@ -112,7 +112,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">${{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>
+                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}}DH</del>   {{number_format($org,2)}}DH  </p>
                                                 
                                             </div>
                                         </div>
@@ -202,8 +202,8 @@
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
+                                                <span>{{number_format($after_discount,2)}}DH</span>
+                                                <del style="padding-left:4%;">{{number_format($product->price,2)}}DH</del>
                                             </div>
                                         </div>
                                     </div>
@@ -288,14 +288,14 @@
                                                     @if($product->stock >0)
                                                     <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
                                                     @else 
-                                                    <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+                                                    <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} {{__('out stock')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
                                             @php
                                                 $after_discount=($product->price-($product->price*$product->discount)/100);
                                             @endphp
-                                            <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                            <h3><small><del class="text-muted">{{number_format($product->price,2)}}DH</del></small>    {{number_format($after_discount,2)}}DH  </h3>
                                             <div class="quickview-peragraph">
                                                 <p>{!! html_entity_decode($product->summary) !!}</p>
                                             </div>

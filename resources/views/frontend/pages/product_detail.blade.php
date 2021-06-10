@@ -1,12 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('meta')
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
 	<meta name="description" content="{{$product_detail->summary}}">
 	<meta property="og:url" content="{{route('product-detail',$product_detail->slug)}}">
 	<meta property="og:type" content="article">
@@ -14,24 +8,27 @@
 	<meta property="og:image" content="{{$product_detail->photo}}">
 	<meta property="og:description" content="{{$product_detail->description}}">
 @endsection
+
 @section('title','DropshippingSupplier || PRODUCT DETAIL')
+
 @section('main-content')
 
 		<!-- Breadcrumbs -->
-		<div class="breadcrumbs">
+		<section  class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
 								<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="">Shop Details</a></li>
+								<li><a href="{{route('product-lists')}}">{{ __('Shop List')}} <i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="">{{$product_detail->title}}</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- End Breadcrumbs -->
 				
 		<!-- Shop Single -->
@@ -84,7 +81,7 @@
                                                 @php 
                                                     $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
                                                 @endphp
-												<p class="price"><span class="discount">${{number_format($after_discount,2)}}</span><s>${{number_format($product_detail->price,2)}}</s> </p>
+												<p class="price"><span class="discount">{{number_format($after_discount,2)}}DH</span><s>{{number_format($product_detail->price,2)}}DH</s> </p>
 												<p class="description">{!!($product_detail->summary)!!}</p>
 											</div>
 											<!--/ End Description -->
@@ -347,8 +344,8 @@
                                             @php 
                                                 $after_discount=($data->price-(($data->discount*$data->price)/100));
                                             @endphp
-                                            <span class="old">${{number_format($data->price,2)}}</span>
-                                            <span>${{number_format($after_discount,2)}}</span>
+                                            <span class="old">{{number_format($data->price,2)}}DH</span>
+                                            <span>{{number_format($after_discount,2)}}DH</span>
                                         </div>
                                       
                                     </div>

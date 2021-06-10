@@ -9,7 +9,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Review Lists</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">{{ __('Review Lists')}}</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -18,27 +18,15 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Review By</th>
-              <th>Product Title</th>
-              <th>Review</th>
-              <th>Rate</th>
-              <th>Date</th>
+              <th>{{ __('Review By')}}</th>
+              <th>{{ __('Product Title')}}</th>
+              <th>{{ __('Review')}}</th>
+              <th>{{ __('Rate')}}</th>
+              <th>{{ __('Date')}}</th>
               <th>{{ __('Status')}}</th>
               <th>Action</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>S.N.</th>
-              <th>Review By</th>
-              <th>Product Title</th>
-              <th>Review</th>
-              <th>Rate</th>
-              <th>Date</th>
-              <th>{{ __('Status')}}</th>
-              <th>Action</th>
-              </tr>
-          </tfoot>
           <tbody>
             @foreach($reviews as $review)  
               @php 
@@ -82,7 +70,7 @@
         </table>
         <span style="float:right">{{$reviews->links()}}</span>
         @else
-          <h6 class="text-center">No reviews found!!!</h6>
+          <h6 class="text-center">{{ __('No reviews found')}}!!!</h6>
         @endif
       </div>
     </div>

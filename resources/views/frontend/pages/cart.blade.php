@@ -2,7 +2,7 @@
 @section('title','Cart Page')
 @section('main-content')
 	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
+	<section  class="breadcrumbs">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -15,11 +15,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="shopping-cart section">
+	<section class="shopping-cart section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -49,7 +49,7 @@
 												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
 												<p class="product-des">{!!($cart['summary']) !!}</p>
 											</td>
-											<td class="price" data-title="Price"><span>${{number_format($cart['price'],2)}}</span></td>
+											<td class="price" data-title="Price"><span>{{number_format($cart['price'],2)}}DH</span></td>
 											<td class="qty" data-title="Qty"><!-- Input Order -->
 												<div class="input-group">
 													<div class="button minus">
@@ -67,7 +67,7 @@
 												</div>
 												<!--/ End Input Order -->
 											</td>
-											<td class="total-amount cart_single_price" data-title="Total"><span class="money">${{$cart['amount']}}</span></td>
+											<td class="total-amount cart_single_price" data-title="Total"><span class="money">{{$cart['amount']}}DH</span></td>
 											
 											<td class="action" data-title="Remove"><a href="{{route('cart-delete',$cart->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 										</tr>
@@ -115,23 +115,23 @@
 										@php 
 											$shipping=DB::table('shippings')->where('status','active')->limit(1)->get();
 										@endphp
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> Shipping</label>
+										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> {{__('Shipping')}}</label>
 									</div> --}}
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">Cart Subtotal<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
-										{{-- <div id="shipping" style="display:none;">
+										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">{{__('Cart Subtotal')}}<span>{{number_format(Helper::totalCartPrice(),2)}}DH</span></li>
+										<div id="shipping" style="display:none;">
 											<li class="shipping">
 												Shipping {{session('shipping_price')}}
 												@if(count(Helper::shipping())>0 && Helper::cartCount()>0)
 													<div class="form-select">
-														<select name="shipping" class="nice-select">
+														<select name="shipping" class="select2">
 															<option value="">Select</option>
 															@foreach(Helper::shipping() as $shipping)
-															<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: ${{$shipping->price}}</option>
+															<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
 															@endforeach
 														</select>
 													</div>
@@ -142,10 +142,10 @@
 												@endif
 											</li>
 										</div>
-										 --}}
+										 
 										 {{-- {{dd(Session::get('coupon')['value'])}} --}}
 										@if(session()->has('coupon'))
-										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
+										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
 										@endif
 										@php
 											$total_amount=Helper::totalCartPrice();
@@ -154,9 +154,9 @@
 											}
 										@endphp
 										@if(session()->has('coupon'))
-											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}}DH</span></li>
 										@else
-											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}}DH</span></li>
 										@endif
 									</ul>
 									<div class="button5">
@@ -171,60 +171,17 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!--/ End Shopping Cart -->
 			
 	<!-- Start Shop Services Area  -->
-	<section class="shop-services section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
+	@include('frontend.layouts.services')
 	<!-- End Shop Newsletter -->
 	
 	<!-- Start Shop Newsletter  -->
 	@include('frontend.layouts.newsletter')
 	<!-- End Shop Newsletter -->
-	
-	
-	
+		
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -361,7 +318,7 @@
 			height: 30px;
 			width: 100%;
 		}
-		.form-select .nice-select {
+		.form-select .select2 {
 			border: none;
 			border-radius: 0px;
 			height: 40px;
@@ -377,17 +334,15 @@
 			background:#F7941D !important;
 			color:white !important;
 		}
-		.form-select .nice-select::after {
+		.form-select .select2::after {
 			top: 14px;
 		}
 	</style>
 @endpush
 @push('scripts')
-	<script src="{{asset('frontend/js/nice-select/js/jquery.nice-select.min.js')}}"></script>
-	<script src="{{ asset('frontend/js/select2/js/select2.min.js') }}"></script>
+
 	<script>
 		$(document).ready(function() { $("select.select2").select2(); });
-  		$('select.nice-select').niceSelect();
 	</script>
 	<script>
 		$(document).ready(function(){
