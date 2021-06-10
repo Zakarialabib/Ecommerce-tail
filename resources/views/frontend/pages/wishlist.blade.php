@@ -2,7 +2,7 @@
 @section('title','Wishlist Page')
 @section('main-content')
 	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
+	<section  class="breadcrumbs">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
@@ -46,7 +46,7 @@
 											<p class="product-name"><a href="{{route('product-detail',$wishlist->product['slug'])}}">{{$wishlist->product['title']}}</a></p>
 											<p class="product-des">{!!($wishlist['summary']) !!}</p>
 										</td>
-										<td class="total-amount" data-title="Total"><span>${{$wishlist['amount']}}</span></td>
+										<td class="total-amount" data-title="Total"><span>{{$wishlist['amount']}}DH</span></td>
 										<td><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>{{ __('ADD TO CART')}}</a></td>
 										<td class="action" data-title="Remove"><a href="{{route('wishlist-delete',$wishlist->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 									</tr>
@@ -54,7 +54,7 @@
 							@else 
 								<tr>
 									<td class="text-center">
-										There are no any wishlist available. <a href="{{route('product-grids')}}" style="color:blue;">{{ __('Continue shopping')}}</a>
+									{{ __('There are no any wishlist available')}}. <a href="{{route('product-grids')}}" style="color:blue;">{{ __('Continue shopping')}}</a>
 
 									</td>
 								</tr>
@@ -69,55 +69,14 @@
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
-			
+	
 	<!-- Start Shop Services Area  -->
-	<section class="shop-services section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
+	@include('frontend.layouts.services')
 	<!-- End Shop Newsletter -->
 	
+	<!-- Start Shop Newsletter  -->
 	@include('frontend.layouts.newsletter')
-	
-	
+	<!-- End Shop Newsletter -->
 	
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">

@@ -478,7 +478,7 @@ Version:1.0
 	z-index:999;
 }
 /* Header Search */
-.header.shop .search-top {
+.search-top {
 	display:block;
 	position: absolute;
 	right: 50px;
@@ -1177,7 +1177,7 @@ Version:1.0
 	display: none;
 }
 /* Header Search */
-.header.shop .search-top {
+.search-top {
 	display:block;
 	position: absolute;
 	right: 50px;

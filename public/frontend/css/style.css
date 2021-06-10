@@ -726,7 +726,7 @@ Version:1.0
 	background:#F29F05;
 }
 /* Search Form */
-.header.shop .search-top {
+.search-top {
 	opacity: 1;
 	visibility: visible;
 	top: 0;
@@ -1067,16 +1067,16 @@ Version:1.0
 }
 /* Header Search */
 /* Search */
-.header .search-top{
+.search-top{
 	display:none;
 }
-.header .search-top a{
+.search-top a{
 	font-size:17px;
 }
-.header .search-top a:hover{
+.search-top a:hover{
 	color:#F2B705;
 }
-.header .search-form {
+.search-form {
 	position: absolute;
 	left: -128px;
 	z-index: 9999;
@@ -1094,12 +1094,12 @@ Version:1.0
 	padding: 0;
 	border-radius: 0;
 }
-.header .search-top.active .search-form {
+.search-top.active .search-form {
 	opacity:1;
 	visibility:visible;
 	transform: scaleY(1);
 }
-.header .search-form input {
+.search-form input {
 	width: 220px;
 	height: 45px;
 	line-height: 45px;
@@ -1113,7 +1113,7 @@ Version:1.0
 	color: #333;
 	border-radius: 0;
 }
-.header .search-form button {
+.search-form button {
 	position: absolute;
 	right: 0;
 	height: 45px;
@@ -1131,7 +1131,7 @@ Version:1.0
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 }
-.header .search-form button:hover{
+.search-form button:hover{
 	color:#fff;
 	background:#F29F05;
 	border-color:transparent;

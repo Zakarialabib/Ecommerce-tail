@@ -41,7 +41,7 @@
         <div class="form-group">
           <label for="cat_id">{{ __('Category')}} <span class="text-danger">*</span></label>
           <select name="cat_id" id="cat_id" class="form-control">
-              <option value="">-->{{ __('Select any category')}}--</option>
+              <option value="">--{{ __('Select any category')}}--</option>
               @foreach($categories as $key=>$cat_data)
                   <option value='{{$cat_data->id}}'>{{$cat_data->title}}</option>
               @endforeach
@@ -51,7 +51,7 @@
         <div class="form-group d-none" id="child_cat_div">
           <label for="child_cat_id">{{ __('Sub Category')}} </label>
           <select name="child_cat_id" id="child_cat_id" class="form-control">
-              <option value="">-->{{ __('Select any category')}}--</option>
+              <option value="">--{{ __('Select any category')}}--</option>
               {{-- @foreach($parent_cats as $key=>$parent_cat)
                   <option value='{{$parent_cat->id}}'>{{$parent_cat->title}}</option>
               @endforeach --}}

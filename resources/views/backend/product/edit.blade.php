@@ -42,7 +42,7 @@
         <div class="form-group">
           <label for="cat_id">{{ __('Category')}} <span class="text-danger">*</span></label>
           <select name="cat_id" id="cat_id" class="form-control">
-              <option value="">-->{{ __('Select any category')}}--</option>
+              <option value="">--{{ __('Select any category')}}--</option>
               @foreach($categories as $key=>$cat_data)
                   <option value='{{$cat_data->id}}' {{(($product->cat_id==$cat_data->id)? 'selected' : '')}}>{{$cat_data->title}}</option>
               @endforeach
@@ -57,13 +57,13 @@
         <div class="form-group {{(($product->child_cat_id)? '' : 'd-none')}}" id="child_cat_div">
           <label for="child_cat_id">{{ __('Sub Category')}} </label>
           <select name="child_cat_id" id="child_cat_id" class="form-control">
-              <option value="">--Select any sub category--</option>
+              <option value="">--{{ __('Select any sub category')}}--</option>
               
           </select>
         </div>
 
         <div class="form-group">
-          <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
+          <label for="price" class="col-form-label">{{ __('Price')}} <span class="text-danger">*</span></label>
           <input id="price" type="number" name="price" placeholder="Enter price"  value="{{$product->price}}" class="form-control">
           @error('price')
           <span class="text-danger">{{$message}}</span>
@@ -108,8 +108,8 @@
           <select name="condition" class="form-control">
               <option value="">--{{ __('Select Condition')}}--</option>
               <option value="default" {{(($product->condition=='default')? 'selected':'')}}>{{ __('Default')}}</option>
-              <option value="new" {{(($product->condition=='new')? 'selected':'')}}>New</option>
-              <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>Hot</option>
+              <option value="new" {{(($product->condition=='new')? 'selected':'')}}>{{ __('New')}}</option>
+              <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>{{ __('Hot')}}</option>
           </select>
         </div>
 
@@ -158,8 +158,8 @@
 @push('styles')
 <link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-
 @endpush
+
 @push('scripts')
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script src="{{asset('backend/summernote/summernote.min.js')}}"></script>

@@ -69,7 +69,7 @@ window.onload = () => {
 		  Search JS JS
 		=========================*/ 
 		$('.top-search a').on( "click", function(){
-			$('.search-top').toggleClass('active');
+			$('.menu-search').toggleClass('active');
 		});
 		
 		/*=======================
@@ -299,9 +299,9 @@ window.onload = () => {
 	});
 	
 	/*====================================
-	18. Nice Select JS
+	18. Select JS
 	======================================*/	
-	$('select').niceSelect();
+	$('select').select2();
 		
 	/*=====================================
 	 Others JS

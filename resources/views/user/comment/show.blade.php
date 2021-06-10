@@ -4,7 +4,8 @@
 
 @section('main-content')
 <div class="card">
-<h5 class="card-header">Order       <a href="{{route('order.pdf',$order->id)}}" class=" btn btn-sm btn-primary shadow-sm float-right"><i class="fas fa-download fa-sm text-white-50"></i> Generate PDF</a>
+<h5 class="card-header">{{ __('Order')}}       
+  <a href="{{route('order.pdf',$order->id)}}" class=" btn btn-sm btn-primary shadow-sm float-right"><i class="fas fa-download fa-sm text-white-50"></i> Generate PDF</a>
   </h5>
   <div class="card-body">
     @if($order)
@@ -12,12 +13,12 @@
       <thead>
         <tr>
             <th>S.N.</th>
-            <th>Order No.</th>
+            <th>{{ __('Order No.</th>
             <th>{{ __('NAME')}}</th>
-            <th>Email</th>
-            <th>Quantity</th>
-            <th>Charge</th>
-            <th>Total Amount</th>
+            <th>{{ __('Email')}}</th>
+            <th>{{ __('Quantity')}}</th>
+            <th>{{ __('Charge')}}</th>
+            <th>{{ __('Total Amount')}}</th>
             <th>{{ __('Status')}}</th>
             <th>Action</th>
         </tr>
@@ -29,8 +30,8 @@
             <td>{{$order->first_name}} {{$order->last_name}}</td>
             <td>{{$order->email}}</td>
             <td>{{$order->quantity}}</td>
-            <td>${{number_format($order->delivery_charge,2)}}</td>
-            <td>${{number_format($order->total_amount,2)}}</td>
+            <td>{{number_format($order->delivery_charge,2)}}DH</td>
+            <td>{{number_format($order->total_amount,2)}}DH</td>
             <td>
                 @if($order->status=='new')
                   <span class="badge badge-primary">{{$order->status}}</span>
@@ -60,38 +61,38 @@
         <div class="row">
           <div class="col-lg-6 col-lx-4">
             <div class="order-info">
-              <h4 class="text-center pb-4">ORDER INFORMATION</h4>
+              <h4 class="text-center pb-4">{{ __('ORDER INFORMATION')}}</h4>
               <table class="table">
                     <tr class="">
-                        <td>Order Number</td>
+                        <td>{{ __('Order Number')}}</td>
                         <td> : {{$order->cart_id}}</td>
                     </tr>
                     <tr>
-                        <td>Order Date</td>
+                        <td>{{ __('Order Date')}}</td>
                         <td> : {{$order->created_at->diffForHumans()}}</td>
                     </tr>
                     <tr>
-                        <td>Quantity</td>
+                        <td>{{ __('Quantity')}}</td>
                         <td> : {{$order->quantity}}</td>
                     </tr>
                     <tr>
-                        <td>Order Status</td>
+                        <td>{{ __('Order Status')}}</td>
                         <td> : {{$order->status}}</td>
                     </tr>
                     <tr>
-                        <td>Shipping Charge</td>
+                        <td>{{ __('Shipping Charge')}}</td>
                         <td> : $ {{number_format($order->delivery_charge,2)}}</td>
                     </tr>
                     <tr>
-                        <td>Total Amount</td>
+                        <td>{{ __('Total Amount')}}</td>
                         <td> : $ {{number_format($order->total_amount,2)}}</td>
                     </tr>
                     <tr>
-                        <td>Payment Method</td>
+                        <td>{{ __('Payment Method')}}</td>
                         <td> : </td>
                     </tr>
                     <tr>
-                        <td>Payment Status</td>
+                        <td>{{ __('Payment Status</td>
                         <td> : </td>
                     </tr>
               </table>
@@ -100,30 +101,30 @@
 
           <div class="col-lg-6 col-lx-4">
             <div class="shipping-info">
-              <h4 class="text-center pb-4">SHIPPING INFORMATION</h4>
+              <h4 class="text-center pb-4">{{ __('SHIPPING INFORMATION')}}</h4>
               <table class="table">
                     <tr class="">
-                        <td>Full Name</td>
+                        <td>{{ __('Full Name')}}</td>
                         <td> : {{$order->first_name}} {{$order->last_name}}</td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>{{ __('Email')}}</td>
                         <td> : {{$order->email}}</td>
                     </tr>
                     <tr>
-                        <td>Phone No.</td>
+                        <td>{{ __('Phone No.')}}</td>
                         <td> : {{$order->phone}}</td>
                     </tr>
                     <tr>
-                        <td>Address</td>
+                        <td>{{ __('Address')}}</td>
                         <td> : {{$order->address1}}, {{$order->address2}}</td>
                     </tr>
                     <tr>
-                        <td>Country</td>
+                        <td>{{ __('Country')}}</td>
                         <td> : {{$order->country}}</td>
                     </tr>
                     <tr>
-                        <td>Post Code</td>
+                        <td>{{ __('Post Code')}}</td>
                         <td> : {{$order->post_code}}</td>
                     </tr>
               </table>

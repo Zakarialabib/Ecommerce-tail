@@ -40,7 +40,7 @@
                     </td>
                     <td>
                         @if($coupon->type=='fixed')
-                            ${{number_format($coupon->value,2)}}
+                            {{number_format($coupon->value,2)}}DH
                         @else
                             {{$coupon->value}}%
                         @endif</td>

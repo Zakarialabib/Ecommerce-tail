@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
 	@include('frontend.layouts.head')	
 </head>
@@ -14,8 +14,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- End Preloader -->
 	
+	<!-- End Preloader -->
 	@include('frontend.layouts.notification')
 	<!-- Header -->
 	@include('frontend.layouts.header')

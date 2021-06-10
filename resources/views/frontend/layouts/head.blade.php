@@ -1,4 +1,9 @@
 <!-- Meta Tag -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='copyright' content=''>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
 @yield('meta')
 <!-- Title Tag  -->
 <title>@yield('title')</title>
@@ -19,10 +24,10 @@
 <link rel="stylesheet" href="{{asset('frontend/css/jquery.fancybox.min.css')}}">
 <!-- Themify Icons -->
 <link rel="stylesheet" href="{{asset('frontend/css/themify-icons.css')}}">
-<!-- Nice Select CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/niceselect.css')}}">
 <!-- Animate CSS -->
 <link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="{{asset('frontend/js/select2/css/select2.css')}}">
 <!-- Flex Slider CSS -->
 <link rel="stylesheet" href="{{asset('frontend/css/flex-slider.min.css')}}">
 <!-- Owl Carousel -->
@@ -40,6 +45,15 @@
 
 <link href="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
+<!-- BASE CSS -->
+<link href="{{asset('frontend/css/bootstrap.custom.min.css')}}" rel="stylesheet">
+<!-- <link href="{{asset('frontend/css/styles.css')}}" rel="stylesheet">
+ -->
+<!-- SPECIFIC CSS -->
+<link href="{{asset('frontend/css/home_1.css')}}" rel="stylesheet">
+
+<!-- YOUR CUSTOM CSS -->
+<link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet">
 
 <style>
     /* Multilevel dropdown */
