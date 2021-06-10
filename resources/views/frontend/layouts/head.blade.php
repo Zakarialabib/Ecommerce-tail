@@ -24,7 +24,7 @@
 <!-- Sweetalert -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <!-- Eshop StyleSheet -->
-<link rel="stylesheet" href="{{asset('frontend/css/reset.css')}}">
+{{--<link rel="stylesheet" href="{{asset('frontend/css/reset.css')}}">--}}
 <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
 
