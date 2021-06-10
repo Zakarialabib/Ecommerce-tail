@@ -142,8 +142,9 @@
                                 <a href="{{route('wishlist')}}" class="wishlist"><span class="total-count">{{Helper::wishlistCount()}}</span></a>
                                
                                 <div class="dropdown-menu">
+                                    @auth
                                     <span>{{count(Helper::getAllProductFromWishlist())}} Items</span>
-
+                                    @endauth
                                     <div class="clearfix"><strong>{{ __('Total')}}</strong><span>{{number_format(Helper::totalWishlistPrice(),2)}}DH</span></div>
 
                                     <a href="{{route('wishlist')}}" class="btn_1">{{ __('View Wishlist')}}</a>
