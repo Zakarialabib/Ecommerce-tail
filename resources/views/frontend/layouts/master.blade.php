@@ -5,16 +5,16 @@
 </head>
 <body class="js">
 	
-	
+	<div class="main-wrapper">
 	<!-- End Preloader -->
 	@include('frontend.layouts.notification')
 	<!-- Header -->
 	@include('frontend.layouts.header')
 	<!--/ End Header -->
-	<div class="main-wrapper">
-	@yield('main-content')
-</div>
-	@include('frontend.layouts.footer')
 
+	@yield('main-content')
+
+	@include('frontend.layouts.footer')
+</div>
 </body>
 </html>

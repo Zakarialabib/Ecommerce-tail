@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register'=>false]);
 
-Route::get('user/login','FrontendController@login')->name('login.form');
-Route::post('user/login','FrontendController@loginSubmit')->name('login.submit');
-Route::get('user/logout','FrontendController@logout')->name('user.logout');
+Route::get('/signin','FrontendController@login')->name('login.form');
+Route::post('/signin','FrontendController@loginSubmit')->name('login.submit');
+Route::get('/logout','FrontendController@logout')->name('user.logout');
 
 Route::get('user/register','FrontendController@register')->name('register.form');
 Route::post('user/register','FrontendController@registerSubmit')->name('register.submit');
@@ -64,7 +64,7 @@ Route::get('/product-lists','FrontendController@productLists')->name('product-li
 Route::match(['get','post'],'/filter','FrontendController@productFilter')->name('shop.filter');
 // Order Track
 Route::get('/track-order','OrderController@orderTrack')->name('order.track');
-Route::post('track-order/order','OrderController@productTrackOrder')->name('product.track.order');
+Route::post('/track-order/order','OrderController@productTrackOrder')->name('product.track.order');
 // Blog
 Route::get('/blog','FrontendController@blog')->name('blog');
 Route::get('/blog-detail/{slug}','FrontendController@blogDetail')->name('blog.detail');

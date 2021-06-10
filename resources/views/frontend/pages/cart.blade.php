@@ -5,22 +5,24 @@
 	<div class="breadcrumb-area bg-gray">
 		<div class="container">
 			<div class="breadcrumb-content text-center">
-				<ul >
-							<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="">{{ __('Cart')}}</a></li>
-						</ul>
-				</div>
+				<ul>
+					<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li class="active"><a href="">{{ __('Cart')}}</a></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<section class="shopping-cart section">
+	<div class="cart-main-area pt-85 pb-120">
 		<div class="container">
+			<h3 class="cart-page-title">Your cart items</h3>
 			<div class="row">
-				<div class="col-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 					<!-- Shopping Summery -->
-					<table class="table shopping-summery">
+					<div class="table-content table-responsive cart-table-content">
+					<table>
 						<thead>
 							<tr class="main-hading">
 								<th>{{ __('PRODUCT')}}</th>
@@ -90,84 +92,87 @@
 							</form>
 						</tbody>
 					</table>
+				</div>
 					<!--/ End Shopping Summery -->
 				</div>
 			</div>
+
+			
 			<div class="row">
-				<div class="col-12">
-					<!-- Total Amount -->
-					<div class="total-amount">
-						<div class="row">
-							<div class="col-lg-8 col-md-5 col-12">
-								<div class="left">
-									<div class="coupon">
-									<form action="{{route('coupon-store')}}" method="POST">
-											@csrf
-											<input name="code" placeholder="Enter Your Coupon">
-											<button class="btn">{{ __('Apply')}}</button>
-										</form>
+			<div class="col-lg-6 col-md-6">
+				<div class="discount-code-wrapper">
+					<div class="title-wrap">
+						<h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
+					</div>
+					<div class="discount-code">
+						<p>Enter your coupon code if you have one.</p>
+					<form action="{{route('coupon-store')}}" method="POST">
+						@csrf
+						<input name="code" placeholder="Enter Your Coupon">
+						<button class="cart-btn-2" type="submit">Apply Coupon</button>
+					</form>
+					@if(session()->has('coupon'))
+					<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
+					@endif
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12">
+				<div class="grand-totall">
+					<div class="title-wrap">
+						<h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+					</div>
+					<ul>
+						<h5 class="grand-totall-title" data-price="{{Helper::totalCartPrice()}}">
+							{{__('Cart Subtotal')}}<span>
+							{{number_format(Helper::totalCartPrice(),2)}} DH</span></h5>
+						<div id="shipping" style="display:none;">
+							<li class="total-shipping">
+								Shipping {{session('shipping_price')}}
+								@if(count(Helper::shipping())>0 && Helper::cartCount()>0)
+									<div class="form-select">
+										<select name="shipping" class="select2">
+											<option value="">Select</option>
+											@foreach(Helper::shipping() as $shipping)
+											<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
+											@endforeach
+										</select>
 									</div>
-									{{-- <div class="checkbox">`
-										@php 
-											$shipping=DB::table('shippings')->where('status','active')->limit(1)->get();
-										@endphp
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> {{__('Shipping')}}</label>
-									</div> --}}
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-7 col-12">
-								<div class="right">
-									<ul>
-										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">{{__('Cart Subtotal')}}<span>{{number_format(Helper::totalCartPrice(),2)}}DH</span></li>
-										<div id="shipping" style="display:none;">
-											<li class="shipping">
-												Shipping {{session('shipping_price')}}
-												@if(count(Helper::shipping())>0 && Helper::cartCount()>0)
-													<div class="form-select">
-														<select name="shipping" class="select2">
-															<option value="">Select</option>
-															@foreach(Helper::shipping() as $shipping)
-															<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
-															@endforeach
-														</select>
-													</div>
-												@else 
-													<div class="form-select">
-														<span>Free</span>
-													</div>
-												@endif
-											</li>
-										</div>
-										 
-										 {{-- {{dd(Session::get('coupon')['value'])}} --}}
-										@if(session()->has('coupon'))
-										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
-										@endif
-										@php
-											$total_amount=Helper::totalCartPrice();
-											if(session()->has('coupon')){
-												$total_amount=$total_amount-Session::get('coupon')['value'];
-											}
-										@endphp
-										@if(session()->has('coupon'))
-											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}}DH</span></li>
-										@else
-											<li class="last" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}}DH</span></li>
-										@endif
-									</ul>
-									<div class="button5">
-										<a href="{{route('checkout')}}" class="btn">{{ __('Checkout')}}</a>
-										<a href="{{route('product-grids')}}" class="btn">{{ __('Continue shopping')}}</a>
+								@else 
+									<div class="form-select">
+										<span>Free</span>
 									</div>
-								</div>
-							</div>
+								@endif
+							</li>
+						</div>
+						 
+						 {{-- {{dd(Session::get('coupon')['value'])}} --}}
+						
+						@php
+							$total_amount=Helper::totalCartPrice();
+							if(session()->has('coupon')){
+								$total_amount=$total_amount-Session::get('coupon')['value'];
+							}
+						@endphp
+						@if(session()->has('coupon'))
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} DH</span></li>
+						@else
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} DH</span></li>
+						@endif
+					</ul>
+					<div class="cart-shiping-update-wrapper">
+						<div class="cart-shiping-update">
+						<a href="{{route('checkout')}}">{{ __('Checkout')}}</a>
+						</div>
+						<div class="cart-clear">
+						<a href="{{route('product-grids')}}">{{ __('Continue shopping')}}</a>
 						</div>
 					</div>
-					<!--/ End Total Amount -->
 				</div>
 			</div>
 		</div>
-	</section>
+		</div>
+	</div>
 	<!--/ End Shopping Cart -->
 			
 	<!-- Start Shop Services Area  -->
