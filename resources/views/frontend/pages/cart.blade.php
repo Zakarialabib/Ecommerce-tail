@@ -2,20 +2,16 @@
 @section('title','Cart Page')
 @section('main-content')
 	<!-- Breadcrumbs -->
-	<section  class="breadcrumbs">
+	<div class="breadcrumb-area bg-gray">
 		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
+			<div class="breadcrumb-content text-center">
+				<ul >
 							<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
 							<li class="active"><a href="">{{ __('Cart')}}</a></li>
 						</ul>
-					</div>
 				</div>
 			</div>
 		</div>
-	</section>
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->

@@ -5,20 +5,16 @@
 @section('main-content')
 
     <!-- Breadcrumbs -->
-    <section  class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <ul class="bread-list">
+	<div class="breadcrumb-area bg-gray">
+		<div class="container">
+			<div class="breadcrumb-content text-center">
+				<ul >
                             <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
                             <li class="active"><a href="javascript:void(0)">{{ __('Checkout')}}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
     <!-- End Breadcrumbs -->
             
     <!-- Start Checkout -->

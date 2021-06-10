@@ -14,12 +14,10 @@
 @section('main-content')
 
 		<!-- Breadcrumbs -->
-		<section  class="breadcrumbs">
+		<div class="breadcrumb-area bg-gray">
 			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="bread-inner">
-							<ul class="bread-list">
+				<div class="breadcrumb-content text-center">
+					<ul >
 								<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
 								<li><a href="{{route('product-lists')}}">{{ __('Shop List')}} <i class="ti-arrow-right"></i></a></li>
 								<li class="active"><a href="">{{$product_detail->title}}</a></li>
@@ -27,8 +25,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
 		<!-- End Breadcrumbs -->
 				
 		<!-- Shop Single -->

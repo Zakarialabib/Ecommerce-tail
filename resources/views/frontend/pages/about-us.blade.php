@@ -5,23 +5,19 @@
 @section('main-content')
 
 	<!-- Breadcrumbs -->
-	<section  class="breadcrumbs">
+	<div class="breadcrumb-area bg-gray">
 		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
-							<li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">{{ __('About Us')}}</a></li>
-						</ul>
-					</div>
-				</div>
+			<div class="breadcrumb-content text-center">
+				<ul >
+					<li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li class="active"><a href="blog-single.html">{{ __('About Us')}}</a></li>
+				</ul>
 			</div>
 		</div>
-	</section>
+	</div>
 	<!-- End Breadcrumbs -->
-				<section class="container margin_60_35 add_bottom_30">
-					<div class="main_title">
+	<div class="about-us-area pt-120 pb-120">
+		<div class="main_title">
 						<h2>{{ __('About Us')}}</h2>
 						<p>Euismod phasellus ac lectus fusce parturient cubilia a nisi blandit sem cras nec tempor adipiscing rcu ullamcorper ligula.</p>
 					</div>
@@ -95,7 +91,7 @@
 					</div>
 				</div>
 			</div>
-	</section>
+		</div>
 	<!-- End About Us -->
 	
 	<!-- Start Team -->

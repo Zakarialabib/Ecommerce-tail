@@ -4,20 +4,16 @@
 
 @section('main-content')
     <!-- Breadcrumbs -->
-    <section  class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <ul class="bread-list">
-                            <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">{{ __('Blog')}}</a></li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="breadcrumb-area bg-gray">
+		<div class="container">
+			<div class="breadcrumb-content text-center">
+				<ul >
+                    <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+                    <li class="active"><a href="javascript:void(0);">{{ __('Blog')}}</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
     <!-- End Breadcrumbs -->
         
     <!-- Start Blog Single -->

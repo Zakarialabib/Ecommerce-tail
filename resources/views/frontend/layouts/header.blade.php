@@ -1,4 +1,4 @@
-<header class="header-area transparent-bar section-padding-1">
+<header class="header-area section-padding-1">
     <div class="container-fluid">
         <div class="header-large-device">
             <div class="header-top header-top-ptb-1 border-bottom-1">
