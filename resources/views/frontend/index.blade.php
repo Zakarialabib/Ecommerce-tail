@@ -3,7 +3,7 @@
 @section('main-content')
 <!-- Slider Area -->
 @if(count($banners)>0)
-    <section id="Gslider" class="carousel slide" data-ride="carousel">
+    {{-- <section id="Gslider" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             @foreach($banners as $key=>$banner)
         <li data-target="#Gslider" data-slide-to="{{$key}}" class="{{(($key==0)? 'active' : '')}}"></li>
@@ -30,7 +30,84 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
         </a>
-    </section>
+    </section> --}}
+    <div class="slider-area bg-gray">
+        <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
+                                <h4 class="animated">New Arrivals</h4>
+                                <h1 class="animated">Leather Simple <br>Backpacks</h1>
+                                <p class="animated">Discover our collection with leather simple backpacks. Less is more never out trend.</p>
+                                <div class="btn-style-1">
+                                    <a class="animated btn-1-padding-1" href="product-details.html">Explore Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="hero-slider-img-1 slider-animated-1">
+                                <img class="animated" src="assets/images/slider/hm-1-slider-1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="service-area">
+        <div class="container">
+            <div class="service-wrap">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-cursor"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Free Shipping</h3>
+                                <span>Orders over $100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-reload"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Free Returns</h3>
+                                <span>Within 30 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-lock"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>100% Secure</h3>
+                                <span>Payment Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-tag"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Best Price</h3>
+                                <span>Guaranteed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endif
 
 <!--/ End Slider Area -->
