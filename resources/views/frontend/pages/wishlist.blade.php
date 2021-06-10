@@ -16,12 +16,12 @@
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="shopping-cart section">
+	<div class="cart-main-area pt-115 pb-120">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<!-- Shopping Summery -->
-					<table class="table shopping-summery">
+					<table class="table-content table-responsive cart-table-content">
 						<thead>
 							<tr class="main-hading">
 								<th>{{ __('PRODUCT')}}</th>

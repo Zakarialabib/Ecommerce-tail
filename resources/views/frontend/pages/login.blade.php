@@ -17,7 +17,7 @@
     <!-- End Breadcrumbs -->
             
     <!-- Shop Login -->
-    <section class="shop login section">
+    <section class="login-register-area pt-115 pb-120">
         <div class="container">
             <div class="row"> 
                 <div class="col-lg-6 offset-lg-3 col-12">
