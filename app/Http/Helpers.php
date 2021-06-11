@@ -26,10 +26,7 @@ class Helper{
 
         if($menu){
             ?>
-            
-            <li>
-            <a href="javascript:void(0);">Category<i class="ti-angle-down"></i></a>
-                <ul>
+            <ul>
                 <?php
                     foreach($menu as $cat_info){
                         if($cat_info->child_cat->count()>0){
@@ -55,7 +52,6 @@ class Helper{
                     }
                     ?>
                 </ul>
-            </li>
         <?php
         }
     }

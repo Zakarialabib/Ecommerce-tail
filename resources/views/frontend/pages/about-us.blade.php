@@ -20,7 +20,7 @@
 		<div class="row justify-content-center align-items-center">
 			<div class="col-lg-5">
 				<div class="box_about">
-					<h2>Top Products</h2>
+					<h2>{{__('Top Products')}}</h2>
 					<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
 					<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
 					<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_1">
@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-lg-5">
 				<div class="box_about">
-					<h2>Top Brands</h2>
+					<h2>{{__('Top Brands')}}</h2>
 					<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
 					<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
 					<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_2">

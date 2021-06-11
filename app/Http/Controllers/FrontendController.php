@@ -17,6 +17,7 @@ use DB;
 use Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
 class FrontendController extends Controller
 {
    

@@ -5,7 +5,7 @@
     @include('user.layouts.notification')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+      <h1 class="h3 mb-0 text-gray-800">{{__('Dashboard')}}</h1>
     </div>
 
     <!-- Content Row -->
@@ -115,7 +115,7 @@
                     <td>{{$order->first_name}} {{$order->last_name}}</td>
                     <td>{{$order->email}}</td>
                     <td>{{$order->quantity}}</td>
-                    <td>{{number_format($order->total_amount,2)}}DH</td>
+                    <td>{{number_format($order->total_amount,2)}} $</td>
                     <td>
                         @if($order->status=='new')
                           <span class="badge badge-primary">{{$order->status}}</span>

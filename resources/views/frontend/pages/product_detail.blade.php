@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="{{ route('home') }}">{{ __('Home') }}<i
                             class="ti-arrow-right"></i></a></li>
-                <li><a href="{{ route('product-grids') }}">{{ __('Catalogue') }}
+                <li><a href="{{ route('product-grids') }}">{{ __('Shop') }}
                         <i class="ti-arrow-right"></i></a></li>
                 <li class="active"><a href="javascript:void(0)">{{ $product_detail->title }}</a></li>
             </ul>
@@ -83,8 +83,8 @@
                                     $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
                                 @endphp
                                 <p class="price"><span
-                                        class="discount">{{ number_format($after_discount,2) }}DH</span>
-										<s> {{ number_format($product_detail->price,2) }}DH</s>
+                                        class="discount">{{ number_format($after_discount,2) }} $</span>
+										<s> {{ number_format($product_detail->price,2) }} $</s>
                                 </p>
                             </div>
                             <!--/ End Description -->
@@ -358,8 +358,8 @@
                                         @php
                                             $after_discount=($data->price-(($data->discount*$data->price)/100));
                                         @endphp
-                                        <span class="old">{{ number_format($data->price,2) }}DH</span>
-                                        <span>{{ number_format($after_discount,2) }}DH</span>
+                                        <span class="old">{{ number_format($data->price,2) }} $</span>
+                                        <span>{{ number_format($after_discount,2) }} $</span>
                                     </div>
 
                                 </div>

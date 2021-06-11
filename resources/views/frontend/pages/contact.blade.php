@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="container">
 			<div class="contact-info-wrap-3">
-					<h3>Contact</h3>
+					<h3>{{ __('Contact')}}</h3>
 			</div>
 				<div class="contact-head">
 					<div class="row">
@@ -32,7 +32,7 @@
 									<h4>{{ __('Get in touch')}}</h4>
 									<h3>{{ __('Write us a message')}} @auth @else<span style="font-size:12px;" class="text-danger">{{ __('You need to login first')}}</span>@endauth</h3>
 								</div>
-								<form class="form-contact form contact_form" method="post" action="{{route('contact.store')}}" id="contactForm" novalidate="novalidate">
+								<form class="contact-from contact-shadow" method="post" action="{{route('contact.store')}}" id="contactForm" novalidate="novalidate">
 									@csrf
 									<div class="row">
 										<div class="col-lg-6 col-12">
@@ -72,21 +72,21 @@
 						<div class="col-lg-4 col-12">
 							<div class="single-head">
 								<div class="single-contact-info-3 text-center mb-30">
-									<i class="fa fa-phone"></i>
+									<i class="icon-screen-smartphone"></i>
 									<h4 class="title">{{ __('Call us Now')}}:</h4>
 									<ul>
 										<li>@foreach($settings as $data) <a href="tel:{{$data->phone}}">{{$data->phone}}</a> @endforeach</li>
 									</ul>
 								</div>
 								<div class="single-contact-info-3 text-center mb-30">
-									<i class="fa fa-envelope-open"></i>
+									<i class="icon-envelope"></i>
 									<h4 class="title">{{ __('Email')}}:</h4>
 									<ul>
 										<li>@foreach($settings as $data) <a href="mailto:{{$data->email}}">{{$data->email}}</a> @endforeach</li>
 									</ul>
 								</div>
 								<div class="single-contact-info-3 text-center mb-30">
-									<i class="fa fa-location-arrow"></i>
+									<i class="icon-location-pin"></i>
 									<h4 class="title">{{ __('Our Address')}}:</h4>
 									<ul>
 										<li>@foreach($settings as $data) {{$data->address}} @endforeach</li>

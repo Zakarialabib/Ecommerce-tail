@@ -18,7 +18,7 @@
     <!-- End Breadcrumbs -->
             
     <!-- Start Checkout -->
-    <section class="shop checkout section">
+    <section class="checkout-main-area pt-120 pb-120">
         <div class="container">
                 <form class="form" method="POST" action="{{route('cart.order')}}">
                     @csrf
@@ -108,20 +108,20 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
-                            <div class="order-details">
+                            <div class="your-order-area">
                                 <!-- Order Widget -->
-                                <div class="single-widget">
-                                    <h2>{{ __('CART  TOTALS')}}</h2>
-                                    <div class="content">
+                                    <h3>{{ __('CART  TOTALS')}}</h3>
+                                    <div class="your-order-wrap gray-bg-4">
+                                        <div class="your-order-info-wrap">
                                         <ul>
-										    <li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span>{{number_format(Helper::totalCartPrice(),2)}}DH</span></li>
-                                            <li class="shipping">
+										    <li class="your-order-info" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span> {{number_format(Helper::totalCartPrice(),2)}} $</span></li>
+                                            <li class="your-order-middle">
                                             {{ __('Shipping Cost')}}
                                                 @if(count(Helper::shipping())>0 && Helper::cartCount()>0)
-                                                    <select name="shipping" class="select2">
-                                                        <option value="">{{ __('Select your address')}}</option>
+                                                    <select name="shipping" class="form-control select2">
+                                                        <option value="">{{ __('Select Shipping Methode')}}</option>
                                                         @foreach(Helper::shipping() as $shipping)
-                                                        <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
+                                                        <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}} $</option>
                                                         @endforeach
                                                     </select>
                                                 @else 
@@ -130,7 +130,7 @@
                                             </li>
                                             
                                             @if(session('coupon'))
-                                            <li class="coupon_price" data-price="{{session('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(session('coupon')['value'],2)}}DH</span></li>
+                                            <li class="your-order-info order-shipping" data-price="{{session('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(session('coupon')['value'],2)}} $</span></li>
                                             @endif
                                             @php
                                                 $total_amount=Helper::totalCartPrice();
@@ -139,43 +139,33 @@
                                                 }
                                             @endphp
                                             @if(session('coupon'))
-                                                <li class="last"  id="order_total_price">Total<span>{{number_format($total_amount,2)}}DH</span></li>
+                                                <li class="last"  id="your-order-info order-total">Total<span> {{number_format($total_amount,2)}} $</span></li>
                                             @else
-                                                <li class="last"  id="order_total_price">Total<span>{{number_format($total_amount,2)}}DH</span></li>
+                                                <li class="last"  id="your-order-info order-total">Total<span> {{number_format($total_amount,2)}} $</span></li>
                                             @endif
                                         </ul>
                                     </div>
-                                </div>
+                                
                                 <!--/ End Order Widget -->
                                 <!-- Order Widget -->
-                                <div class="single-widget">
-                                    <h2>{{ __('Payments')}}</h2>
-                                    <div class="content">
-                                        <div class="checkbox">
-                                            {{-- <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label> --}}
-                                            <form-group>
-                                                <input name="payment_method"  type="radio" value="cod"> <label> {{ __('Cash On Delivery')}}</label><br>
-                                                <input name="payment_method"  type="radio" value="paypal"> <label> {{ __('PayPal')}}</label> 
-                                            </form-group>
-                                            
-                                        </div>
+                                <div class="payment-method">
+                                    <h3>{{ __('Payments')}}</h3>
+                                    <div class="pay-top sin-payment">
+                                        <input name="payment_method" id="payment_method_1" class="input-radio"  type="radio" value="cod"> <label for="payment_method_1"> {{ __('Cash On Delivery')}}</label>
                                     </div>
+                                    <div class="pay-top sin-payment">
+                                        <input name="payment_method" id="payment_method_2" class="input-radio"  type="radio" value="paypal"> 
+                                        <label for="payment_method_2"> 
+                                            {{ __('PayPal')}} 
+                                            <img src="{{('backend/img/payment-method.png')}}" alt="#">
+                                        </label> 
+                                    </div>                                  
                                 </div>
                                 <!--/ End Order Widget -->
-                                <!-- Payment Method Widget -->
-                                <div class="single-widget payement">
-                                    <div class="content">
-                                        <img src="{{('backend/img/payment-method.png')}}" alt="#">
-                                    </div>
-                                </div>
-                                <!--/ End Payment Method Widget -->
+                         
                                 <!-- Button Widget -->
-                                <div class="single-widget get-button">
-                                    <div class="content">
-                                        <div class="button">
-                                            <button type="submit" class="btn">{{ __('proceed to checkout')}}</button>
-                                        </div>
-                                    </div>
+                                <div class="Place-order">
+                                        <button type="submit" class="btn">{{ __('proceed to checkout')}}</button>
                                 </div>
                                 <!--/ End Button Widget -->
                             </div>
@@ -186,13 +176,6 @@
     </section>
     <!--/ End Checkout -->
     
-   	<!-- Start Shop Services Area  -->
-	@include('frontend.layouts.services')
-	<!-- End Shop Newsletter -->
-	
-	<!-- Start Shop Newsletter  -->
-	@include('frontend.layouts.newsletter')
-	<!-- End Shop Newsletter -->
     
 @endsection
 @push('styles')
