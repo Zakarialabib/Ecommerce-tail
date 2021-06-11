@@ -114,13 +114,12 @@
                                         <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                     </div>
                                     <div class="content">
-                                        <h5><a href="#">{{$post->title}}</a></h5>
-                                        <ul class="comment">
+                                        <ul class="sidebar-blog-content">
+                                            <h5><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h5>
                                         @php 
                                             $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
                                         @endphp
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$post->created_at->format('d M, y')}}</li>
-                                            <li><i class="fa fa-user" aria-hidden="true"></i> 
+                                            <span>{{$post->created_at->format('d M, y')}} / 
                                                 @foreach($author_info as $data)
                                                     @if($data->name)
                                                         {{$data->name}}
@@ -128,7 +127,7 @@
                                                         Anonymous
                                                     @endif
                                                 @endforeach
-                                            </li>
+                                            </span>
                                         </ul>
                                     </div>
                                 </div>

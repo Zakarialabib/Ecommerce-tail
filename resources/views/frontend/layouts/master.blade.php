@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
 	@include('frontend.layouts.head')	
 </head>
@@ -17,5 +17,7 @@
 		@include('frontend.layouts.footer')
 	
 	</div>
+	@include('frontend.layouts.js')
+
 </body>
 </html>

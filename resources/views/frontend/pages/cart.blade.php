@@ -7,7 +7,7 @@
 			<div class="breadcrumb-content text-center">
 				<ul>
 					<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-					<li class="active"><a href="">{{ __('Cart')}}</a></li>
+					<li class="active"><a href="javascript:void(0)">{{ __('Cart')}}</a></li>
 				</ul>
 			</div>
 		</div>

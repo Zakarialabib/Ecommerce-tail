@@ -9,12 +9,12 @@
 			<div class="container">
 				<div class="breadcrumb-content text-center">
 					<ul >
-								<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="javascript:void(0);">{{ __('Shop List')}}</a></li>
-							</ul>
-						</div>
-					</div>
+						<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+						<li class="active"><a href="javascript:void(0)">{{ __('Catalogue')}}</a></li>
+					</ul>
 				</div>
+			</div>
+		</div>
 
 		<!-- End Breadcrumbs -->
 		<form action="{{route('shop.filter')}}" method="POST">
@@ -64,7 +64,6 @@
 								<div class="sidebar-widget shop-sidebar-border mb-35 range">
 									<h3 class="sidebar-widget-title">{{ __('Shop by Price')}}</h3>
 									<div class="price-filter">
-										<div class="price-filter-inner">
 											{{-- <div id="slider-range" data-min="10" data-max="2000" data-currency="%"></div>
 												<div class="price_slider_amount">
 												<div class="label-input">
@@ -76,16 +75,15 @@
 												$max=DB::table('products')->max('price');
 												// dd($max);
 											@endphp
-											<div id="slider-range" data-min="0" data-max="{{$max}}"></div>
-											<div class="product_filter">
-											<button type="submit" class="filter_button">{{ __('Filter')}}</button>
-											<div class="label-input">
-												<span>{{ __('Range')}}:</span>
-												<input style="" type="text" id="amount" readonly/>
-												<input type="hidden" name="price_range" id="price_range" value="@if(!empty($_GET['price'])){{$_GET['price']}}@endif"/>
+											<div id="slider-range" data-min="0" data-max="{{$max}}" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"></div>
+											<div class="price-slider-amount">
+												<button type="submit" class="filter_button">{{ __('Filter')}}</button>
+												<div class="label-input">
+													<span>{{ __('Range')}}:</span>
+													<input style="" type="text" id="amount" readonly/>
+													<input type="hidden" name="price_range" id="price_range" value="@if(!empty($_GET['price'])){{$_GET['price']}}@endif"/>
+												</div>
 											</div>
-											</div>
-										</div>
 									</div>
 									{{-- <ul class="check-box-list">
 										<li>
@@ -126,16 +124,16 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="sidebar-widget shop-sidebar-border mb-35 category">
+                                <div class="sidebar-widget shop-sidebar-border pt-40">
                                     <h3 class="sidebar-widget-title">{{ __('Brands')}}</h3>
-                                    <ul class="categor-list">
+                                    <div class="tag-wrap sidebar-widget-tag">
                                         @php
                                             $brands=DB::table('brands')->orderBy('title','ASC')->where('status','active')->get();
                                         @endphp
                                         @foreach($brands as $brand)
-                                            <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
+                                            <a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a>
                                         @endforeach
-                                    </ul>
+									</div>
                                 </div>
                                 <!--/ End Single Widget -->
                         	</div>
@@ -169,8 +167,8 @@
 										</div>
 										<div class="shop-topbar-left">
 										<ul class="view-mode nav">
-											<li class="active"><a href="javascript:void(0)"><i class="fa fa-th-large"></i></a></li>
-											<li><a href="{{route('product-lists')}}"><i class="fa fa-th-list"></i></a></li>
+											<li class="active"><a href="javascript:void(0)"><i class="icon-grid"></i></a></li>
+											<li><a href="{{route('product-lists')}}"><i class="icon-menu"></i></a></li>
 										</ul>
 										</div>
 									</div>
@@ -214,9 +212,10 @@
 															</div>
 														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
 														
-														<p class="des pt-2">{!! html_entity_decode($product->summary) !!}</p>
+														<p>{!! html_entity_decode($product->summary) !!}</p>
 														<div class="product-list-action">
-															<a title="Add To Cart" href="javascript:void(0)" data-id="{{$product->id}}"><i class="icon-basket-loaded"></i></button>
+															<a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i></a>
+															<a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
 														</div>
 													</div>
 												</div>

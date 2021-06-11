@@ -9,7 +9,8 @@
 			<div class="breadcrumb-content text-center">
 				<ul >
                     <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                    <li class="active"><a href="javascript:void(0);">{{ __('Blog Single Sidebar')}}</a></li>
+                    <li ><a href="{{route('blog')}}">{{ __('Blog')}}</a></li>
+                    <li class="active"><a href="javascript:void(0);">{{$post->title}}</a></li>
                 </ul>
              </div>
          </div>
@@ -18,21 +19,25 @@
     <!-- End Breadcrumbs -->
         
     <!-- Start Blog Single -->
-    <section class="blog-single section">
+    <section class="blog-area pt-120 pb-120">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12">
-                    <div class="blog-single-main">
+                    <div class="blog-details-wrapper">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="image">
+                            <div class="blog-details-top">
+                                <div class="blog-details-img">
                                     <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                 </div>
-                                <div class="blog-detail">
-                                    <h2 class="blog-title">{{$post->title}}</h2>
-                                    <div class="blog-meta">
-                                        <span class="author"><a href="javascript:void(0);"><i class="fa fa-user"></i>By {{$post->author_info['name']}}</a><a href="javascript:void(0);"><i class="fa fa-calendar"></i>{{$post->created_at->format('M d, Y')}}</a><a href="javascript:void(0);"><i class="fa fa-comments"></i>Comment ({{$post->allComments->count()}})</a></span>
+                                <div class="blog-details-content">
+                                    <div class="blog-meta-2">
+                                      <ul>
+                                         <li><a href="javascript:void(0);"><i class="fa fa-user"></i>By {{$post->author_info['name']}}</a></li>
+                                         <li>   <a href="javascript:void(0);"><i class="fa fa-calendar"></i>{{$post->created_at->format('M d, Y')}}</a></li>
+                                         <li>   <a href="javascript:void(0);"><i class="fa fa-comments"></i>Comment ({{$post->allComments->count()}})</a></li>
+                                        </ul> 
                                     </div>
+                                    <h1>{{$post->title}}</h1>
                                     <div class="sharethis-inline-reaction-buttons"></div>
                                     <div class="content">
                                         @if($post->quote)
@@ -44,16 +49,14 @@
                                 <div class="share-social">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="content-tags">
-                                                <h4>Tags:</h4>
-                                                <ul class="tag-inner">
+                                            <h4 class="sidebar-widget-title">Tags:</h4>
+                                            <div class="tag-wrap sidebar-widget-tag">
                                                     @php 
                                                         $tags=explode(',',$post->tags);
                                                     @endphp
                                                     @foreach($tags as $tag)
-                                                    <li><a href="javascript:void(0);">{{$tag}}</a></li>
+                                                   <a href="javascript:void(0);">{{$tag}}</a>
                                                     @endforeach
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -61,9 +64,9 @@
                             </div>
                             @auth
                             <div class="col-12 mt-4">			
-                                <div class="reply">
+                                <div class="blog-comment-wrapper mt-55">
                                     <div class="reply-head comment-form" id="commentFormContainer">
-                                        <h2 class="reply-title">{{ __('Leave a Comment')}}</h2>
+                                        <h2 class="blog-dec-title">{{ __('Leave a Comment')}}</h2>
                                         <!-- Comment Form -->
                                         <form class="form comment_form" id="commentForm" action="{{route('post-comment.store',$post->slug)}}" method="POST">
                                             @csrf
@@ -98,7 +101,7 @@
                             <!--/ End Form -->
                             @endauth										
                             <div class="col-12">
-                                <div class="comments">
+                                <div class="single-comment-wrapper mt-35">
                                     <h3 class="comment-title">Comments ({{$post->allComments->count()}})</h3>
                                     <!-- Single Comment -->
                                     @include('frontend.pages.comment', ['comments' => $post->comments, 'post_id' => $post->id, 'depth' => 3])
@@ -111,21 +114,35 @@
                 <div class="col-lg-4 col-12">
                     <div class="main-sidebar">
                         <!-- Single Widget -->
-                        <div class="single-widget search">
-                            <form class="form" method="GET" action="{{route('blog.search')}}">
-                                <input type="text" placeholder="Search Here..." name="search">
-                                <button class="button" type="sumbit"><i class="fa fa-search"></i></button>
-                            </form>
+                        <div class="sidebar-widget mb-40">
+                        <h4 class="sidebar-widget-title"> Search </h4>
+                            <div class="sidebar-search">
+                                <form class="sidebar-search-form" method="GET" action="{{route('blog.search')}}">
+                                    <input type="text" placeholder="Search Here..." name="search">
+                                    <button class="button" type="sumbit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
                         <div class="single-widget category">
                             <h3 class="title">{{ __('Blog Categories')}}</h3>
                             <ul class="categor-list">
-                                {{-- {{count(Helper::postCategoryList())}} --}}
-                                @foreach(Helper::postCategoryList('posts') as $cat)
-                                <li><a href="#">{{$cat->title}} </a></li>
-                                @endforeach
+                                @if(!empty($_GET['category']))
+                                    @php 
+                                        $filter_cats=explode(',',$_GET['category']);
+                                    @endphp
+                                @endif
+                            <form action="{{route('blog.filter')}}" method="POST">
+                                    @csrf
+                                    {{-- {{count(Helper::postCategoryList())}} --}}
+                                    @foreach(Helper::postCategoryList('posts') as $cat)
+                                    <li>
+                                        <a href="{{route('blog.category',$cat->slug)}}">{{$cat->title}} </a>
+                                    </li>
+                                    @endforeach
+                                </form>
+                                
                             </ul>
                         </div>
                         <!--/ End Single Widget -->
@@ -167,9 +184,21 @@
                         <div class="single-widget side-tags">
                             <h3 class="title">Tags</h3>
                             <ul class="tag">
-                                @foreach(Helper::postTagList('posts') as $tag)
-                                    <li><a href="">{{$tag->title}}</a></li>
-                                @endforeach
+                                @if(!empty($_GET['tag']))
+                                    @php 
+                                        $filter_tags=explode(',',$_GET['tag']);
+                                    @endphp
+                                @endif
+                                <form action="{{route('blog.filter')}}" method="POST">
+                                    @csrf
+                                    @foreach(Helper::postTagList('posts') as $tag)
+                                        <li>
+                                            <li>
+                                                <a href="{{route('blog.tag',$tag->title)}}">{{$tag->title}} </a>
+                                            </li>
+                                        </li>
+                                    @endforeach
+                                </form>
                             </ul>
                         </div>
                         <!--/ End Single Widget -->
@@ -178,12 +207,10 @@
                             <h3 class="title">{{ __('Newsletter')}}</h3>
                             <div class="letter-inner">
                                 <h4>{{ __('Subscribe & get news')}} <br> {{ __('latest updates')}}.</h4>
-                                <form action="{{route('subscribe')}}" method="POST">
+                                <form method="POST" action="{{route('subscribe')}}" class="form-inner">
                                     @csrf
-                                    <div class="form-inner">
-                                        <input type="email" name="email" placeholder="Enter your email">
-                                        <button type="submit" class="btn mt-2">{{ __('Submit')}}</button>
-                                    </div>
+                                    <input type="email" name="email" placeholder="Enter your email">
+                                    <button type="submit" class="btn " style="width: 100%">{{ __('Submit')}}</button>
                                 </form>
                             </div>
                         </div>
@@ -192,7 +219,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!--/ End Blog Single -->
 @endsection
 @push('styles')

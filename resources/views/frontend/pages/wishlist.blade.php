@@ -6,12 +6,12 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-							<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="javascript:void(0);">{{ __('Wishlist')}}</a></li>
-						</ul>
-					</div>
-				</div>
+					<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li class="active"><a href="javascript:void(0);">{{ __('Wishlist')}}</a></li>
+				</ul>
 			</div>
+		</div>
+	</div>
 
 	<!-- End Breadcrumbs -->
 			
@@ -21,7 +21,8 @@
 			<div class="row">
 				<div class="col-12">
 					<!-- Shopping Summery -->
-					<table class="table-content table-responsive cart-table-content">
+					<div class="table-content table-responsive cart-table-content">
+						<table>
 						<thead>
 							<tr class="main-hading">
 								<th>{{ __('PRODUCT')}}</th>
@@ -56,10 +57,9 @@
 									</td>
 								</tr>
 							@endif
-
-
 						</tbody>
 					</table>
+					</div>
 					<!--/ End Shopping Summery -->
 				</div>
 			</div>

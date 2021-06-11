@@ -8,12 +8,12 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-                            <li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="blog-single.html">{{ __('Catalogue')}}</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+                    <li class="active"><a href="javascript:void(0)">{{ __('Catalogue')}}</a></li>
+                </ul>
             </div>
+        </div>
+    </div>
     <!-- End Breadcrumbs -->
     
     <!-- Product Style -->
@@ -119,16 +119,16 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="sidebar-widget shop-sidebar-border category">
-                                    <h3 class="sidebar-widget-title">Brands</h3>
-                                    <ul class="categor-list">
+                                <div class="sidebar-widget shop-sidebar-border pt-40">
+                                    <h3 class="sidebar-widget-title">{{ __('Brands')}}</h3>
+                                    <div class="tag-wrap sidebar-widget-tag">
                                         @php
                                             $brands=DB::table('brands')->orderBy('title','ASC')->where('status','active')->get();
                                         @endphp
                                         @foreach($brands as $brand)
-                                            <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
+                                            <a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a>
                                         @endforeach
-                                    </ul>
+									</div>
                                 </div>
                                 <!--/ End Single Widget -->
                         </div>
@@ -161,11 +161,11 @@
                                         </div>
                                     </div>
                                     <div class="shop-topbar-left">
-                                    <ul class="view-mode nav">
-                                        <li class="active"><a href="javascript:void(0)"><i class="fa fa-th-large"></i></a></li>
-                                        <li><a href="{{route('product-lists')}}"><i class="fa fa-th-list"></i></a></li>
-                                    </ul>
-                                </div>
+                                        <ul class="view-mode nav">
+                                            <li class="active"><a href="javascript:void(0)"><i class="icon-grid"></i></a></li>
+                                            <li><a href="{{route('product-lists')}}"><i class="icon-menu"></i></a></li>
+                                       </ul>
+                                    </div>
                                 </div>
                                 <!--/ End Shop Top -->
                             </div>
@@ -177,43 +177,53 @@
                                     <!-- Start Single List -->
                                     <div class="shop-list-wrap mb-30">
                                         <div class="row">
-                                            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
-                                                    <div class="product-list-img">
-                                                        <a href="{{route('product-detail',$product->slug)}}">
-                                                            @php 
-                                                            $photo=explode(',',$product->photo);
-                                                        @endphp
-                                                        @if ($product->photo === null)
-                                                        <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                        <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
-                                                        @else
-                                                        <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-                                                        @endif                                                        </a>
-                                                        <div class="product-list-quickview">
-                                                            <button title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></button>
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                <div class="single-product-wrap mb-35">
+                                                        <div class="product-img product-img-zoom mb-15">
+                                                            <a href="{{route('product-detail',$product->slug)}}">
+                                                                @php 
+                                                                $photo=explode(',',$product->photo);
+                                                                @endphp
+                                                                @if ($product->photo === null)
+                                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                                <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
+                                                                @else
+                                                                <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
+                                                                @endif                                                       
+                                                            </a>
+                                                            <div class="product-action-2 tooltip-style-2">
+                                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></a>    
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6">
-                                                <div class="shop-list-content">
-                                                    <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                                        <div class="pro-list-price">
-                                                            @php
-                                                            $after_discount=($product->price-($product->price*$product->discount)/100);
-                                                            @endphp
-                                                            <span class="new-price">{{number_format($after_discount,2)}}DH</span>
-                                                            <del class="old-price">{{number_format($product->price,2)}}DH</del>
+                                                        <div class="product-content-wrap-2 text-center">
+                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                                <div class="product-price-2">
+                                                                    @php
+                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                                    @endphp
+                                                                    <span class="new-price">{{number_format($after_discount,2)}}DH</span>
+                                                                    <del class="old-price">{{number_format($product->price,2)}}DH</del>
+                                                                </div>
                                                         </div>
-                                                    {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
-                                                    
-                                                    <p class="des pt-2">{!! html_entity_decode($product->summary) !!}</p>
-                                                    <div class="product-list-action">
-                                                        <a title="Add To Cart" href="javascript:void(0)" data-id="{{$product->id}}"><i class="icon-basket-loaded"></i></button>
+                                                            {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
+                                                        <div class="product-content-wrap-2 product-content-position text-center">
+                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                                <div class="product-price-2">
+                                                                    @php
+                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                                    @endphp
+                                                                    <span class="new-price">{{number_format($after_discount,2)}}DH</span>
+                                                                    <del class="old-price">{{number_format($product->price,2)}}DH</del>
+                                                                </div>
+                                                                <div class="pro-add-to-cart">                                                               
+                                                                    <a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}">Add To Cart</a>
+                                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
+                                                                </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <!-- End Single List -->
                                 @endforeach
                             @else

@@ -8,12 +8,12 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-                            <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">Order Track</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+                    <li class="active"><a href="javascript:void(0);">Order Track</a></li>
+                </ul>
             </div>
+        </div>
+    </div>
     <!-- End Breadcrumbs -->
 <section class="order-tracking-area pt-110 pb-120">
     <div class="container">

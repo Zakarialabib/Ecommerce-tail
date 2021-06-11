@@ -6,30 +6,26 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-							<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="javascript:void(0);">{{ __('Contact')}}</a></li>
-						</ul>
-					</div>
-				</div>
+					<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li class="active"><a href="javascript:void(0);">{{ __('Contact')}}</a></li>
+				</ul>
 			</div>
+		</div>
+	</div>
 	<!-- End Breadcrumbs -->
   
 	<!-- Start Contact -->
 	<section id="contact-us" class="contact-area pt-85 pb-120">
 	<div class="container">
-			<div class="contact-info-wrap-3">
-				<div class="main_title">
-					<h2>Contact Allaia</h2>
-					<p>Euismod phasellus ac lectus fusce parturient cubilia a nisi blandit sem cras nec tempor adipiscing rcu ullamcorper ligula.</p>
-				</div>
-			</div>
-			<!-- /container -->
 		<div class="container">
+			<div class="contact-info-wrap-3">
+					<h3>Contact</h3>
+			</div>
 				<div class="contact-head">
 					<div class="row">
 						<div class="col-lg-8 col-12">
 							<div class="form-main">
-								<div class="title">
+								<div class="get-in-touch-wrap">
 									@php
 										$settings=DB::table('settings')->get();
 									@endphp
@@ -75,21 +71,21 @@
 						</div>
 						<div class="col-lg-4 col-12">
 							<div class="single-head">
-								<div class="single-info">
+								<div class="single-contact-info-3 text-center mb-30">
 									<i class="fa fa-phone"></i>
 									<h4 class="title">{{ __('Call us Now')}}:</h4>
 									<ul>
 										<li>@foreach($settings as $data) <a href="tel:{{$data->phone}}">{{$data->phone}}</a> @endforeach</li>
 									</ul>
 								</div>
-								<div class="single-info">
+								<div class="single-contact-info-3 text-center mb-30">
 									<i class="fa fa-envelope-open"></i>
 									<h4 class="title">{{ __('Email')}}:</h4>
 									<ul>
 										<li>@foreach($settings as $data) <a href="mailto:{{$data->email}}">{{$data->email}}</a> @endforeach</li>
 									</ul>
 								</div>
-								<div class="single-info">
+								<div class="single-contact-info-3 text-center mb-30">
 									<i class="fa fa-location-arrow"></i>
 									<h4 class="title">{{ __('Our Address')}}:</h4>
 									<ul>
@@ -104,10 +100,6 @@
 		</div>
 	</section>
 	<!--/ End Contact -->
-	
-	<!-- Start Shop Newsletter  -->
-	@include('frontend.layouts.newsletter')
-	<!-- End Shop Newsletter -->
 	
 	<!--================Contact Success  =================-->
 	<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -26,8 +26,6 @@
 <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
 
-<!-- BASE CSS -->
-<link href="{{asset('frontend/css/bootstrap.custom.min.css')}}" rel="stylesheet">
 
 <style>
     /* Multilevel dropdown */
@@ -50,4 +48,5 @@
     }
 
 </style>
+
 @stack('styles')
