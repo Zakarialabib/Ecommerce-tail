@@ -9,26 +9,27 @@
 			<div class="container">
 				<div class="breadcrumb-content text-center">
 					<ul >
-								<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="javascript:void(0);">{{ __('Shop List')}}</a></li>
-							</ul>
-						</div>
-					</div>
+						<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+						<li class="active"><a href="javascript:void(0)">{{ __('Catalogue')}}</a></li>
+					</ul>
 				</div>
+			</div>
+		</div>
 
 		<!-- End Breadcrumbs -->
 		<form action="{{route('shop.filter')}}" method="POST">
 		@csrf
 			<!-- Product Style 1 -->
-			<section class="product-area shop-sidebar shop-list shop section">
+			<section class="shop-area pt-120 pb-120 shop-sidebar shop-list shop">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-3 col-md-4 col-12">
 							<div class="shop-sidebar">
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
-                                    <h3 class="title">{{ __('Categories')}}</h3>
-                                    <ul class="categor-list">
+                                <div class="sidebar-widget shop-sidebar-border mb-35">
+                                    <h3 class="sidebar-widget-title">{{ __('Categories')}}</h3>
+                                  <div class="shop-catigory">
+                                    <ul>
 										@php
 											// $category = new Category();
 											$menu=App\Models\Category::getAllParentWithChild();
@@ -56,13 +57,13 @@
 											@endif
                                         @endforeach --}}
                                     </ul>
+								</div>
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Shop By Price -->
-								<div class="single-widget range">
-									<h3 class="title">{{ __('Shop by Price')}}</h3>
+								<div class="sidebar-widget shop-sidebar-border mb-35 range">
+									<h3 class="sidebar-widget-title">{{ __('Shop by Price')}}</h3>
 									<div class="price-filter">
-										<div class="price-filter-inner">
 											{{-- <div id="slider-range" data-min="10" data-max="2000" data-currency="%"></div>
 												<div class="price_slider_amount">
 												<div class="label-input">
@@ -74,16 +75,15 @@
 												$max=DB::table('products')->max('price');
 												// dd($max);
 											@endphp
-											<div id="slider-range" data-min="0" data-max="{{$max}}"></div>
-											<div class="product_filter">
-											<button type="submit" class="filter_button">{{ __('Filter')}}</button>
-											<div class="label-input">
-												<span>{{ __('Range')}}:</span>
-												<input style="" type="text" id="amount" readonly/>
-												<input type="hidden" name="price_range" id="price_range" value="@if(!empty($_GET['price'])){{$_GET['price']}}@endif"/>
+											<div id="slider-range" data-min="0" data-max="{{$max}}" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"></div>
+											<div class="price-slider-amount">
+												<button type="submit" class="filter_button">{{ __('Filter')}}</button>
+												<div class="label-input">
+													<span>{{ __('Range')}}:</span>
+													<input style="" type="text" id="amount" readonly/>
+													<input type="hidden" name="price_range" id="price_range" value="@if(!empty($_GET['price'])){{$_GET['price']}}@endif"/>
+												</div>
 											</div>
-											</div>
-										</div>
 									</div>
 									{{-- <ul class="check-box-list">
 										<li>
@@ -99,8 +99,8 @@
 								</div>
 								<!--/ End Shop By Price -->
                                 <!-- Single Widget -->
-                                <div class="single-widget recent-post">
-                                    <h3 class="title">{{ __('Recent post')}}</h3>
+                                <div class="sidebar-widget shop-sidebar-border mb-35 recent-post">
+                                    <h3 class="sidebar-widget-title">{{ __('Recent post')}}</h3>
                                     {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
@@ -124,16 +124,16 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
-                                    <h3 class="title">{{ __('Brands')}}</h3>
-                                    <ul class="categor-list">
+                                <div class="sidebar-widget shop-sidebar-border pt-40">
+                                    <h3 class="sidebar-widget-title">{{ __('Brands')}}</h3>
+                                    <div class="tag-wrap sidebar-widget-tag">
                                         @php
                                             $brands=DB::table('brands')->orderBy('title','ASC')->where('status','active')->get();
                                         @endphp
                                         @foreach($brands as $brand)
-                                            <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
+                                            <a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a>
                                         @endforeach
-                                    </ul>
+									</div>
                                 </div>
                                 <!--/ End Single Widget -->
                         	</div>
@@ -142,9 +142,9 @@
 							<div class="row">
 								<div class="col-12">
 									<!-- Shop Top -->
-									<div class="shop-top">
-										<div class="shop-shorter">
-											<div class="single-shorter">
+									<div class="shop-topbar-wrapper">
+										<div class="product-sorting-wrapper">
+											<div class="product-shorting shorting-style">
 												<label>{{ __('Show')}} :</label>
 												<select class="show" name="show" onchange="this.form.submit();">
 													<option value="">{{ __('Default')}}</option>
@@ -154,69 +154,69 @@
 													<option value="30" @if(!empty($_GET['show']) && $_GET['show']=='30') selected @endif>30</option>
 												</select>
 											</div>
-											<div class="single-shorter">
-												<label>{{ __('Shop List')}} :</label>
+											<div class="product-shorting shorting-style">
+												<label>{{ __('Sort By')}} :</label>
 												<select class='sortBy' name='sortBy' onchange="this.form.submit();">
 													<option value="">{{ __('Default')}}</option>
-													<option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>{{ __('NAME')}}</option>
+													<option value="title" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='title') selected @endif>{{ __('Name')}}</option>
 													<option value="price" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='price') selected @endif>{{ __('Price')}}</option>
 													<option value="category" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='category') selected @endif>{{ __('Category')}}</option>
 													<option value="brand" @if(!empty($_GET['sortBy']) && $_GET['sortBy']=='brand') selected @endif>{{ __('Brand')}}</option>
 												</select>
 											</div>
 										</div>
-										<ul class="view-mode">
-											<li><a href="{{route('product-grids')}}"><i class="fa fa-th-large"></i></a></li>
-											<li class="active"><a href="javascript:void(0)"><i class="fa fa-th-list"></i></a></li>
+										<div class="shop-topbar-left">
+										<ul class="view-mode nav">
+											<li class="active"><a href="javascript:void(0)"><i class="icon-grid"></i></a></li>
+											<li><a href="{{route('product-lists')}}"><i class="icon-menu"></i></a></li>
 										</ul>
+										</div>
 									</div>
 									<!--/ End Shop Top -->
 								</div>
 							</div>
-							<div class="row">
+							<div class="shop-bottom-area">
 								@if(count($products))
 									@foreach($products as $product)
 									 	{{-- {{$product}} --}}
 										<!-- Start Single List -->
-										<div class="col-12">
+										<div class="shop-list-wrap mb-30">
 											<div class="row">
-												<div class="col-lg-4 col-md-6 col-sm-6">
-													<div class="single-product">
-														<div class="product-img">
+												<div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
+														<div class="product-list-img">
 															<a href="{{route('product-detail',$product->slug)}}">
-															@php 
-																$photo=explode(',',$product->photo);
-															@endphp
-															<img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-															<img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-															</a>
-															<div class="button-head">
-																<div class="product-action">
-																	<a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																	<a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" class="wishlist" data-id="{{$product->id}}"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																</div>
-																<div class="product-action-2">
-																	<a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">{{ __('ADD TO CART')}}</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-8 col-md-6 col-12">
-													<div class="list-content">
-														<div class="product-content">
-															<div class="product-price">
-																@php
-																	$after_discount=($product->price-($product->price*$product->discount)/100);
+																@php 
+																	$photo=explode(',',$product->photo);
 																@endphp
-																<span>{{number_format($after_discount,2)}}DH</span>
-																<del>{{number_format($product->price,2)}}DH</del>
+																@if ($product->photo === null)
+																<img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+																<img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
+																@else
+																<img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
+																@endif
+															</a>
+															<div class="product-list-quickview">
+																<button title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></button>
 															</div>
-															<h3 class="title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
 														</div>
-														<p class="des pt-2">{!! html_entity_decode($product->summary) !!}</p>
-														<a href="javascript:void(0)" class="btn cart" data-id="{{$product->id}}">Buy Now!</a>
+												</div>
+												<div class="col-xl-8 col-lg-7 col-md-6 col-sm-6">
+													<div class="shop-list-content">
+														<h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+															<div class="pro-list-price">
+																@php
+																$after_discount=($product->price-($product->price*$product->discount)/100);
+																@endphp
+																<span class="new-price">{{number_format($after_discount,2)}}DH</span>
+																<del class="old-price">{{number_format($product->price,2)}}DH</del>
+															</div>
+														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
+														
+														<p>{!! html_entity_decode($product->summary) !!}</p>
+														<div class="product-list-action">
+															<a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i></a>
+															<a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
+														</div>
 													</div>
 												</div>
 											</div>

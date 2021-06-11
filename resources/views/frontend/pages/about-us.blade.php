@@ -9,89 +9,85 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-					<li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-					<li class="active"><a href="blog-single.html">{{ __('About Us')}}</a></li>
+					<li><a href="{{ route('home') }}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li class="active"><a href="javascript:void(0)">{{ __('About Us')}}</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
 	<div class="about-us-area pt-120 pb-120">
-		<div class="main_title">
-						<h2>{{ __('About Us')}}</h2>
-						<p>Euismod phasellus ac lectus fusce parturient cubilia a nisi blandit sem cras nec tempor adipiscing rcu ullamcorper ligula.</p>
-					</div>
-					<div class="row justify-content-center align-items-center">
-						<div class="col-lg-5">
-							<div class="box_about">
-								<h2>Top Products</h2>
-								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
-								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
-								<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_1">
-							</div>
-						</div>
-						<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
-								<img src="{{asset('photos/about_1.svg')}}" alt="" class="img-fluid" width="350" height="268">
-						</div>
-					</div>
-					<!-- /row -->
-					<div class="row justify-content-center align-items-center">
-						<div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
-								<img src="{{asset('photos/about_2.svg')}}" alt="" class="img-fluid" width="350" height="268">
-						</div>
-						<div class="col-lg-5">
-							<div class="box_about">
-								<h2>Top Brands</h2>
-								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
-								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
-								<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_2">
-							</div>
-						</div>
-					</div>
-					<!-- /row -->
-					<div class="row justify-content-center align-items-center ">
-						<div class="col-lg-5">
-							<div class="box_about">
-								<h2>+5000 products</h2>
-								<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
-								<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
-							</div>
-
-						</div>
-						<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
-								<img src="{{asset('photos/about_3.svg')}}" alt="" class="img-fluid" width="350" height="316">
-						</div>
-					</div>
-					<!-- /row -->
-				</section>
-				<!-- /container -->
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-5">
+				<div class="box_about">
+					<h2>Top Products</h2>
+					<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+					<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+					<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_1">
+				</div>
+			</div>
+			<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+					<img src="{{asset('photos/about_1.svg')}}" alt="" class="img-fluid" width="350" height="268">
+			</div>
+		</div>
+		<!-- /row -->
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
+					<img src="{{asset('photos/about_2.svg')}}" alt="" class="img-fluid" width="350" height="268">
+			</div>
+			<div class="col-lg-5">
+				<div class="box_about">
+					<h2>Top Brands</h2>
+					<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+					<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+					<img src="{{asset('photos/arrow_about.png')}}" alt="" class="arrow_2">
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+		<div class="row justify-content-center align-items-center ">
+			<div class="col-lg-5">
+				<div class="box_about">
+					<h2>+5000 products</h2>
+					<p class="lead">Est falli invenire interpretaris id, magna libris sensibus mel id.</p>
+					<p>Per eu nostrud feugiat. Et quo molestiae persecuti neglegentur. At zril definitionem mei, vel ei choro volumus. An tota nulla soluta has, ei nec essent audiam, te nisl dignissim vel. Ex velit audire perfecto pro, ei mei doming vivendo legendos. Cu sit magna zril, an odio delectus constituto vis. Vis ludus omnesque ne, est veri quaeque ad.</p>
+				</div>
+			</div>
+			<div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+					<img src="{{asset('photos/about_3.svg')}}" alt="" class="img-fluid" width="350" height="316">
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
 	<!-- About Us -->
-	<section class="about-us section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-12">
-						<div class="about-content">
-							@php
-								$settings=DB::table('settings')->get();
-							@endphp
-							<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
-							<div class="button">
-								<a href="{{route('blog')}}" class="btn">{{ __('Our Blog')}}</a>
-								<a href="{{route('contact')}}" class="btn primary">{{ __('Contact Us')}}</a>
-							</div>
+	<div class="about-us pb-15">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-12">
+					<div class="about-content">
+						@php
+							$settings=DB::table('settings')->get();
+						@endphp
+						<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
+						<div class="button">
+							<a href="{{route('blog')}}" class="btn">{{ __('Our Blog')}}</a>
+							<a href="{{route('contact')}}" class="btn primary">{{ __('Contact Us')}}</a>
 						</div>
 					</div>
-					<div class="col-lg-6 col-12">
-						<div class="about-img overlay">
-							 <div class="button">
-								<a href="https://www.youtube.com/watch?v=nh2aYrGMrIE" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
-							</div>
-							<img src="@foreach($settings as $data) {{$data->photo}} @endforeach" alt="@foreach($settings as $data) {{$data->photo}} @endforeach">
+				</div>
+				<div class="col-lg-6 col-12">
+					<div class="about-img overlay">
+							<div class="button">
+							<a href="https://www.youtube.com/watch?v=nh2aYrGMrIE" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
 						</div>
+						<img src="@foreach($settings as $data) {{$data->photo}} @endforeach" alt="@foreach($settings as $data) {{$data->photo}} @endforeach">
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
 	<!-- End About Us -->
 	
 	<!-- Start Team -->
@@ -224,8 +220,6 @@
 	</section> --}}
 	<!--/ End Team Area -->
 	
-	@include('frontend.layouts.services')
 	
-	@include('frontend.layouts.newsletter')
 	
 @endsection

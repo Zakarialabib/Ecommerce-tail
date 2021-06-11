@@ -8677,7 +8677,7 @@ textarea:focus {
   }
 }
 
-.single-product-wrap .product-img .product-action-2 button {
+.single-product-wrap .product-img .product-action-2 a {
   display: block;
   border: none;
   padding: 0;
@@ -8693,7 +8693,7 @@ textarea:focus {
   border: 1px solid #ebebeb;
 }
 
-.single-product-wrap .product-img .product-action-2 button:nth-child(1) {
+.single-product-wrap .product-img .product-action-2 a:nth-child(1) {
   -webkit-transition-delay: 0.2s;
        -o-transition-delay: 0.2s;
           transition-delay: 0.2s;
@@ -8702,7 +8702,7 @@ textarea:focus {
   margin-top: -10px;
 }
 
-.single-product-wrap .product-img .product-action-2 button:nth-child(2) {
+.single-product-wrap .product-img .product-action-2 a:nth-child(2) {
   -webkit-transition-delay: 0.1s;
        -o-transition-delay: 0.1s;
           transition-delay: 0.1s;
@@ -8711,7 +8711,7 @@ textarea:focus {
   margin-top: -10px;
 }
 
-.single-product-wrap .product-img .product-action-2 button:nth-child(3) {
+.single-product-wrap .product-img .product-action-2 a:nth-child(3) {
   -webkit-transition-delay: 0s;
        -o-transition-delay: 0s;
           transition-delay: 0s;
@@ -8720,17 +8720,17 @@ textarea:focus {
   margin-top: -10px;
 }
 
-.single-product-wrap .product-img .product-action-2 button:hover {
+.single-product-wrap .product-img .product-action-2 a:hover {
   background-color: #000000;
   border: 1px solid #000000;
   color: #ffffff;
 }
 
-.single-product-wrap .product-img .product-action-2 button i {
+.single-product-wrap .product-img .product-action-2 a i {
   line-height: 40px;
 }
 
-.single-product-wrap .product-img .product-action-2 button:last-child {
+.single-product-wrap .product-img .product-action-2 a:last-child {
   margin-bottom: 0;
 }
 
@@ -9134,7 +9134,7 @@ textarea:focus {
   margin: 14px 0 0;
 }
 
-.single-product-wrap .product-content-wrap-2 .pro-add-to-cart button {
+.single-product-wrap .product-content-wrap-2 .pro-add-to-cart a {
   border: none;
   font-weight: bold;
   color: #ffffff;

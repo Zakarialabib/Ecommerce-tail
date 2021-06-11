@@ -32,7 +32,7 @@
 <footer class="footer-area bg-gray pb-30">
 	<div class="container">
 			<div class="row">
-					<div class="col-lg-6 col-md-6">
+					<div class="col-lg-5 col-md-5">
 							<div class="contact-info-wrap">
 									<div class="footer-logo">
 											<a href="{{route('home')}}"><img src="{{asset($settings->logo)}}" alt="logo"></a>
@@ -47,14 +47,14 @@
 									</div>
 							</div>
 					</div>
-					<div class="col-lg-6 col-md-6">
+					<div class="col-lg-7 col-md-7">
 							<div class="footer-right-wrap">
 									<div class="footer-menu">
 											<nav>
 													<ul>
+															<li><a href="{{route('home')}}">{{ __('Home')}}</a></li>
 															<li><a href="{{route('about-us')}}">{{ __('About Us')}}</a></li>
-															<li><a href="shop.html">Shop</a></li>
-															<li><a href="shop.html">Product </a></li>
+															<li><a href="{{route('product-grids')}}">{{ __('Shop')}} </a></li>
 															<li><a href="{{route('contact')}}">{{ __('Contact Us')}}</a></li>
 															<li><a href="{{route('blog')}}">{{__('Blog')}}</a></li>
 													</ul>

@@ -8,26 +8,27 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-                            <li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="blog-single.html">{{ __('Catalogue')}}</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <li><a href="index1.html">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+                    <li class="active"><a href="javascript:void(0)">{{ __('Catalogue')}}</a></li>
+                </ul>
             </div>
+        </div>
+    </div>
     <!-- End Breadcrumbs -->
     
     <!-- Product Style -->
     <form action="{{route('shop.filter')}}" method="POST">
         @csrf
-        <section class="product-area shop-sidebar shop section">
+        <section class="shop-area pt-120 pb-120 shop-sidebar shop">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="shop-sidebar">
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
-                                    <h3 class="title">{{ __('Categories')}}</h3>
-                                    <ul class="categor-list">
+                                <div class="sidebar-widget shop-sidebar-border mb-35">
+                                    <h3 class="sidebar-widget-title">{{ __('Categories')}}</h3>
+                                  <div class="shop-catigory">
+                                    <ul>
 										@php
 											// $category = new Category();
 											$menu=App\Models\Category::getAllParentWithChild();
@@ -56,10 +57,11 @@
                                         @endforeach --}}
                                     </ul>
                                 </div>
+                                </div>
                                 <!--/ End Single Widget -->
                                 <!-- Shop By Price -->
-                                    <div class="single-widget range">
-                                        <h3 class="title">{{ __('Shop by Price')}}</h3>
+                                    <div class="sidebar-widget shop-sidebar-border range">
+                                        <h3 class="sidebar-widget-title">{{ __('Shop by Price')}}</h3>
                                         <div class="price-filter">
                                             <div class="price-filter-inner">
                                                 @php
@@ -91,8 +93,8 @@
                                     </div>
                                     <!--/ End Shop By Price -->
                                 <!-- Single Widget -->
-                                <div class="single-widget recent-post">
-                                    <h3 class="title">{{ __('Recent post')}}</h3>
+                                <div class="sidebar-widget shop-sidebar-border recent-post">
+                                    <h3 class="sidebar-widget-title">{{ __('Recent post')}}</h3>
                                     {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
@@ -117,16 +119,16 @@
                                 </div>
                                 <!--/ End Single Widget -->
                                 <!-- Single Widget -->
-                                <div class="single-widget category">
-                                    <h3 class="title">Brands</h3>
-                                    <ul class="categor-list">
+                                <div class="sidebar-widget shop-sidebar-border pt-40">
+                                    <h3 class="sidebar-widget-title">{{ __('Brands')}}</h3>
+                                    <div class="tag-wrap sidebar-widget-tag">
                                         @php
                                             $brands=DB::table('brands')->orderBy('title','ASC')->where('status','active')->get();
                                         @endphp
                                         @foreach($brands as $brand)
-                                            <li><a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a></li>
+                                            <a href="{{route('product-brand',$brand->slug)}}">{{$brand->title}}</a>
                                         @endforeach
-                                    </ul>
+									</div>
                                 </div>
                                 <!--/ End Single Widget -->
                         </div>
@@ -135,9 +137,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <!-- Shop Top -->
-                                <div class="shop-top">
-                                    <div class="shop-shorter">
-                                        <div class="single-shorter">
+                                <div class="shop-topbar-wrapper">
+                                    <div class="product-sorting-wrapper">
+                                        <div class="product-shorting shorting-style">
                                             <label>{{ __('Show')}} :</label>
                                             <select class="show" name="show" onchange="this.form.submit();">
                                                 <option value="">{{ __('Default')}}</option>
@@ -147,7 +149,7 @@
                                                 <option value="30" @if(!empty($_GET['show']) && $_GET['show']=='30') selected @endif>30</option>
                                             </select>
                                         </div>
-                                        <div class="single-shorter">
+                                        <div class="product-shorting shorting-style">
                                             <label>{{ __('Sort By')}} :</label>
                                             <select class='sortBy' name='sortBy' onchange="this.form.submit();">
                                                 <option value="">{{ __('Default')}}</option>
@@ -158,58 +160,75 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <ul class="view-mode">
-                                        <li class="active"><a href="javascript:void(0)"><i class="fa fa-th-large"></i></a></li>
-                                        <li><a href="{{route('product-lists')}}"><i class="fa fa-th-list"></i></a></li>
-                                    </ul>
+                                    <div class="shop-topbar-left">
+                                        <ul class="view-mode nav">
+                                            <li class="active"><a href="javascript:void(0)"><i class="icon-grid"></i></a></li>
+                                            <li><a href="{{route('product-lists')}}"><i class="icon-menu"></i></a></li>
+                                       </ul>
+                                    </div>
                                 </div>
                                 <!--/ End Shop Top -->
                             </div>
                         </div>
-                        <div class="row">
-                            {{-- {{$products}} --}}
-                            @if(count($products)>0)
+                        <div class="shop-bottom-area">
+                            @if(count($products))
                                 @foreach($products as $product)
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="{{route('product-detail',$product->slug)}}">
-                                                    @php 
-                                                        $photo=explode(',',$product->photo);
-                                                    @endphp
-                                                    <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                    <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                    @if($product->discount)
-                                                                <span class="price-dec">{{$product->discount}} % {{ __('Off')}}</span>
-                                                    @endif
-                                                </a>
-                                                <div class="button-head">
-                                                    <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>{{ __('Quick Shop')}}</span></a>
-                                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" class="wishlist" data-id="{{$product->id}}"><i class=" ti-heart "></i><span>{{ __('Add to Wishlist')}}</span></a>
-                                                    </div>
-                                                    <div class="product-action-2">
-                                                        <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">{{ __('Add to cart')}}</a>
+                                     {{-- {{$product}} --}}
+                                    <!-- Start Single List -->
+                                    <div class="shop-list-wrap mb-30">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                <div class="single-product-wrap mb-35">
+                                                        <div class="product-img product-img-zoom mb-15">
+                                                            <a href="{{route('product-detail',$product->slug)}}">
+                                                                @php 
+                                                                $photo=explode(',',$product->photo);
+                                                                @endphp
+                                                                @if ($product->photo === null)
+                                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                                <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
+                                                                @else
+                                                                <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
+                                                                @endif                                                       
+                                                            </a>
+                                                            <div class="product-action-2 tooltip-style-2">
+                                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></a>    
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-content-wrap-2 text-center">
+                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                                <div class="product-price-2">
+                                                                    @php
+                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                                    @endphp
+                                                                    <span class="new-price">{{number_format($after_discount,2)}}DH</span>
+                                                                    <del class="old-price">{{number_format($product->price,2)}}DH</del>
+                                                                </div>
+                                                        </div>
+                                                            {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
+                                                        <div class="product-content-wrap-2 product-content-position text-center">
+                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                                <div class="product-price-2">
+                                                                    @php
+                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                                    @endphp
+                                                                    <span class="new-price">{{number_format($after_discount,2)}}DH</span>
+                                                                    <del class="old-price">{{number_format($product->price,2)}}DH</del>
+                                                                </div>
+                                                                <div class="pro-add-to-cart">                                                               
+                                                                    <a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}">Add To Cart</a>
+                                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
+                                                                </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="product-content">
-                                                <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                                @php
-                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
-                                                @endphp
-                                                <span>{{number_format($after_discount,2)}}DH</span>
-                                                <del style="padding-left:4%;">{{number_format($product->price,2)}}DH</del>
-                                            </div>
                                         </div>
-                                    </div>
+                                    <!-- End Single List -->
                                 @endforeach
                             @else
-                                    <h4 class="text-warning" style="margin:100px auto;">{{ __('There are no products')}}.</h4>
+                                <h4 class="text-warning" style="margin:100px auto;">{{ __('There are no products')}}.</h4>
                             @endif
-                            
-
-                           
                         </div>
                         <div class="row">
                             <div class="col-md-12 justify-content-center d-flex">
@@ -312,7 +331,7 @@
                                             <div class="size">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12">
-                                                        <h5 class="title">{{ __('Size')}}</h5>
+                                                        <h5 class="sidebar-widget-title">{{ __('Size')}}</h5>
                                                         <select>
                                                             @php 
                                                             $sizes=explode(',',$product->size);

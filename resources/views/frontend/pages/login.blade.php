@@ -8,16 +8,16 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul >
-                            <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">{{ __('Login')}}</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+                    <li class="active"><a href="javascript:void(0);">{{ __('Login')}}</a></li>
+                </ul>
             </div>
+        </div>
+    </div>
     <!-- End Breadcrumbs -->
             
     <!-- Shop Login -->
-    <section class="shop login section">
+    <section class="login-register-area pt-115 pb-120">
         <div class="container">
             <div class="row"> 
                 <div class="col-lg-6 offset-lg-3 col-12">

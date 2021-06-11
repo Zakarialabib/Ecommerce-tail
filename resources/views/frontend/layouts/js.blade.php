@@ -1,3 +1,5 @@
+
+
 <!-- Jquery -->
 <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
 <script src="{{asset('frontend/js/jquery-migrate-3.0.0.js')}}"></script>
@@ -28,22 +30,13 @@
 <script src="{{asset('frontend/js/isotope/isotope.pkgd.min.js')}}"></script>
 <!-- Easing JS -->
 <script src="{{asset('frontend/js/easing.js')}}"></script>
-<!-- Active JS -->
-<script src="{{asset('frontend/js/active.js')}}"></script>
 <!-- Sweetalert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-<script src="assets/js/vendor/vendor.min.js"></script>
-<script src="assets/js/plugins/plugins.min.js"></script> 
+<script src="{{asset('assets/js/vendor/vendor.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/plugins.min.js')}}"></script> 
 <!-- Main JS -->
-<script src="assets/js/main.js"></script>
-
-<!-- COMMON SCRIPTS -->
-<script src="{{asset('frontend/js/common_scripts.min.js')}}"></script>
-<script src="{{asset('frontend/js/main.js')}}"></script>
-
-<!-- COMMON SCRIPTS -->
-<script src="{{asset('frontend/js/main.js')}}"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 
 @stack('scripts')
 <script>

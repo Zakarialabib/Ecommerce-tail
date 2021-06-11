@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register'=>false]);
 
-Route::get('user/login','FrontendController@login')->name('login.form');
-Route::post('user/login','FrontendController@loginSubmit')->name('login.submit');
-Route::get('user/logout','FrontendController@logout')->name('user.logout');
+Route::get('/signin','FrontendController@login')->name('login.form');
+Route::post('/signin','FrontendController@loginSubmit')->name('login.submit');
+Route::get('/logout','FrontendController@logout')->name('user.logout');
 
 Route::get('user/register','FrontendController@register')->name('register.form');
 Route::post('user/register','FrontendController@registerSubmit')->name('register.submit');
@@ -59,12 +59,12 @@ Route::post('cart/order','OrderController@store')->name('cart.order');
 Route::get('order/pdf/{id}','OrderController@pdf')->name('order.pdf');
 Route::get('/income','OrderController@incomeChart')->name('product.order.income');
 // Route::get('/user/chart','AdminController@userPieChart')->name('user.piechart');
-Route::get('/product-grids','FrontendController@productGrids')->name('product-grids');
+Route::get('/catalogue','FrontendController@productGrids')->name('product-grids');
 Route::get('/product-lists','FrontendController@productLists')->name('product-lists');
 Route::match(['get','post'],'/filter','FrontendController@productFilter')->name('shop.filter');
 // Order Track
 Route::get('/track-order','OrderController@orderTrack')->name('order.track');
-Route::post('track-order/order','OrderController@productTrackOrder')->name('product.track.order');
+Route::post('/track-order/order','OrderController@productTrackOrder')->name('product.track.order');
 // Blog
 Route::get('/blog','FrontendController@blog')->name('blog');
 Route::get('/blog-detail/{slug}','FrontendController@blogDetail')->name('blog.detail');
@@ -90,7 +90,7 @@ Route::get('payment', 'PayPalController@payment')->name('payment');
 Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
 Route::get('payment/success', 'PayPalController@success')->name('payment.success');
 
-
+Route::get('/language/{locale}', 'FrontendController@changeLanguage')->name('change_language');
 
 // Backend section start
 

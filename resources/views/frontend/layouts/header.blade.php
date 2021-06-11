@@ -14,14 +14,25 @@
                                 <div class="same-style same-style-border track-order">
                                     <a href="{{route('order.track')}}">{{ __('Track Order')}}</a>
                                 </div>
+                            
+                  
                                 <div class="same-style same-style-border language-wrap">
-                                    <a class="language-dropdown-active" href="#">English <i class="icon-arrow-down"></i></a>
-                                    <div class="language-dropdown">
-                                        <ul>
-                                            <li><a href="#">English</a></li>
-                                            <li><a href="#">French</a></li>
-                                        </ul>
-                                    </div>
+
+                                          <a class="language-dropdown-active" href="#">{{$language_default->name}} <i class="icon-arrow-down"></i></a>
+                        
+
+                                    @if(count($languages) > 1)
+                                        <div class="language-dropdown">
+                                            @foreach($languages as $language)
+                                                @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
+                                                    <ul>
+                                                        <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
+                                                    </ul>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="same-style same-style-border currency-wrap">
                                     <a class="currency-dropdown-active" href="#">US Dollar <i class="icon-arrow-down"></i></a>
@@ -62,31 +73,15 @@
                                     <li><a href="">SHOP </a>
                                         <ul class="mega-menu-style mega-menu-mrg-1">
                                             <li>
-                                                <ul>
-                                                    <li>
-                                                        <a class="dropdown-title" href="#">Shop Layout</a>
-                                                        <ul>
-                                                            <li><a href="">standard style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-title" href="#">Products Layout</a>
-                                                        <ul>
-                                                            <li><a href="product-details.html">tab style 1</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a href=""><img src="assets/images/banner/banner-12.png" alt=""></a>
-                                                    </li>
-                                                </ul>
+                                                {{Helper::getHeaderCategory()}}
+
                                             </li>
                                         </ul>
                                     </li>
                                     <li><a href="#">PAGES </a>
                                         <ul class="sub-menu-style">
                                             <li class="{{Request::path()=='about-us' ? 'active' : ''}}"><a href="{{route('about-us')}}">{{ __('About Us')}}</a></li>
-                                            <li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">{{ __('Products')}}</a></li>												
-                                                {{Helper::getHeaderCategory()}}
+                                            <li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">{{ __('Catalogue')}}</a></li>												
                                         </ul>
                                     </li>
                                     <li class="{{Request::path()=='blog' ? 'active' : ''}}"><a href="{{route('blog')}}">{{ __('Blog')}}</a></li>									

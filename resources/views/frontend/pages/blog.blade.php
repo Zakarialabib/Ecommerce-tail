@@ -17,7 +17,7 @@
     <!-- End Breadcrumbs -->
         
     <!-- Start Blog Single -->
-    <section class="blog-single shop-blog grid section">
+    <section class="blog-area pt-120 pb-120">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12">
@@ -26,29 +26,37 @@
                         {{-- {{$post}} --}}
                             <div class="col-lg-6 col-md-6 col-12">
                                 <!-- Start Single Blog  -->
-                                <div class="shop-single-blog">
-                                <a href="{{route('blog.detail',$post->slug)}}" class="{{$post->title}}">
-                                <img src="{{$post->photo}}" alt="{{$post->title}}">
-                                </a>
-                                    <div class="content">
+                                <div class="blog-wrap mb-40">
+                                    <div class="blog-img mb-20">
+                                        <a href="{{route('blog.detail',$post->slug)}}" class="{{$post->title}}">
+                                            @if ($post->photo === null)
+                                            <img src="{{$post->photo}}" alt="{{$post->title}}">
+                                            @else
+                                            <img src="{{asset('assets/images/blog/blog-1.jpg')}}" alt="{{$post->title}}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
                                         @php 
                                             $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
                                         @endphp
-                                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{$post->created_at->format('d M, Y. D')}}
-                                            <span class="float-right">
-                                                <i class="fa fa-user" aria-hidden="true"></i> 
-                                                @foreach($author_info as $data)
-                                                    @if($data->name)
-                                                        {{$data->name}}
-                                                    @else
-                                                        Anonymous
-                                                    @endif
-                                                @endforeach
-                                            </span>
-                                        </p>
-                                        <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title}}</a>
-                                        <p>{!! html_entity_decode($post->summary) !!}</p>
-                                        <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Continue Reading</a>
+                                       <div class="blog-meta">
+                                            <ul>
+                                                <li>
+                                                        @foreach($author_info as $data)
+                                                            @if($data->name)
+                                                                {{$data->name}}
+                                                            @else
+                                                                Anonymous
+                                                            @endif
+                                                        @endforeach
+                                                    </li>
+                                                    <li>
+                                                    {{$post->created_at->format('d M, Y. D')}}
+                                                </li>
+                                            </ul>
+                                         </div>
+                                        <h1> <a href="{{route('blog.detail',$post->slug)}}" >{{$post->title}}</a></h1>
                                     </div>
                                 </div>
                                 <!-- End Single Blog  -->
@@ -64,11 +72,14 @@
                 <div class="col-lg-4 col-12">
                     <div class="main-sidebar">
                         <!-- Single Widget -->
-                        <div class="single-widget search">
-                            <form class="form" method="GET" action="{{route('blog.search')}}">
-                                <input type="text" placeholder="Search Here..." name="search">
-                                <button class="button" type="sumbit"><i class="fa fa-search"></i></button>
-                            </form>
+                        <div class="sidebar-widget mb-40">
+                        <h4 class="sidebar-widget-title"> Search </h4>
+                            <div class="sidebar-search">
+                                <form class="sidebar-search-form" method="GET" action="{{route('blog.search')}}">
+                                    <input type="text" placeholder="Search Here..." name="search">
+                                    <button class="button" type="sumbit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
@@ -103,13 +114,12 @@
                                         <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                     </div>
                                     <div class="content">
-                                        <h5><a href="#">{{$post->title}}</a></h5>
-                                        <ul class="comment">
+                                        <ul class="sidebar-blog-content">
+                                            <h5><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h5>
                                         @php 
                                             $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
                                         @endphp
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$post->created_at->format('d M, y')}}</li>
-                                            <li><i class="fa fa-user" aria-hidden="true"></i> 
+                                            <span>{{$post->created_at->format('d M, y')}} / 
                                                 @foreach($author_info as $data)
                                                     @if($data->name)
                                                         {{$data->name}}
@@ -117,7 +127,7 @@
                                                         Anonymous
                                                     @endif
                                                 @endforeach
-                                            </li>
+                                            </span>
                                         </ul>
                                     </div>
                                 </div>
