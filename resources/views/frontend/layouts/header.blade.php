@@ -108,15 +108,26 @@
                                 <a href="{{route('login.form')}}"><i class="icon-user"></i></a>
                             </div>
                             <div class="same-style-2">
-                                <a href="{{route('wishlist')}}"><i class="icon-heart"></i><span class="pro-count red">{{count(Helper::getAllProductFromWishlist())}}</span></a>
+                                <a href="{{route('wishlist')}}"><i class="icon-heart"></i><span class="pro-count red">
+                                   @if (Helper::getAllProductFromWishlist())
+                                   {{count(Helper::getAllProductFromWishlist())}}
+                                   @else
+                                       0
+                                   @endif
+                                </span></a>
                             </div>
                             <div class="same-style-2 header-cart">
                                 <a class="cart-active" href="#">
                                     <i class="icon-basket-loaded"></i>
                                     <span class="pro-count red">  
+                                        @if (Helper::getAllProductFromCart())
                                         @foreach(Helper::getAllProductFromCart() as $data)
                                         {{$data->quantity}} 
-                                        @endforeach
+                                        @endforeach  
+                                        @else
+                                            0
+                                        @endif
+                                     
                                     </span>
                                 </a>
                             </div>
@@ -143,14 +154,27 @@
                             <a href="{{route('login.form')}}"><i class="icon-user"></i></a>
                         </div>
                         <div class="same-style-2">
-                            <a href="{{route('wishlist')}}"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
+                            <a href="{{route('wishlist')}}"><i class="icon-heart"></i><span class="pro-count red">                                  
+                                @if (Helper::getAllProductFromWishlist())
+                                {{count(Helper::getAllProductFromWishlist())}}
+                                @else
+                                    0
+                                @endif                            </span></a>
                         </div>
                         <div class="same-style-2 header-cart">
                             <a class="cart-active" href="#">
-                                <i class="icon-basket-loaded"></i><span class="pro-count red">
-                                    @foreach(Helper::getAllProductFromCart() as $data)
-                                    {{$data->quantity}} 
-                                    @endforeach
+                                <i class="icon-basket-loaded"></i>
+                                         @if (Helper::getAllProductFromCart())
+                                         <span class="pro-count green">
+                                        @foreach(Helper::getAllProductFromCart() as $data)
+                                        {{$data->quantity}} 
+                                        @endforeach 
+                                         </span>
+                                        @else
+                                        <span class="pro-count red">
+                                            0
+                                        </span>
+                                        @endif
                                 </span>
                             </a>
                         </div>
