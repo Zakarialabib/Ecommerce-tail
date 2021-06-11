@@ -55,7 +55,9 @@
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
+  <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+  <script src="{{asset('backend/summernote/summernote.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <script src="{{asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
