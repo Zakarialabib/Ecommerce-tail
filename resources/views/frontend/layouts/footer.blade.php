@@ -38,7 +38,7 @@
 											<a href="{{route('home')}}"><img src="{{asset($settings->logo)}}" alt="logo"></a>
 									</div>
 									<div class="single-contact-info">
-											<span>Our Location</span>
+											<span>{{ __('Our Location')}}</span>
 											<p>{{$settings->address}}</p>
 									</div>
 									<div class="single-contact-info">

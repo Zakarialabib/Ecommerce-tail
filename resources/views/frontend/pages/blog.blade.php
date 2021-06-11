@@ -47,7 +47,7 @@
                                                             @if($data->name)
                                                                 {{$data->name}}
                                                             @else
-                                                                Anonymous
+                                                                {{__('Anonymous')}}
                                                             @endif
                                                         @endforeach
                                                     </li>
@@ -73,10 +73,10 @@
                     <div class="main-sidebar">
                         <!-- Single Widget -->
                         <div class="sidebar-widget mb-40">
-                        <h4 class="sidebar-widget-title"> Search </h4>
+                        <h4 class="sidebar-widget-title"> {{__('Search')}} </h4>
                             <div class="sidebar-search">
                                 <form class="sidebar-search-form" method="GET" action="{{route('blog.search')}}">
-                                    <input type="text" placeholder="Search Here..." name="search">
+                                    <input type="text" placeholder="{{__('Search Here')}}..." name="search">
                                     <button class="button" type="sumbit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -124,7 +124,7 @@
                                                     @if($data->name)
                                                         {{$data->name}}
                                                     @else
-                                                        Anonymous
+                                                        {{__('Anonymous')}}
                                                     @endif
                                                 @endforeach
                                             </span>
@@ -139,7 +139,7 @@
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
                         <div class="single-widget side-tags">
-                            <h3 class="title">Tags</h3>
+                            <h3 class="title">{{__('Tags')}}</h3>
                             <ul class="tag">
                                 @if(!empty($_GET['tag']))
                                     @php 

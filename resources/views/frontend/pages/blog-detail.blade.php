@@ -32,9 +32,9 @@
                                 <div class="blog-details-content">
                                     <div class="blog-meta-2">
                                       <ul>
-                                         <li><a href="javascript:void(0);"><i class="fa fa-user"></i>By {{$post->author_info['name']}}</a></li>
+                                         <li><a href="javascript:void(0);"><i class="fa fa-user"></i>{{__('By')}}  {{$post->author_info['name']}}</a></li>
                                          <li>   <a href="javascript:void(0);"><i class="fa fa-calendar"></i>{{$post->created_at->format('M d, Y')}}</a></li>
-                                         <li>   <a href="javascript:void(0);"><i class="fa fa-comments"></i>Comment ({{$post->allComments->count()}})</a></li>
+                                         <li>   <a href="javascript:void(0);"><i class="fa fa-comments"></i>{{__('Comment')}} ({{$post->allComments->count()}})</a></li>
                                         </ul> 
                                     </div>
                                     <h1>{{$post->title}}</h1>
@@ -49,7 +49,7 @@
                                 <div class="share-social">
                                     <div class="row">
                                         <div class="col-12">
-                                            <h4 class="sidebar-widget-title">Tags:</h4>
+                                            <h4 class="sidebar-widget-title">{{__('Tags')}}:</h4>
                                             <div class="tag-wrap sidebar-widget-tag">
                                                     @php 
                                                         $tags=explode(',',$post->tags);
@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group button">
-                                                        <button type="submit" class="btn"><span class="comment_btn comment">Post Comment</span><span class="comment_btn reply" style="display: none;">Reply Comment</span></button>
+                                                        <button type="submit" class="btn"><span class="comment_btn comment">{{ __('Post Comment')}}</span><span class="comment_btn reply" style="display: none;">Reply Comment</span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                             	
                             @else 
                             <p class="text-center p-5">
-                                You need to <a href="{{route('login.form')}}" style="color:rgb(54, 54, 204)">{{ __('Login')}}</a> OR <a style="color:blue" href="{{route('register.form')}}">Register</a> for comment.
+                                {{ __('You need to')}} <a href="{{route('login.form')}}" style="color:rgb(54, 54, 204)">{{ __('Login')}}</a> {{ __('OR')}} <a style="color:blue" href="{{route('register.form')}}">Register</a> for comment.
 
                             </p>
 
@@ -102,7 +102,7 @@
                             @endauth										
                             <div class="col-12">
                                 <div class="single-comment-wrapper mt-35">
-                                    <h3 class="comment-title">Comments ({{$post->allComments->count()}})</h3>
+                                    <h3 class="comment-title">{{__('Comment')}} ({{$post->allComments->count()}})</h3>
                                     <!-- Single Comment -->
                                     @include('frontend.pages.comment', ['comments' => $post->comments, 'post_id' => $post->id, 'depth' => 3])
                                     <!-- End Single Comment -->
@@ -115,7 +115,7 @@
                     <div class="main-sidebar">
                         <!-- Single Widget -->
                         <div class="sidebar-widget mb-40">
-                        <h4 class="sidebar-widget-title"> Search </h4>
+                        <h4 class="sidebar-widget-title"> {{ __('Search')}} </h4>
                             <div class="sidebar-search">
                                 <form class="sidebar-search-form" method="GET" action="{{route('blog.search')}}">
                                     <input type="text" placeholder="Search Here..." name="search">
@@ -167,7 +167,7 @@
                                                     @if($data->name)
                                                         {{$data->name}}
                                                     @else
-                                                        Anonymous
+                                                    {{ __('Anonymous')}}
                                                     @endif
                                                 @endforeach
                                             </li>
@@ -182,7 +182,7 @@
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
                         <div class="single-widget side-tags">
-                            <h3 class="title">Tags</h3>
+                            <h3 class="title">{{__('Tags')}}</h3>
                             <ul class="tag">
                                 @if(!empty($_GET['tag']))
                                     @php 

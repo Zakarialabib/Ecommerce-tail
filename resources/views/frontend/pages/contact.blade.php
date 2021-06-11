@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="container">
 			<div class="contact-info-wrap-3">
-					<h3>Contact</h3>
+					<h3>{{ __('Contact')}}</h3>
 			</div>
 				<div class="contact-head">
 					<div class="row">

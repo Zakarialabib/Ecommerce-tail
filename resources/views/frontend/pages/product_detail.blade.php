@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="{{ route('home') }}">{{ __('Home') }}<i
                             class="ti-arrow-right"></i></a></li>
-                <li><a href="{{ route('product-grids') }}">{{ __('Catalogue') }}
+                <li><a href="{{ route('product-grids') }}">{{ __('Shop') }}
                         <i class="ti-arrow-right"></i></a></li>
                 <li class="active"><a href="javascript:void(0)">{{ $product_detail->title }}</a></li>
             </ul>

@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="breadcrumb-content text-center">
 				<ul>
-					<li><a href="{{('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
+					<li><a href="{{route('home')}}">{{ __('Home')}}<i class="ti-arrow-right"></i></a></li>
 					<li class="active"><a href="javascript:void(0)">{{ __('Cart')}}</a></li>
 				</ul>
 			</div>
@@ -17,7 +17,7 @@
 	<!-- Shopping Cart -->
 	<div class="cart-main-area pt-85 pb-120">
 		<div class="container">
-			<h3 class="cart-page-title">Your cart items</h3>
+			<h3 class="cart-page-title">{{ __('Your cart items')}}</h3>
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 					<!-- Shopping Summery -->
@@ -83,8 +83,7 @@
 								@else 
 										<tr>
 											<td class="text-center">
-												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">{{ __('Continue shopping')}}</a>
-
+												{{ __('There are no any carts available')}}. <a href="{{route('product-grids')}}" style="color:blue;">{{ __('Continue shopping')}}</a>
 											</td>
 										</tr>
 								@endif
@@ -102,17 +101,17 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="discount-code-wrapper">
 					<div class="title-wrap">
-						<h4 class="cart-bottom-title section-bg-gray">Use Coupon Code</h4>
+						<h4 class="cart-bottom-title section-bg-gray">{{ __('Use Coupon Code')}}</h4>
 					</div>
 					<div class="discount-code">
-						<p>Enter your coupon code if you have one.</p>
+						<p>{{ __('Enter your coupon code if you have one')}}.</p>
 					<form action="{{route('coupon-store')}}" method="POST">
 						@csrf
-						<input name="code" placeholder="Enter Your Coupon">
-						<button class="cart-btn-2" type="submit">Apply Coupon</button>
+						<input name="code" placeholder="{{ __('Enter Your Coupon')}}">
+						<button class="cart-btn-2" type="submit">{{ __('Apply Coupon')}}</button>
 					</form>
 					@if(session()->has('coupon'))
-					<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
+					<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
 					@endif
 					</div>
 				</div>
@@ -120,7 +119,7 @@
 			<div class="col-lg-6 col-md-12">
 				<div class="grand-totall">
 					<div class="title-wrap">
-						<h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+						<h4 class="cart-bottom-title section-bg-gary-cart">{{ __('Cart Total')}}</h4>
 					</div>
 					<ul>
 						<h5 class="grand-totall-title" data-price="{{Helper::totalCartPrice()}}">
@@ -128,11 +127,11 @@
 							{{number_format(Helper::totalCartPrice(),2)}} DH</span></h5>
 						<div id="shipping" style="display:none;">
 							<li class="total-shipping">
-								Shipping {{session('shipping_price')}}
+								{{ __('Shipping')}} {{session('shipping_price')}}
 								@if(count(Helper::shipping())>0 && Helper::cartCount()>0)
 									<div class="form-select">
 										<select name="shipping" class="select2">
-											<option value="">Select</option>
+											<option value="">Select')}}</option>
 											@foreach(Helper::shipping() as $shipping)
 											<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
 											@endforeach
@@ -140,7 +139,7 @@
 									</div>
 								@else 
 									<div class="form-select">
-										<span>Free</span>
+										<span>{{ __('Free')}}</span>
 									</div>
 								@endif
 							</li>

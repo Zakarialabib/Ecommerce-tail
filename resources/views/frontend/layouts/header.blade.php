@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-5">
                         <div class="header-offer-wrap">
-                            <p><i class="icon-paper-plane"></i> FREE SHIPPING world wide for all orders over <span>$199</span></p>
+                            <p><i class="icon-paper-plane"></i> {{ __('FREE SHIPPING world wide for all orders over')}} <span>$199</span></p>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-7">
@@ -19,10 +19,9 @@
                                 <div class="same-style same-style-border language-wrap">
 
                                           <a class="language-dropdown-active" href="#">{{$language_default->name}} <i class="icon-arrow-down"></i></a>
-                        
-
-                                    @if(count($languages) > 1)
-                                        <div class="language-dropdown">
+                
+                                          <div class="language-dropdown">
+                                            @if(count($languages) > 1)
                                             @foreach($languages as $language)
                                                 @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
                                                     <ul>
@@ -30,8 +29,8 @@
                                                     </ul>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </div>
-                                    @endif
 
                                 </div>
                                 <div class="same-style same-style-border currency-wrap">
@@ -68,9 +67,9 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-1">
                             <nav>
                                 <ul>
-                                    <li><a href="{{route('home')}}">HOME </a>
+                                    <li><a href="{{route('home')}}">{{__('HOME')}} </a>
                                     </li>
-                                    <li><a href="">SHOP </a>
+                                    <li><a href="{{route('product-grids')}}">{{__('SHOP')}} </a>
                                         <ul class="mega-menu-style mega-menu-mrg-1">
                                             <li>
                                                 {{Helper::getHeaderCategory()}}
@@ -78,7 +77,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">PAGES </a>
+                                    <li><a href="#">{{__('PAGES')}} </a>
                                         <ul class="sub-menu-style">
                                             <li class="{{Request::path()=='about-us' ? 'active' : ''}}"><a href="{{route('about-us')}}">{{ __('About Us')}}</a></li>
                                             <li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">{{ __('Catalogue')}}</a></li>												
@@ -160,26 +159,33 @@
     <div class="sidebar-cart-all">
         <a class="cart-close" href="#"><i class="icon_close"></i></a>
         <div class="cart-content">
-            <h3>Shopping Cart</h3>
+            <h3>{{ __('Shopping Cart')}}</h3>
+            @auth
             <ul>
+                @foreach(Helper::getAllProductFromCart() as $data)
                 <li class="single-product-cart">
                     <div class="cart-img">
-                        <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
+                        @php
+                            $photo=explode(',',$data->product['photo']);
+                        @endphp
+                        <a href="{{route('product-detail',$data->product['slug'])}}"><img src="{{$photo[0]}}" data-src="{{$photo[0]}}" alt="{{$data->product['title']}}" alt=""></a>
                     </div>
                     <div class="cart-title">
-                        <h4><a href="#">Simple Black T-Shirt</a></h4>
-                        <span> 1 × $49.00	</span>
+                        <h4><a href="{{route('product-detail',$data->product['slug'])}}">{{$data->product['title']}}</a></h4>
+                        <span> {{$data->quantity}} x {{number_format($data->price,2)}} DH</span>
                     </div>
                     <div class="cart-delete">
-                        <a href="#">×</a>
+                        <a {{route('cart-delete',$data->id)}}>×</a>
                     </div>
                 </li>
+                @endforeach
             </ul>
             <div class="cart-total">
-                <h4>Subtotal: <span>$170.00</span></h4>
+                <h4>{{ __('Subtotal')}}: <span>{{number_format(Helper::totalCartPrice(),2)}} DH</span></h4>
             </div>
+            @endauth
             <div class="cart-checkout-btn">
-                <a class="btn-hover cart-btn-style" href="{{route('cart')}}">view cart</a>
+                <a class="btn-hover cart-btn-style" href="{{route('cart')}}">{{ __('View cart')}}</a>
                 <a class="no-mrg btn-hover cart-btn-style" href="{{route('checkout')}}">{{ __('Checkout')}}</a>
             </div>
         </div>
@@ -191,7 +197,7 @@
         <a class="sidebar-close"><i class="icon_close"></i></a>
         <div class="mobile-header-content-area">
             <div class="header-offer-wrap mobile-header-padding-border-4">
-                <p><i class="icon-paper-plane"></i> FREE SHIPPING world wide for all orders over <span>$199</span></p>
+                <p><i class="icon-paper-plane"></i> {{ __('FREE SHIPPING world wide for all orders over')}} <span>$199</span></p>
             </div>
             <div class="mobile-search mobile-header-padding-border-1">
                 <form class="search-form" action="#">
@@ -203,8 +209,8 @@
                 <!-- mobile menu start -->
                 <nav>
                     <ul class="mobile-menu">
-                        <li class="{{Request::path()=='home' ? 'active' : ''}}"><a href="{{route('home')}}">Home</a></li>
-                        <li class="menu-item-has-children "><a href="#">shop</a>
+                        <li class="{{Request::path()=='home' ? 'active' : ''}}"><a href="{{route('home')}}">{{__('Home')}}</a></li>
+                        <li class="menu-item-has-children "><a href="{{route('product-grids')}}">{{__('SHOP')}}</a>
                             <ul class="dropdown">                               
                                 <li class="menu-item-has-children"><a href="#">{{ __('All Category')}}</a>
                                     <ul class="dropdown">
@@ -215,7 +221,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"><a href="#">Pages</a>
+                        <li class="menu-item-has-children"><a href="#">{{__('Pages')}}</a>
                             <ul class="dropdown">
                                 <li class="{{Request::path()=='about-us' ? 'active' : ''}}"><a href="{{route('about-us')}}">{{ __('About Us')}}</a></li>
                                 <li class="@if(Request::path()=='product-grids'||Request::path()=='product-lists')  active  @endif"><a href="{{route('product-grids')}}">{{ __('Products')}}</a></li>												
@@ -232,16 +238,23 @@
                     <a href="{{route('order.track')}}"><i class="lastudioicon-pin-3-2"></i> {{ __('Track Order')}} </a>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a class="mobile-language-active" href="#">Language <span><i class="icon-arrow-down"></i></span></a>
+                    <a class="mobile-language-active" href="#">{{__('Language')}} <span><i class="icon-arrow-down"></i></span></a>
                     <div class="lang-curr-dropdown lang-dropdown-active">
                         <ul>
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">French</a></li>
+                            @if(count($languages) > 1)
+                            @foreach($languages as $language)
+                                @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
+                                    <ul>
+                                        <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
+                                    </ul>
+                                @endif
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a class="mobile-currency-active" href="#">Currency <span><i class="icon-arrow-down"></i></span></a>
+                    <a class="mobile-currency-active" href="#">{{__('Currency')}} <span><i class="icon-arrow-down"></i></span></a>
                     <div class="lang-curr-dropdown curr-dropdown-active">
                         <ul>
                             <li><a href="#">USD</a></li>
@@ -257,7 +270,7 @@
                     @foreach($settings as $data)
                     <li><i class="icon-phone "></i> {{$data->phone}}</li>
                     <li><i class="icon-envelope-open "></i> {{$data->email}}</li>
-                    <li><i class="icon-home"></i> PO Box 1622 Colins Street West Australia</li>
+                    <li><i class="icon-home"></i> {{$data->address}}</li>
                     @endforeach
                 </ul>
             </div>
@@ -356,29 +369,7 @@
                         <li>
                             <div class="dropdown dropdown-cart">
                                 <a href="" class="cart_bt">{{ __('Cart')}} </a>
-                                @auth
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        @foreach(Helper::getAllProductFromCart() as $data)
-                                        @php
-                                            $photo=explode(',',$data->product['photo']);
-                                        @endphp
-                                        <li>
-                                            <a href="{{route('product-detail',$data->product['slug'])}}">
-                                                <figure><img src="{{$photo[0]}}" data-src="{{$photo[0]}}" alt="{{$data->product['title']}}" width="50" height="50" class="lazy"></figure>
-                                                <strong><span>{{$data->quantity}}x {{$data->product['title']}}</span>{{number_format($data->price,2)}}DH</strong>
-                                            </a>
-                                            <a href="{{route('cart-delete',$data->id)}}" class="action" title="Remove this item"><i class="ti-trash"></i></a>
-                                        </li>
-                                        @endforeach
-                                       
-                                    </ul>
-                                    <div class="total_drop">
-                                        <div class="clearfix"><strong>{{ __('Total')}}</strong><span>{{number_format(Helper::totalCartPrice(),2)}}DH</span></div>
-                                        <a href="{{route('cart')}}" class="btn_1 outline">{{ __('Cart')}}</a><a href="" class="btn_1"></a>
-                                    </div>
-                                </div>
-                                @endauth
+                                
                             </div>
                             <!-- /dropdown-cart-->
                         </li>
