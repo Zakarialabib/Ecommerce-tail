@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/vendor/vendor.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/plugins/plugins.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}"> 
-<!-- Slicknav -->
+<link rel="stylesheet" href="{{asset('frontend/js/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/slicknav.min.css')}}">
 <!-- Jquery Ui -->
 <link rel="stylesheet" href="{{asset('frontend/css/jquery-ui.css')}}">

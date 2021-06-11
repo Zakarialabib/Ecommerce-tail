@@ -39,13 +39,13 @@
 										@php 
 											$photo=explode(',',$wishlist->product['photo']);
 										@endphp
-										<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
-										<td class="product-des" data-title="Description">
+										<td class="product-thumbnail" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+										<td class="product-name" data-title="Description">
 											<p class="product-name"><a href="{{route('product-detail',$wishlist->product['slug'])}}">{{$wishlist->product['title']}}</a></p>
 											<p class="product-des">{!!($wishlist['summary']) !!}</p>
 										</td>
-										<td class="total-amount" data-title="Total"><span>{{$wishlist['amount']}}DH</span></td>
-										<td><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>{{ __('ADD TO CART')}}</a></td>
+										<td class="product-subtotal" data-title="Total"><span>{{$wishlist['amount']}} $</span></td>
+										<td class="product-price-cart"><a href="{{route('add-to-cart',$wishlist->product['slug'])}}" class='btn text-white'>{{ __('ADD TO CART')}}</a></td>
 										<td class="action" data-title="Remove"><a href="{{route('wishlist-delete',$wishlist->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 									</tr>
 								@endforeach
@@ -67,14 +67,7 @@
 	</div>
 	<!--/ End Shopping Cart -->
 	
-	<!-- Start Shop Services Area  -->
-	@include('frontend.layouts.services')
-	<!-- End Shop Newsletter -->
-	
-	<!-- Start Shop Newsletter  -->
-	@include('frontend.layouts.newsletter')
-	<!-- End Shop Newsletter -->
-	
+
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">

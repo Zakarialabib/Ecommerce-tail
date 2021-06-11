@@ -42,32 +42,24 @@
 											@php 
 											$photo=explode(',',$cart->product['photo']);
 											@endphp
-											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
-											<td class="product-des" data-title="Description">
+											<td class="product-thumbnail" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
+											<td class="product-name" data-title="Description">
 												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
 												<p class="product-des">{!!($cart['summary']) !!}</p>
 											</td>
-											<td class="price" data-title="Price"><span>{{number_format($cart['price'],2)}}DH</span></td>
-											<td class="qty" data-title="Qty"><!-- Input Order -->
-												<div class="input-group">
-													<div class="button minus">
-														<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[{{$key}}]">
-															<i class="ti-minus"></i>
-														</button>
-													</div>
-													<input type="text" name="quant[{{$key}}]" class="input-number"  data-min="1" data-max="100" value="{{$cart->quantity}}">
+											<td class="product-price-cart" data-title="Price"><span>{{number_format($cart['price'],2)}} $</span></td>
+											<td class="product-quantity pro-details-quality" data-title="Qty"><!-- Input Order -->
+												<div class="cart-plus-minus">
+													<div class="dec qtybutton">-</div>
+													<input type="text" name="quant[{{$key}}]" class="cart-plus-minus-box"  data-min="1" data-max="100" value="{{$cart->quantity}}">
 													<input type="hidden" name="qty_id[]" value="{{$cart->id}}">
-													<div class="button plus">
-														<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$key}}]">
-															<i class="ti-plus"></i>
-														</button>
-													</div>
+													<div class="inc qtybutton">+</div>
 												</div>
 												<!--/ End Input Order -->
 											</td>
-											<td class="total-amount cart_single_price" data-title="Total"><span class="money">{{$cart['amount']}}DH</span></td>
+											<td class="product-subtotal" data-title="Total"><span class="money">{{$cart['amount']}} $</span></td>
 											
-											<td class="action" data-title="Remove"><a href="{{route('cart-delete',$cart->id)}}"><i class="ti-trash remove-icon"></i></a></td>
+											<td class="product-remove" data-title="Remove"><a href="{{route('cart-delete',$cart->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 										</tr>
 									@endforeach
 									<track>
@@ -111,7 +103,7 @@
 						<button class="cart-btn-2" type="submit">{{ __('Apply Coupon')}}</button>
 					</form>
 					@if(session()->has('coupon'))
-					<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(Session::get('coupon')['value'],2)}}DH</span></li>
+					<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">{{ __('You Save')}}<span>{{number_format(Session::get('coupon')['value'],2)}} $</span></li>
 					@endif
 					</div>
 				</div>
@@ -124,7 +116,7 @@
 					<ul>
 						<h5 class="grand-totall-title" data-price="{{Helper::totalCartPrice()}}">
 							{{__('Cart Subtotal')}}<span>
-							{{number_format(Helper::totalCartPrice(),2)}} DH</span></h5>
+							{{number_format(Helper::totalCartPrice(),2)}} $</span></h5>
 						<div id="shipping" style="display:none;">
 							<li class="total-shipping">
 								{{ __('Shipping')}} {{session('shipping_price')}}
@@ -133,7 +125,7 @@
 										<select name="shipping" class="select2">
 											<option value="">Select')}}</option>
 											@foreach(Helper::shipping() as $shipping)
-											<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
+											<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}} $</option>
 											@endforeach
 										</select>
 									</div>
@@ -154,9 +146,9 @@
 							}
 						@endphp
 						@if(session()->has('coupon'))
-							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} DH</span></li>
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} $</span></li>
 						@else
-							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} DH</span></li>
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} $</span></li>
 						@endif
 					</ul>
 					<div class="cart-shiping-update-wrapper">
