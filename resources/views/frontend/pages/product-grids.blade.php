@@ -183,13 +183,9 @@
                                                     @php 
                                                     $photo=explode(',',$product->photo);
                                                     @endphp
-                                                    @if ($product->photo === null)
-                                                    <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                    <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
-                                                    @else
-                                                    <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-                                                    @endif                                                       
+                                                    <img src="{{$photo[0]}}" alt="{{$photo[0]}}">                                                   
                                                 </a>
+                                                <span class="pro-badge left bg-red">{{ $product->discount }} % Off</span>
                                             </div>
                                             <div class="product-content-wrap-2 text-center">
                                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>

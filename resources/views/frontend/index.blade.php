@@ -48,13 +48,7 @@
                                     @php 
                                     $photo=explode(',',$product->photo);
                                     @endphp
-                                    @if ($product->photo === null)
                                     <img src="{{asset($product->photo)}}" alt="">	
-                                    @else
-                                    <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-                                    @endif                              
-
-                                    
                                 </a>
                                 @if ($product->discount > 0)    
                                 <span class="pro-badge left bg-red">-{{$product->discount}}%</span>

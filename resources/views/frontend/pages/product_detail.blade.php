@@ -33,63 +33,62 @@
 <section class="product-details-area pt-120 pb-115">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <!-- Product Slider -->
-                        <div class="product-gallery">
-                            <!-- Images slider -->
-                            <div class="flexslider-thumbnails">
-                                <ul class="slides">
-                                    @php
-                                        $photo=explode(',',$product_detail->photo);
-                                        // dd($photo);
-                                    @endphp
-                                    @foreach($photo as $data)
-                                        <li data-thumb="{{ $data }}" rel="adjustX:10, adjustY:">
-                                            <img src="{{ $data }}" alt="{{ $data }}">
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <!-- End Images slider -->
+            <div class="col-lg-6 col-md-6">
+                <!-- Product Slider -->
+                <div class="product-details-tab">
+                    <!-- Images slider -->
+                    <div class="pro-dec-big-img-slider slick-initialized slick-slider">
+                        <div class="slick-list">
+                            <div class="easyzoom easyzoom--overlay is-ready">
+                            @php
+                                $photo=explode(',',$product_detail->photo);
+                                // dd($photo);
+                            @endphp
+                            @foreach($photo as $data)
+                                <a data-thumb="{{ $data }}">
+                                    <img src="{{ $data }}" alt="{{ $data }}">
+                                </a>
+                            @endforeach
                         </div>
-                        <!-- End Product slider -->
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-12">
-                        <div class="product-details-content pro-details-content-mrg">
-                            <h2>{{ $product_detail->title }}</h2>
-                            <!-- Description -->
-                            <div class="product-ratting-review-wrap">
-                                <ul class="rating">
-                                    @php
-                                        $rate=ceil($product_detail->getReview->avg('rate'))
-                                    @endphp
-                                    @for($i=1; $i<=5; $i++)
-                                        @if($rate>=$i)
-                                            <li><i class="fa fa-star"></i></li>
-                                        @else
-                                            <li><i class="fa fa-star-o"></i></li>
-                                        @endif
-                                    @endfor
-                                </ul>
-                                <a href="#"
-                                    class="total-review">({{ $product_detail['getReview']->count() }})
-                                    Review</a>
-                            </div>
-                            <p>{!!($product_detail->summary)!!}</p>
-                            <div class="pro-details-price">
-                                @php
-                                    $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
-                                @endphp
-                                <p class="price"><span
-                                        class="discount">{{ number_format($after_discount,2) }} $</span>
-										<s> {{ number_format($product_detail->price,2) }} $</s>
-                                </p>
-                            </div>
-                            <!--/ End Description -->
-                            <!-- Color -->
-                            {{-- <div class="color">
+                    <!-- End Images slider -->
+                </div>
+                <!-- End Product slider -->
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-content pro-details-content-mrg">
+                    <h2>{{ $product_detail->title }}</h2>
+                    <!-- Description -->
+                    <div class="product-ratting-review-wrap">
+                        <ul class="rating">
+                            @php
+                                $rate=ceil($product_detail->getReview->avg('rate'))
+                            @endphp
+                            @for($i=1; $i<=5; $i++)
+                                @if($rate>=$i)
+                                    <li><i class="fa fa-star"></i></li>
+                                @else
+                                    <li><i class="fa fa-star-o"></i></li>
+                                @endif
+                            @endfor
+                        </ul>
+                        <a href="#"
+                            class="total-review">({{ $product_detail['getReview']->count() }})
+                            Review</a>
+                    </div>
+                    <p>{!!($product_detail->summary)!!}</p>
+                    <div class="pro-details-price">
+                        @php
+                            $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
+                        @endphp
+                        <p class="price"><span class="discount">{{ number_format($after_discount,2) }} $</span>
+                            <s> {{ number_format($product_detail->price,2) }} $</s>
+                        </p>
+                    </div>
+                    <!--/ End Description -->
+                    <!-- Color -->
+                    {{-- <div class="color">
 												<h4>Available Options <span>Color</span></h4>
 												<ul>
 													<li><a href="#" class="one"><i class="ti-check"></i></a></li>
@@ -98,76 +97,75 @@
 													<li><a href="#" class="four"><i class="ti-check"></i></a></li>
 												</ul>
 											</div> --}}
-                            <!--/ End Color -->
-                            <!-- Size -->
-                            @if($product_detail->size)
-                                <div class="pro-details-size">
-                                    <span>{{ __('Size') }}</span>
-                                    <div class="pro-details-size-content">
-                                        <ul>
-                                            @php
-                                                $sizes=explode(',',$product_detail->size);
-                                                // dd($sizes);
-                                            @endphp
-                                            @foreach($sizes as $size)
-                                                <li><a href="#" class="one">{{ $size }}</a></li>
-                                            @endforeach
-                                        </ul>
+                    <!--/ End Color -->
+                    <!-- Size -->
+                    @if($product_detail->size)
+                        <div class="pro-details-size">
+                            <span>{{ __('Size') }}</span>
+                            <div class="pro-details-size-content">
+                                <ul>
+                                    @php
+                                        $sizes=explode(',',$product_detail->size);
+                                        // dd($sizes);
+                                    @endphp
+                                    @foreach($sizes as $size)
+                                        <li><a href="#" class="one">{{ $size }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="product-details-meta">
+                        <p class="cat">Category :<a
+                                href="{{ route('product-cat',$product_detail->cat_info['slug']) }}">{{ $product_detail->cat_info['title'] }}</a>
+                        </p>
+                        @if($product_detail->sub_cat_info)
+                            <p class="cat mt-1">Sub Category :<a
+                                    href="{{ route('product-sub-cat',[$product_detail->cat_info['slug'],$product_detail->sub_cat_info['slug']]) }}">{{ $product_detail->sub_cat_info['title'] }}</a>
+                            </p>
+                        @endif
+                    </div>
+                    <!--/ End Size -->
+                    <!-- Product Buy -->
+                    <div class="pro-details-action-wrap">
+                        <form action="{{ route('single-add-to-cart') }}" method="POST">
+                            @csrf
+                            <div class="pro-details-quality">
+                                <span>{{ __('Quantity') }}:</span>
+                                <!-- Input Order -->
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-
+                                    </div>
+                                    <input type="hidden" name="slug" value="{{ $product_detail->slug }}">
+                                    <input type="text" name="quant[1]" class="cart-plus-minus-box" data-min="1"
+                                        data-max="1000" value="1" id="quantity">
+                                    <div class="inc qtybutton">+
                                     </div>
                                 </div>
-                            @endif
-                            <div class="product-details-meta">
-                                <p class="cat">Category :<a
-                                        href="{{ route('product-cat',$product_detail->cat_info['slug']) }}">{{ $product_detail->cat_info['title'] }}</a>
-                                </p>
-                                @if($product_detail->sub_cat_info)
-                                    <p class="cat mt-1">Sub Category :<a
-                                            href="{{ route('product-sub-cat',[$product_detail->cat_info['slug'],$product_detail->sub_cat_info['slug']]) }}">{{ $product_detail->sub_cat_info['title'] }}</a>
-                                    </p>
-                                @endif
+                                <!--/ End Input Order -->
                             </div>
-                            <!--/ End Size -->
-                            <!-- Product Buy -->
                             <div class="pro-details-action-wrap">
-                                <form action="{{ route('single-add-to-cart') }}" method="POST">
-                                    @csrf
-                                    <div class="pro-details-quality">
-                                        <span>{{ __('Quantity') }}:</span>
-                                        <!-- Input Order -->
-                                        <div class="cart-plus-minus">
-                                            <div class="dec qtybutton">-
-                                            </div>
-                                            <input type="hidden" name="slug" value="{{ $product_detail->slug }}">
-                                            <input type="text" name="quant[1]" class="cart-plus-minus-box" data-min="1"
-                                                data-max="1000" value="1" id="quantity">
-                                            <div class="inc qtybutton">+
-                                            </div>
-                                        </div>
-                                        <!--/ End Input Order -->
-                                    </div>
-                                    <div class="pro-details-action-wrap">
-                                        <div class="pro-details-add-to-cart">
-                                            <button type="submit"
-                                                class="btn">{{ __('ADD TO CART') }}</button>
-                                        </div>
-                                        <div class="pro-details-action">
-                                            <a
-                                                href="{{ route('add-to-wishlist',$product_detail->slug) }}"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                    </div>
-                                </form>
+                                <div class="pro-details-add-to-cart">
+                                    <button type="submit"
+                                        class="btn">{{ __('ADD TO CART') }}</button>
+                                </div>
+                                <div class="pro-details-action">
+                                    <a
+                                        href="{{ route('add-to-wishlist',$product_detail->slug) }}"><i
+                                            class="icon-heart"></i></a>
+                                </div>
                             </div>
-                            <p class="availability">Stock : @if($product_detail->stock>0)<span
-                                    class="badge badge-success">{{ $product_detail->stock }}</span>@else <span
-                                    class="badge badge-danger">{{ $product_detail->stock }}</span> @endif</p>
-                            <!--/ End Product Buy -->
-                        </div>
+                        </form>
                     </div>
+                    <p class="availability">Stock : @if($product_detail->stock>0)<span
+                            class="badge badge-success">{{ $product_detail->stock }}</span>@else <span
+                            class="badge badge-danger">{{ $product_detail->stock }}</span> @endif</p>
+                    <!--/ End Product Buy -->
                 </div>
             </div>
         </div>
-	</div>
+    </div>
+    </div>
 </section>
 <div class="description-review-wrapper pb-110">
     <div class="row">
@@ -264,8 +262,8 @@
 
                         <div class="ratting-main">
                             <div class="avg-ratting">
-								<h4>{{ ceil($product_detail->getReview->avg('rate')) }}
-                                <span>(Overall)</span></h4>
+                                <h4>{{ ceil($product_detail->getReview->avg('rate')) }}
+                                    <span>(Overall)</span></h4>
                                 <span>Based on {{ $product_detail->getReview->count() }} Comments</span>
                             </div>
                             @foreach($product_detail['getReview'] as $data)
@@ -315,13 +313,14 @@
 <!-- Start Most Popular -->
 <div class="related-product pb-115">
     <div class="container">
-                <div class="section-title mb-45 text-center">
-                    <h2>Related Products</h2>
-                </div>
+        <div class="section-title mb-45 text-center">
+            <h2>Related Products</h2>
+        </div>
         <div class="row">
             {{-- {{$product_detail->rel_prods }} --}}
             <div class="col-12">
                 <div class="related-product-active slick-initialized slick-slider">
+                    <div class="slick-list draggable">
                     @foreach($product_detail->rel_prods as $data)
                         @if($data->id !==$product_detail->id)
                             <!-- Start Single Product -->
@@ -331,9 +330,8 @@
                                         @php
                                             $photo=explode(',',$data->photo);
                                         @endphp
-                                        <img class="default-img" src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
-                                        <img class="hover-img" src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
-                                        <span class="price-dec">{{ $data->discount }} % Off</span>
+                                        <img src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
+                                        <span class="pro-badge left bg-red">{{ $data->discount }} % Off</span>
                                     </a>
                                     <div class="product-action-2 tooltip-style-2">
                                         <div class="product-action">
@@ -361,13 +359,13 @@
                                         <span class="old">{{ number_format($data->price,2) }} $</span>
                                         <span>{{ number_format($after_discount,2) }} $</span>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- End Single Product -->
 
                         @endif
                     @endforeach
+                    </div>
                 </div>
             </div>
         </div>
