@@ -15,6 +15,7 @@ use Session;
 use Newsletter;
 use DB;
 use Hash;
+use Cache;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -51,8 +52,16 @@ class FrontendController extends Controller
 
     public function productDetail($slug){
         $product_detail= Product::getProductBySlug($slug);
+
+        $related_products = Cache::remember('related_products', 60 * 60, function () use ($product_detail) {
+            return Product::query()
+                ->inRandomOrder()
+                ->limit(4)
+                ->get();
+        });
+
         // dd($product_detail);
-        return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
+        return view('frontend.pages.product_detail',compact('related_products'))->with('product_detail',$product_detail);
     }
 
     public function productGrids(){

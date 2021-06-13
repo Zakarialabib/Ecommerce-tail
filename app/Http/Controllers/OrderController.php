@@ -60,6 +60,7 @@ class OrderController extends Controller
             request()->session()->flash('error','Cart is Empty !');
             return back();
         }
+
         // $cart=Cart::get();
         // // return $cart;
         // $cart_index='ORD-'.strtoupper(uniqid());
@@ -118,37 +119,49 @@ class OrderController extends Controller
         }
         // return $order_data['total_amount'];
         $order_data['status']="new";
+
         if(request('payment_method')=='paypal'){
             $order_data['payment_method']='paypal';
             $order_data['payment_status']='paid';
+        } else if(request('payment_method')=='stripe') {
+            $order_data['payment_method']='stripe';
+            $order_data['payment_status']='paid';
         }
-        else{
+        else if(request('payment_method')=='cod'){
             $order_data['payment_method']='cod';
             $order_data['payment_status']='Unpaid';
         }
         $order->fill($order_data);
         $status=$order->save();
-        if($order)
-        // dd($order->id);
-        $users=User::where('role','admin')->first();
-        $details=[
-            'title'=>'New order created',
-            'actionURL'=>route('order.show',$order->id),
-            'fas'=>'fa-file-alt'
-        ];
-        Notification::send($users, new StatusNotification($details));
-        if(request('payment_method')=='paypal'){
-            return redirect()->route('payment')->with(['id'=>$order->id]);
-        }
-        else{
-            session()->forget('cart');
-            session()->forget('coupon');
-        }
-        Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
 
-        // dd($users);        
-        request()->session()->flash('success','Your product successfully placed in order');
-        return redirect()->route('home');
+        if($order) {
+
+            $users=User::where('role','admin')->first();
+            $details=[
+                'title'=>'New order created',
+                'actionURL'=>route('order.show',$order->id),
+                'fas'=>'fa-file-alt'
+            ];
+            Notification::send($users, new StatusNotification($details));
+            if(request('payment_method')=='paypal'){
+                return redirect()->route('payment', ['id'=>$order->id]);
+                session()->forget('cart');
+                session()->forget('coupon');
+            } else if(request('payment_method')=='stripe') {
+                return redirect()->route('stripe-payment', ['id'=>$order->id]);
+                session()->forget('cart');
+                session()->forget('coupon');
+            }
+            else{
+                session()->forget('cart');
+                session()->forget('coupon');
+            }   
+            Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
+    
+            // dd($users);        
+            request()->session()->flash('success','Your product successfully placed in order');
+            return redirect()->route('home');
+        }
     }
 
     /**

@@ -309,7 +309,8 @@
         </div>
     </div>
 </div>
-<!--/ End Shop Single -->
+
+
 
 <!-- Start Most Popular -->
 <div class="related-product pb-115">
@@ -320,12 +321,12 @@
         <div class="row">
             {{-- {{$product_detail->rel_prods }} --}}
             <div class="col-12">
-                <div class="owl-carousel popular-slider">
+                <div class="related-product-active slick-initialized slick-slider">
                     @foreach($product_detail->rel_prods as $data)
                         @if($data->id !==$product_detail->id)
                             <!-- Start Single Product -->
-                            <div class="single-product">
-                                <div class="product-img">
+                            <div class="single-product-wrap">
+                                <div class="product-img product-img-zoom mb-15">
                                     <a href="{{ route('product-detail',$data->slug) }}">
                                         @php
                                             $photo=explode(',',$data->photo);
@@ -333,9 +334,8 @@
                                         <img class="default-img" src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
                                         <img class="hover-img" src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
                                         <span class="price-dec">{{ $data->discount }} % Off</span>
-                                        {{-- <span class="out-of-stock">Hot</span> --}}
                                     </a>
-                                    <div class="button-head">
+                                    <div class="product-action-2 tooltip-style-2">
                                         <div class="product-action">
                                             <a data-toggle="modal" data-target="#modelExample" title="Quick View"
                                                 href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
@@ -350,11 +350,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-content">
+                                <div class="product-content-wrap-2 text-center">
                                     <h3><a
                                             href="{{ route('product-detail',$data->slug) }}">{{ $data->title }}</a>
                                     </h3>
-                                    <div class="product-price">
+                                    <div class="product-price-2">
                                         @php
                                             $after_discount=($data->price-(($data->discount*$data->price)/100));
                                         @endphp

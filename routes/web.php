@@ -49,6 +49,9 @@ Route::get('/cart',function(){
     return view('frontend.pages.cart');
 })->name('cart');
 Route::get('/checkout','CartController@checkout')->name('checkout')->middleware('user');
+Route::post('/transaction','CartController@makePayment')->name('make-payment')->middleware('user');
+Route::get('/stripe-payment/{id}','CartController@stripePayment')->name('stripe-payment')->middleware('user');
+
 // Wishlist
 Route::get('/wishlist',function(){
     return view('frontend.pages.wishlist');

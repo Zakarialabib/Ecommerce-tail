@@ -10,11 +10,38 @@
         @method('PATCH')
         <div class="form-group">
           <label for="inputTitle" class="col-form-label">{{ __('Title')}} <span class="text-danger">*</span></label>
-        <input id="inputTitle" type="text" name="title" placeholder="Enter title"  value="{{$banner->title}}" class="form-control">
+        <input id="inputTitle" type="text" name="title"  value="{{$banner->title}}" class="form-control">
         @error('title')
         <span class="text-danger">{{$message}}</span>
         @enderror
         </div>
+
+
+        <div class="form-group">
+          <label for="featured_title" class="col-form-label">{{ __('Featured title')}} <span class="text-danger">*</span></label>
+        <input id="featured_title" type="text" name="featured_title"  value="{{$banner->featured_title}}" class="form-control">
+        @error('featured_title')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+        </div>
+        
+        <div class="form-group">
+          <label for="button" class="col-form-label">{{ __('Button Text')}}</label>
+          <input class="form-control" id="button" name="button" value="{{$banner->button}}">
+          @error('button')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+
+        <div class="form-group">
+          <label for="button_link" class="col-form-label">{{ __('Button Link')}}</label>
+          <input class="form-control" id="button_link" name="button_link" value="{{$banner->button_link}}">
+          @error('button_link')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
 
         <div class="form-group">
           <label for="inputDesc" class="col-form-label">{{ __('Description')}}</label>

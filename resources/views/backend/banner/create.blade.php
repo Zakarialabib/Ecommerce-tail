@@ -16,6 +16,38 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
         </div>
+        <div class="form-group">
+          <label for="featured_title" class="col-form-label">{{ __('Featured title')}} <span class="text-danger">*</span></label>
+        <input id="featured_title" type="text" name="featured_title" placeholder="Enter featured title"  value="{{old('featured_title')}}" class="form-control">
+        @error('featured_title')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+        </div>
+        
+        <div class="form-group">
+          <label for="button" class="col-form-label">{{ __('Button Text')}}</label>
+          <input class="form-control" id="button" name="button" value="{{old('button')}}">
+          @error('button')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+
+        <div class="form-group">
+          <label for="button_link" class="col-form-label">{{ __('Button Link')}}</label>
+          <input class="form-control" id="button_link" name="button_link" value="{{old('button_link')}}" >
+          @error('button_link')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="button_link" class="col-form-label">{{ __('Button Color')}}</label>
+          <input class="form-control" id="color" name="color" value="{{old('color')}}">
+          @error('color')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
 
         <div class="form-group">
           <label for="inputDesc" class="col-form-label">{{ __('Description')}}</label>

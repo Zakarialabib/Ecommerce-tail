@@ -3,23 +3,23 @@
 @section('main-content')
 <div class="slider-area bg-gray">
     <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
-        @foreach ($featured as $product)    
+        @foreach($banners as $key=>$banner)
         <div class="single-hero-slider single-animation-wrap">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
-                            <h4 class="animated">New Arrivals</h4>
-                            <h1 class="animated">{{$product->title}}</h1>
-                            <p class="animated">{!!$product->summary!!}</p>
+                            <h4 class="animated">{{$banner->featured_title}}</h4>
+                            <h1 class="animated">{{$banner->title}}</h1>
+                            <p class="animated">{!! html_entity_decode($banner->description) !!}</p>
                             <div class="btn-style-1">
-                                <a class="animated btn-1-padding-1" href="product-details.html">Explore Now</a>
+                                <a class="animated btn-1-padding-1" href="{{url($banner->button_link)}}">{{$banner->button}}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="hero-slider-img-1 slider-animated-1">
-                            <img class="animated" src="{{asset($product->photo)}}" alt="">
+                            <img class="animated" src="{{asset($banner->photo)}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -34,14 +34,6 @@
             <div class="section-title">
                 <h2>Featured Products</h2>
             </div>
-            <div class="tab-style-1 nav">
-                <a class="active" href="#product-1" data-toggle="tab">Best Seller</a>
-                {{--
-                <a href="#product-2" data-toggle="tab"> Trending</a>
-                <a href="#product-3" data-toggle="tab">New Arrivals </a>
-                <a href="#product-4" data-toggle="tab">All Products</a>
-                --}}
-            </div>
         </div>
     </div>
     <div class="container-fluid">
@@ -52,25 +44,33 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div class="single-product-wrap mb-35">
                             <div class="product-img product-img-zoom mb-20">
-                                <a href="product-details.html">
-                                    <img src="{{asset($product->photo)}}" alt="">
+                                <a href="{{route('product-detail',$product->slug)}}">
+                                    @php 
+                                    $photo=explode(',',$product->photo);
+                                    @endphp
+                                    @if ($product->photo === null)
+                                    <img src="{{asset($product->photo)}}" alt="">	
+                                    @else
+                                    <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
+                                    @endif                              
+
+                                    
                                 </a>
                                 @if ($product->discount > 0)    
                                 <span class="pro-badge left bg-red">-{{$product->discount}}%</span>
                                 @endif
                                 <div class="product-action-wrap">
                                     <div class="product-action-left">
-                                        <button><i class="icon-basket-loaded"></i>Add to Cart</button>
+                                        <button><a href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i>Add to Cart</a></button>
                                     </div>
                                     <div class="product-action-right tooltip-style">
                                         <button data-toggle="modal" data-target="#{{$product->slug}}"><i class="icon-size-fullscreen icons"></i><span>Quick View</span></button>
-                                        <button class="font-inc"><i class="icon-refresh"></i><span>Compare</span></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-content-left">
-                                    <h4><a href="product-details.html">{{$product->title}}</a></h4>
+                                    <h4><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
                                     <div class="product-price">
                                         @if ($product->discount > 0) 
                                         <span class="new-price">${{number_format($product->price)}}</span>   
@@ -81,118 +81,12 @@
                                     </div>
                                 </div>
                                 <div class="product-content-right tooltip-style">
-                                    <button class="font-inc"><i class="icon-heart"></i><span>Wishlist</span></button>
+                                    <button class="font-inc"><a href="{{route('add-to-wishlist',$product->slug)}}"></a><i class="icon-heart"></i><span>Wishlist</span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="{{$product->slug}}" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-6 col-12 col-sm-12">
-                                            <div class="tab-content quickview-big-img">
-                                                <div id="pro-1" class="tab-pane fade show active">
-                                                    <img src="{{asset($product->photo)}}" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-12 col-sm-12">
-                                            <div class="product-details-content quickview-content">
-                                                <h2>{{$product->title}}</h2>
-                                                <div class="product-ratting-review-wrap">
-                                                    <div class="product-ratting-digit-wrap">
-                                                        <div class="product-ratting">
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                        </div>
-                                                        <div class="product-digit">
-                                                            <span>5.0</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-review-order">
-                                                        <span>62 Reviews</span>
-                                                        <span>242 orders</span>
-                                                    </div>
-                                                </div>
-                                                {!!$product->summary!!}
-                                                <div class="pro-details-price">
-                                                    @if ($product->discount > 0) 
-                                                    <span class="new-price">${{number_format($product->price)}}</span>   
-                                                    <span class="old-price">${{number_format($product->price + $product->price * $product->discount / 100)}}</span>
-                                                    @else
-                                                    <span>${{number_format($product->price)}}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="pro-details-color-wrap">
-                                                    <span>Color:</span>
-                                                    <div class="pro-details-color-content">
-                                                        <ul>
-                                                            <li><a class="dolly" href="#">dolly</a></li>
-                                                            <li><a class="white" href="#">white</a></li>
-                                                            <li><a class="azalea" href="#">azalea</a></li>
-                                                            <li><a class="peach-orange" href="#">Orange</a></li>
-                                                            <li><a class="mona-lisa active" href="#">lisa</a></li>
-                                                            <li><a class="cupid" href="#">cupid</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="pro-details-size">
-                                                    <span>Size:</span>
-                                                    <div class="pro-details-size-content">
-                                                        <ul>
-                                                            <li><a href="#">XS</a></li>
-                                                            <li><a href="#">S</a></li>
-                                                            <li><a href="#">M</a></li>
-                                                            <li><a href="#">L</a></li>
-                                                            <li><a href="#">XL</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="pro-details-quality">
-                                                    <span>Quantity:</span>
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                    </div>
-                                                </div>
-                                                <div class="product-details-meta">
-                                                    <ul>
-                                                        <li><span>{{__('Categories')}}:</span><a href="#">{{$product->cat_info->title}}</a></li>
-                                                        <li><span>{{__('Subcategory')}}: </span><a href="#">{{$product->sub_cat_info->title}}</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="pro-details-action-wrap">
-                                                    <div class="pro-details-add-to-cart">
-                                                        <a title="Add to Cart" href="#">Add To Cart </a>
-                                                    </div>
-                                                    <div class="pro-details-action">
-                                                        <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
-                                                        <a title="Add to Compare" href="#"><i class="icon-refresh"></i></a>
-                                                        <a class="social" title="Social" href="#"><i class="icon-share"></i></a>
-                                                        <div class="product-dec-social">
-                                                            <a class="facebook" title="Facebook" href="#"><i class="icon-social-facebook"></i></a>
-                                                            <a class="twitter" title="Twitter" href="#"><i class="icon-social-twitter"></i></a>
-                                                            <a class="instagram" title="Instagram" href="#"><i class="icon-social-instagram"></i></a>
-                                                            <a class="pinterest" title="Pinterest" href="#"><i class="icon-social-pinterest"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal end -->
+                    @include('frontend.layouts.quick-view-modal')
                     @endforeach
                 </div>
             </div>

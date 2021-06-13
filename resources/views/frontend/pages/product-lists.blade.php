@@ -167,8 +167,8 @@
 										</div>
 										<div class="shop-topbar-left">
 										<ul class="view-mode nav">
-											<li class="active"><a href="javascript:void(0)"><i class="icon-grid"></i></a></li>
-											<li><a href="{{route('product-lists')}}"><i class="icon-menu"></i></a></li>
+											<li class="active"><a href="{{route('product-grids')}}"><i class="icon-grid"></i></a></li>
+											<li><a href="javascript:void(0)"><i class="icon-menu"></i></a></li>
 										</ul>
 										</div>
 									</div>
@@ -195,9 +195,7 @@
 																<img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
 																@endif
 															</a>
-															<div class="product-list-quickview">
-																<button title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></button>
-															</div>
+															
 														</div>
 												</div>
 												<div class="col-xl-8 col-lg-7 col-md-6 col-sm-6">
@@ -216,6 +214,8 @@
 														<div class="product-list-action">
 															<a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i></a>
 															<a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
+															<a title="Quick View" data-toggle="modal" data-target="#{{$product->slug}}" ><i class="icon-size-fullscreen icons"></i></a>    
+
 														</div>
 													</div>
 												</div>

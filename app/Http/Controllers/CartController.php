@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Str;
 use Helper;
+use Stripe;
+use Session;
+
 class CartController extends Controller
 {
     protected $product=null;
@@ -251,5 +255,38 @@ class CartController extends Controller
         //     $cart->save();
         // }
         return view('frontend.pages.checkout');
+    }
+
+    public function stripePayment($id)
+    {
+        return view('frontend.pages.stripe', ['order_id' => $id]);
+    }
+
+    public function makePayment(Request $request)
+    {
+        $order = Order::findOrFail($request->order);
+        
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        
+        $order = Stripe\Charge::create ([
+                "amount" => $order->total_amount * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Make payment and chill." 
+        ]);
+
+        if($order){
+            request()->session()->flash('success','Payment successfully made.');
+            session()->forget('cart');
+            session()->forget('coupon');
+        }
+        else{
+            request()->session()->flash('error','Payment not made.');
+        }
+
+        Cart::where('user_id', auth()->user()->id)->update(['order_id' => $request->id]);
+
+            
+        return redirect()->route('user.order.index');
     }
 }

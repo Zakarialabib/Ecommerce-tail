@@ -170,72 +170,69 @@
                                 <!--/ End Shop Top -->
                             </div>
                         </div>
-                        <div class="shop-bottom-area">
+                        <div class="shop-bottom-area">  
+                             <div class="shop-list-wrap mb-30">
+                                <div class="row">
                             @if(count($products))
                                 @foreach($products as $product)
-                                     {{-- {{$product}} --}}
-                                    <!-- Start Single List -->
-                                    <div class="shop-list-wrap mb-30">
-                                        <div class="row">
-                                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                                <div class="single-product-wrap mb-35">
-                                                        <div class="product-img product-img-zoom mb-15">
-                                                            <a href="{{route('product-detail',$product->slug)}}">
-                                                                @php 
-                                                                $photo=explode(',',$product->photo);
-                                                                @endphp
-                                                                @if ($product->photo === null)
-                                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                                <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
-                                                                @else
-                                                                <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-                                                                @endif                                                       
-                                                            </a>
-                                                            <div class="product-action-2 tooltip-style-2">
-                                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></a>    
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-content-wrap-2 text-center">
-                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                                                <div class="product-price-2">
-                                                                    @php
-                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
-                                                                    @endphp
-                                                                    <span class="new-price">{{number_format($after_discount,2)}} $</span>
-                                                                    <del class="old-price">{{number_format($product->price,2)}} $</del>
-                                                                </div>
-                                                        </div>
-                                                            {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
-                                                        <div class="product-content-wrap-2 product-content-position text-center">
-                                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                                                <div class="product-price-2">
-                                                                    @php
-                                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
-                                                                    @endphp
-                                                                    <span class="new-price">{{number_format($after_discount,2)}} $</span>
-                                                                    <del class="old-price">{{number_format($product->price,2)}} $</del>
-                                                                </div>
-                                                                <div class="pro-add-to-cart">                                                               
-                                                                    <a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}">Add To Cart</a>
-                                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <!-- Start Single List -->
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="single-product-wrap mb-35">
+                                            <div class="product-img product-img-zoom mb-15">
+                                                <a href="{{route('product-detail',$product->slug)}}">
+                                                    @php 
+                                                    $photo=explode(',',$product->photo);
+                                                    @endphp
+                                                    @if ($product->photo === null)
+                                                    <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                    <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
+                                                    @else
+                                                    <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
+                                                    @endif                                                       
+                                                </a>
                                             </div>
-                                        </div>
-                                    <!-- End Single List -->
+                                            <div class="product-content-wrap-2 text-center">
+                                                <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                    <div class="product-price-2">
+                                                        @php
+                                                        $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                        @endphp
+                                                        <span class="new-price">{{number_format($after_discount,2)}} $</span>
+                                                        <del class="old-price">{{number_format($product->price,2)}} $</del>
+                                                    </div>
+                                            </div>
+                                                {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
+                                            <div class="product-content-wrap-2 product-content-position text-center">
+                                                <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
+                                                    <div class="product-price-2">
+                                                        @php
+                                                        $after_discount=($product->price-($product->price*$product->discount)/100);
+                                                        @endphp
+                                                        <span class="new-price">{{number_format($after_discount,2)}} $</span>
+                                                        <del class="old-price">{{number_format($product->price,2)}} $</del>
+                                                    </div>
+                                                    <div class="pro-add-to-cart">                                                               
+                                                        <a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket"></i></a>
+                                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
+                                                        <a title="Quick View" data-toggle="modal" data-target="#{{$product->slug}}" ><i class="icon-size-fullscreen icons"></i></a>    
+                                                    </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- End Single List -->
+                                @include('frontend.layouts.quick-view-modal')
                                 @endforeach
-                            @else
-                                <h4 class="text-warning" style="margin:100px auto;">{{ __('There are no products')}}.</h4>
-                            @endif
+                                    @else
+                                        <h4 class="text-warning" style="margin:100px auto;">{{ __('There are no products')}}.</h4>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 justify-content-center d-flex">
                                 {{$products->appends($_GET)->links()}} 
                             </div>
                           </div>
-
                     </div>
                 </div>
             </div>
