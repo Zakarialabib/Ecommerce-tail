@@ -22,6 +22,9 @@ class CreateSettingsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
+            $table->string('ganalytics');
+            $table->string('pixel');
+            $table->string('klaviyo');
             $table->timestamps();
         });
     }

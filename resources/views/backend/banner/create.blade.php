@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title','DropshippingSupplier || Banner Create')
+@section('title','leMotoShop || Banner Create')
 
 @section('main-content')
 

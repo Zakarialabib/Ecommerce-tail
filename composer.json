@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "pusher/pusher-php-server": "^4.1",
+        "renatomarinho/laravel-page-speed": "^2.0",
         "spatie/laravel-newsletter": "^4.8",
         "srmklive/paypal": "~1.0",
         "stripe/stripe-php": "^7.83",

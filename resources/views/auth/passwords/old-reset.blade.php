@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || Reset Page')
+@section('title','leMotoShop || Reset Page')
 
 @section('main-content')
    <!-- Breadcrumbs -->

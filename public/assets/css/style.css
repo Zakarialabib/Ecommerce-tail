@@ -2974,7 +2974,10 @@ textarea:focus {
 }
 
 .header-small-device.small-device-ptb-1 {
-  padding: 25px 0 25px;
+  padding: 70px 0 30px;
+}
+.header-small-device.small-device-ptb-2 {
+  padding: 50px 0 15px 0;
 }
 
 .header-large-device {
@@ -3299,7 +3302,9 @@ textarea:focus {
   letter-spacing: .2px;
   text-transform: capitalize;
 }
-
+.main-menu > nav > ul > li > ul li ul {
+  margin-top: 22px;
+}
 .main-menu > nav > ul > li > ul li:hover > a {
   color: #ff2f2f;
 }
@@ -9140,7 +9145,7 @@ textarea:focus {
   color: #ffffff;
   background-color: #000000;
   font-size: 14px;
-  padding: 8px 28px 8px;
+  padding: 5px 20px 5px;
   border-radius: 50px;
   -webkit-transition: all .3s ease 0s;
   -o-transition: all .3s ease 0s;
@@ -14899,7 +14904,8 @@ textarea:focus {
 }
 
 .contact-info-wrap .footer-logo a img {
-  max-width: 100%;
+  max-width: 40%;
+  padding: 0 80px;
 }
 
 .contact-info-wrap .single-contact-info {

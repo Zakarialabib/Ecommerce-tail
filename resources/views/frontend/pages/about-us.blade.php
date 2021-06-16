@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || About Us')
+@section('title','About Us || leMotoShop')
 
 @section('main-content')
 
@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-	<div class="about-us-area pt-120 pb-120">
+	<div class="about-us-area pt-60 pb-60">
 		<div class="row justify-content-center align-items-center">
 			<div class="col-lg-5">
 				<div class="box_about">

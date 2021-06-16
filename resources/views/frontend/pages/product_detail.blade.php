@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('meta')
+<meta name="keywords" content="{{ $product_detail->title }}">
 <meta name="description" content="{{ $product_detail->summary }}">
 <meta property="og:url" content="{{ route('product-detail',$product_detail->slug) }}">
 <meta property="og:type" content="article">
@@ -9,7 +10,7 @@
 <meta property="og:description" content="{{ $product_detail->description }}">
 @endsection
 
-@section('title','DropshippingSupplier || PRODUCT DETAIL')
+@section('title','PRODUCT DETAIL || leMotoShop')
 
 @section('main-content')
 
@@ -37,20 +38,23 @@
                 <!-- Product Slider -->
                 <div class="product-details-tab">
                     <!-- Images slider -->
-                    <div class="pro-dec-big-img-slider slick-initialized slick-slider">
-                        <div class="slick-list">
-                            <div class="easyzoom easyzoom--overlay is-ready">
-                            @php
-                                $photo=explode(',',$product_detail->photo);
-                                // dd($photo);
-                            @endphp
-                            @foreach($photo as $data)
-                                <a data-thumb="{{ $data }}">
-                                    <img src="{{ $data }}" alt="{{ $data }}">
-                                </a>
-                            @endforeach
-                        </div>
-                        </div>
+                    <div class="pro-dec-big-img-slider">
+                      <div class="easyzoom-style">
+                                <div class="easyzoom easyzoom--overlay">
+                                        <div class="easyzoom">
+                                @php
+                                    $photo=explode(',',$product_detail->photo);
+                                    // dd($photo);
+                                @endphp  
+                                @foreach($photo as $data)
+                            
+                                    <a data-thumb="{{ $data }}">
+                                        <img src="{{ $data }}" alt="{{ $data }}">
+                                    </a>
+                              
+                                @endforeach
+                                  </div>
+                            </div>
                     </div>
                     <!-- End Images slider -->
                 </div>
@@ -146,8 +150,8 @@
                             </div>
                             <div class="pro-details-action-wrap">
                                 <div class="pro-details-add-to-cart">
-                                    <button type="submit"
-                                        class="btn">{{ __('ADD TO CART') }}</button>
+                                    <a type="submit"
+                                        class="btn">{{ __('ADD TO CART') }}</a>
                                 </div>
                                 <div class="pro-details-action">
                                     <a
@@ -168,9 +172,9 @@
     </div>
 </section>
 <div class="description-review-wrapper pb-110">
+    <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="product-info">
                 <div class="dec-review-topbar nav mb-45">
                     <!-- Tab Nav -->
                     <a class=" active" data-toggle="tab"
@@ -178,9 +182,9 @@
                     <a class="" data-toggle="tab" href="#reviews">Reviews</a>
                     <!--/ End Tab Nav -->
                 </div>
-                <div class="tab-content dec-review-bottom" id="myTabContent">
+                <div class="tab-content dec-review-bottom">
                     <!-- Description Tab -->
-                    <div class="tab-pane fade show active" id="description">
+                    <div class="tab-pane active" id="description">
                         <div class="description-wrap">
                             <p>{!! ($product_detail->description) !!}</p>
                         </div>
@@ -316,57 +320,66 @@
         <div class="section-title mb-45 text-center">
             <h2>Related Products</h2>
         </div>
-        <div class="row">
-            {{-- {{$product_detail->rel_prods }} --}}
-            <div class="col-12">
-                <div class="related-product-active slick-initialized slick-slider">
-                    <div class="slick-list draggable">
-                    @foreach($product_detail->rel_prods as $data)
-                        @if($data->id !==$product_detail->id)
-                            <!-- Start Single Product -->
-                            <div class="single-product-wrap">
-                                <div class="product-img product-img-zoom mb-15">
-                                    <a href="{{ route('product-detail',$data->slug) }}">
-                                        @php
-                                            $photo=explode(',',$data->photo);
-                                        @endphp
-                                        <img src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
-                                        <span class="pro-badge left bg-red">{{ $data->discount }} % Off</span>
-                                    </a>
-                                    <div class="product-action-2 tooltip-style-2">
-                                        <div class="product-action">
-                                            <a data-toggle="modal" data-target="#modelExample" title="Quick View"
-                                                href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
-                                                    Wishlist</span></a>
-                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
-                                                    Compare</span></a>
-                                        </div>
-                                        <div class="product-action-2">
-                                            <a title="Add to cart"
-                                                href="#">{{ __('ADD TO CART') }}</a>
-                                        </div>
-                                    </div>
+        <div class="related-product-active slick-initialized slick-slider">
+            <div class="slick-list draggable">
+            @foreach($product_detail->rel_prods as $data)
+                @if($data->id !==$product_detail->id)
+                    <!-- Start Single Product -->
+                    <div class="single-product-wrap">
+                        <div class="product-img product-img-zoom mb-15">
+                            <a href="{{ route('product-detail',$data->slug) }}">
+                                @php
+                                    $photo=explode(',',$data->photo);
+                                @endphp
+                                <img src="{{ $photo[0] }}" alt="{{ $photo[0] }}">
+                                <span class="pro-badge left bg-red">{{ $data->discount }} % Off</span>
+                            </a>
+                            <div class="product-action-2 tooltip-style-2">
+                                <div class="product-action">
+                                    <a data-toggle="modal" data-target="#modelExample" title="Quick View"
+                                        href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
+                                            Wishlist</span></a>
+                                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
+                                            Compare</span></a>
                                 </div>
-                                <div class="product-content-wrap-2 text-center">
-                                    <h3><a
-                                            href="{{ route('product-detail',$data->slug) }}">{{ $data->title }}</a>
-                                    </h3>
-                                    <div class="product-price-2">
-                                        @php
-                                            $after_discount=($data->price-(($data->discount*$data->price)/100));
-                                        @endphp
-                                        <span class="old">{{ number_format($data->price,2) }} $</span>
-                                        <span>{{ number_format($after_discount,2) }} $</span>
-                                    </div>
+                                <div class="product-action-2">
+                                    <a title="{{ __('Add to Cart')}}"
+                                        href="#">{{ __('ADD TO CART') }}</a>
                                 </div>
                             </div>
-                            <!-- End Single Product -->
-
-                        @endif
-                    @endforeach
+                        </div>
+                        <div class="product-content-wrap-2 text-center">
+                            <h3><a
+                                    href="{{ route('product-detail',$data->slug) }}">{{ $data->title }}</a>
+                            </h3>
+                            <div class="product-price-2">
+                                @php
+                                    $after_discount=($data->price-(($data->discount*$data->price)/100));
+                                @endphp
+                                <span class="old">{{ number_format($data->price,2) }} $</span>
+                                <span>{{ number_format($after_discount,2) }} $</span>
+                            </div>
+                        </div>
+                        <div class="product-content-wrap-2 product-content-position text-center">
+                            <h3><a href="{{route('product-detail',$data->slug)}}">{{$data->title}}</a></h3>
+                                <div class="data-price-2">
+                                    @php
+                                    $after_discount=($data->price-($data->price*$data->discount)/100);
+                                    @endphp
+                                    <span class="new-price">{{number_format($after_discount,2)}} $</span>
+                                    <del class="old-price">{{number_format($data->price,2)}} $</del>
+                                </div>
+                                <div class="pro-add-to-cart">                                                               
+                                    <a title="{{ __('Add to Cart')}}" href="{{route('add-to-cart',$data->slug)}}"><i class="icon-basket"></i></a>
+                                    <a title="Wishlist" href="{{route('add-to-wishlist',$data->slug)}}"><i class="icon-heart"></i></a>
+                                    <a title="Quick View" data-toggle="modal" data-target="#{{$data->slug}}" ><i class="icon-size-fullscreen icons"></i></a>    
+                                </div>
+                        </div>
                     </div>
-                </div>
+                    <!-- End Single Product -->
+                @endif
+            @endforeach
             </div>
         </div>
     </div>
@@ -374,124 +387,6 @@
 <!-- End Most Popular Area -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="modelExample" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close"
-                        aria-hidden="true"></span></button>
-            </div>
-            <div class="modal-body">
-                <div class="row no-gutters">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <!-- Product Slider -->
-                        <div class="product-gallery">
-                            <div class="quickview-slider-active">
-                                <div class="single-slider">
-                                    <img src="images/modal1.png" alt="#">
-                                </div>
-                                <div class="single-slider">
-                                    <img src="images/modal2.png" alt="#">
-                                </div>
-                                <div class="single-slider">
-                                    <img src="images/modal3.png" alt="#">
-                                </div>
-                                <div class="single-slider">
-                                    <img src="images/modal4.png" alt="#">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Product slider -->
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <div class="quickview-content">
-                            <h2>Flared Shift Dress</h2>
-                            <div class="quickview-ratting-review">
-                                <div class="quickview-ratting-wrap">
-                                    <div class="quickview-ratting">
-                                        <i class="yellow fa fa-star"></i>
-                                        <i class="yellow fa fa-star"></i>
-                                        <i class="yellow fa fa-star"></i>
-                                        <i class="yellow fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <a href="#"> (1 customer review)</a>
-                                </div>
-                                <div class="quickview-stock">
-                                    <span><i class="fa fa-check-circle-o"></i> in stock</span>
-                                </div>
-                            </div>
-                            <h3>$29.00</h3>
-                            <div class="quickview-peragraph">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad
-                                    impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo
-                                    ipsum numquam.</p>
-                            </div>
-                            <div class="size">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <h5 class="title">{{ __('Size') }}</h5>
-                                        <select>
-                                            <option selected="selected">s</option>
-                                            <option>m</option>
-                                            <option>l</option>
-                                            <option>xl</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <h5 class="title">Color</h5>
-                                        <select>
-                                            <option selected="selected">orange</option>
-                                            <option>purple</option>
-                                            <option>black</option>
-                                            <option>pink</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="quantity">
-                                <!-- Input Order -->
-                                <div class="input-group">
-                                    <div class="button minus">
-                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled"
-                                            data-type="minus" data-field="quant[1]">
-                                            <i class="ti-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" name="qty" class="input-number" data-min="1" data-max="1000"
-                                        value="1">
-                                    <div class="button plus">
-                                        <button type="button" class="btn btn-primary btn-number" data-type="plus"
-                                            data-field="quant[1]">
-                                            <i class="ti-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/ End Input Order -->
-                            </div>
-                            <div class="add-to-cart">
-                                <a href="#" class="btn">{{ __('ADD TO CART') }}</a>
-                                <a href="#" class="btn min"><i class="ti-heart"></i></a>
-                                <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
-                            </div>
-                            <div class="default-social">
-                                <h4 class="share-now">Share:</h4>
-                                <ul>
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal end -->
 
 @endsection
 @push('styles')
@@ -544,7 +439,7 @@
     </style>
 @endpush
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    
 
     {{-- <script>
         $('.cart').click(function(){

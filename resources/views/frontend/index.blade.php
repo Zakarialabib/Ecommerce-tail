@@ -1,7 +1,8 @@
 @extends('frontend.layouts.master')
-@section('title','DropshippingSupplier || HOME PAGE')
+@section('title','Home || leMotoShop')
 @section('main-content')
-<div class="slider-area bg-gray">
+
+<div class="slider-area bg-gray pt-60 pb-60">
     <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
         @foreach($banners as $key=>$banner)
         <div class="single-hero-slider single-animation-wrap">
@@ -28,11 +29,54 @@
         @endforeach
     </div>
 </div>
-<div class="product-area section-padding-1 pt-115 pb-75">
+
+<div class="product-categories-area pt-60 pb-60">
+    <div class="container">
+        <div class="section-title-btn-wrap border-bottom-3 mb-50 pb-20">
+            <div class="section-title-3">
+                <h2>{{ __('Popular Categories')}}</h2>
+            </div>
+            <div class="btn-style-7">
+                <a href="{{route('product-grids')}}">{{ __('All Product')}}</a>
+            </div>
+        </div>       
+        @php 
+        $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
+        @endphp
+         @if($category_lists)
+        <div class="product-categories-slider-1 nav-style-3 ">
+            @foreach($category_lists as $cat)
+                @if($cat->is_parent==1)
+            <div class="product-plr-1">
+                <div class="single-product-wrap">
+                    <div class="product-img product-img-border mb-20">
+                        <a href="{{route('product-cat',$cat->slug)}}">
+                            @if($cat->photo)
+                            <img src="{{$cat->photo}}" data-src="{{$cat->photo}}" alt="{{$cat->title}}" >
+                            @else
+                            <img src="{{asset('photos/banners_cat_placeholder.jpg')}}"  alt="{{$cat->title}}" >
+                            @endif
+                        </a>
+                    </div>
+                    
+                    <div class="product-content-categories-2 text-center">
+                        <h5><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></h5>
+                    </div>
+                </div>
+            </div>
+            @endif
+            <!-- /End Single Banner  -->
+        @endforeach
+        </div>
+        @endif
+    </div>
+</div>
+
+<div class="product-area section-padding-1 pt-60 pb-60">
     <div class="container">
         <div class="section-title-tab-wrap mb-45">
             <div class="section-title">
-                <h2>Featured Products</h2>
+                <h2>{{ __('Featured Products')}}</h2>
             </div>
         </div>
     </div>
@@ -55,10 +99,10 @@
                                 @endif
                                 <div class="product-action-wrap">
                                     <div class="product-action-left">
-                                        <button><a href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i>Add to Cart</a></button>
+                                        <button><a href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i>{{ __('Add to Cart')}}</a></button>
                                     </div>
                                     <div class="product-action-right tooltip-style">
-                                        <button data-toggle="modal" data-target="#{{$product->slug}}"><i class="icon-size-fullscreen icons"></i><span>Quick View</span></button>
+                                        <button data-toggle="modal" data-target="#{{$product->slug}}"><i class="icon-size-fullscreen icons"></i><span>{{ __('Quick View')}}</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -88,22 +132,23 @@
         </div>
     </div>
 </div>
-<div class="banner-area pb-85">
+
+<div class="banner-area pb-115 ">
     <div class="container">
         <div class="section-title mb-45">
-            <h2>Our Collections</h2>
+            <h2>{{ __('Our Collections')}}</h2>
         </div>
         <div class="row">
             <div class="col-lg-7 col-md-7">
                 <div class="banner-wrap banner-mr-1 mb-30">
                     <div class="banner-img banner-img-zoom">
-                        <a href="product-details.html"><img src="{{asset($category_lists[0]->photo)}}" alt=""></a>
+                        <a href="{{route('product-grids')}}"><img src="{{asset($category_lists[0]->photo)}}" alt=""></a>
                     </div>
                     <div class="banner-content-1">
                         <h2>{{$category_lists[0]->title}}</h2>
                         <p>{!! $category_lists[0]->summary !!}</p>
                         <div class="btn-style-1">
-                            <a class="animated btn-1-padding-2" href="product-details.html">Shop Now</a>
+                            <a class="animated btn-1-padding-2" href="{{route('product-grids')}}">{{ __('Shop Now')}}</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +156,7 @@
             <div class="col-lg-5 col-md-5">
                 <div class="banner-wrap  banner-ml-1 mb-30">
                     <div class="banner-img banner-img-zoom">
-                        <a href="product-details.html"><img src="{{asset($category_lists[1]->photo)}}" alt=""></a>
+                        <a href="{{route('product-grids')}}"><img src="{{asset($category_lists[1]->photo)}}" alt=""></a>
                     </div>
                     <div class="banner-content-2">
                         <h2>{{$category_lists[1]->title}}</h2>
@@ -119,6 +164,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-us-area pb-115">
+    <div class="container">
+        <div class="about-us-content-2">
+            <div class="about-us-content-2-title">
+                <h4>LeMotoShop The One-stop Shopping Destination</h4>
+            </div>
+            <p>E-commerce is revolutionizing the way we all shop in Bangladesh. Why do you want to hop from one store to another in search of the latest phone when you can find it on the Internet in a single click? Not only mobiles. Flipkart houses everything you can possibly imagine, from trending electronics like laptops, tablets, smartphones, and mobile accessories to in-vogue fashion staples like shoes, clothing and lifestyle accessories; from modern furniture like sofa sets and wardrobes to appliances that make your life easy like washing machines, TVs, ACs, mixer grinder juicers and other time-saving kitchen and small appliances; from home furnishings like cushion covers, mattresses and bedsheets to toys and musical instruments, we got them all covered. You name it, and you can stay assured about finding them all here. For those of you with erratic working hours, Flipkart is your best bet. Shop in your PJs, at night or in the wee hours of the morning. This e-commerce never shuts down.</p>
+            <p>What's more, with our year-round shopping festivals and events, our prices are irresistible. We're sure you'll find yourself picking up more than what you had in mind. If you are wondering why you should shop from Flipkart when there are multiple options available to you, well, the below will answer your question.</p>
         </div>
     </div>
 </div>
@@ -165,7 +222,6 @@
 @endpush
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     {{-- <script>
         $('.cart').click(function(){

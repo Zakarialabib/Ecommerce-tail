@@ -1,3 +1,5 @@
+
+
 <header class="header-area section-padding-1">
     <div class="container-fluid">
         <div class="header-large-device">
@@ -56,11 +58,9 @@
             <div class="header-bottom">
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-2">
-                        @php
-                        $settings=DB::table('settings')->get();
-                         @endphp    
+                      
                         <div class="logo">
-                            <a href="{{route('home')}}"><img src="@foreach($settings as $data) {{$data->logo}} @endforeach" alt="logo"></a>
+                            <a href="{{route('home')}}"><img src="{{asset($settings->logo)}} " alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-7">
@@ -135,7 +135,6 @@
                                         @else
                                             0
                                         @endif
-                                     
                                     </span>
                                 </a>
                             </div>
@@ -144,15 +143,12 @@
                 </div>
             </div>
         </div>
-        <div class="header-small-device small-device-ptb-1">
+        <div class="header-small-device small-device-ptb-2">
             <div class="row align-items-center">
-                <div class="col-5">
+                <div class="col-5 col-lg-3 col-md-5">
                     <div class="mobile-logo">
-                        @php
-                        $settings=DB::table('settings')->get();
-                         @endphp    
                         <a href="{{route('home')}}">
-                            <img alt="" src="@foreach($settings as $data) {{$data->logo}} @endforeach">
+                            <img alt="" style="width:100%" src="{{asset($settings->logo)}}">
                         </a>
                     </div>
                 </div>
@@ -179,7 +175,7 @@
                         </div>
                         <div class="same-style-2 header-cart">
                             <a class="cart-active" href="#">
-                                <i class="icon-basket-loaded"></i>                                        
+                                <i class="icon-basket-loaded"></i>              
                                 <span class="pro-count red">
                                          @if (Helper::getAllProductFromCart())
                                         @foreach(Helper::getAllProductFromCart() as $data)
@@ -310,15 +306,10 @@
                 </div>
             </div>
             <div class="mobile-contact-info mobile-header-padding-border-4">
-                @php
-                $settings=DB::table('settings')->get();
-                @endphp               
                 <ul>
-                    @foreach($settings as $data)
-                    <li><i class="icon-phone "></i> {{$data->phone}}</li>
-                    <li><i class="icon-envelope-open "></i> {{$data->email}}</li>
-                    <li><i class="icon-home"></i> {{$data->address}}</li>
-                    @endforeach
+                    <li><i class="icon-phone "></i> {{$settings->phone}}</li>
+                    <li><i class="icon-envelope-open "></i> {{$settings->email}}</li>
+                    <li><i class="icon-home"></i> {{$settings->address}}</li>
                 </ul>
             </div>
             <div class="mobile-social-icon">
@@ -330,4 +321,8 @@
         </div>
     </div>
 </div>
+
+
+
+
 

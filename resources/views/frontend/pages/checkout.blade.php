@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','Checkout page')
+@section('title','Checkout page || leMotoShop')
 
 @section('main-content')
 
@@ -18,7 +18,7 @@
     <!-- End Breadcrumbs -->
             
     <!-- Start Checkout -->
-    <section class="checkout-main-area pt-120 pb-120">
+    <section class="checkout-main-area pt-60 pb-60">
         <div class="container">
                 <form class="form" method="POST" action="{{route('cart.order')}}">
                     @csrf

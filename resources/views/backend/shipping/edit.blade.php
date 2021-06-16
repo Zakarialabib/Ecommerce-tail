@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">{{ __('Edit Shipping</h5>
+    <h5 class="card-header">{{ __('Edit Shipping')}}</h5>
     <div class="card-body">
       <form method="post" action="{{route('shipping.update',$shipping->id)}}">
         @csrf 
@@ -41,9 +41,6 @@
 
 @endsection
 
-@push('styles')
-<link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
-@endpush
 @push('scripts')
 
 <script>

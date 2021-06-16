@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','Cart Page')
+@section('title','Cart Page || leMotoShop')
 @section('main-content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumb-area bg-gray">
@@ -15,7 +15,7 @@
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="cart-main-area pt-85 pb-120">
+	<div class="cart-main-area pt-60 pb-60">
 		<div class="container">
 			<h3 class="cart-page-title">{{ __('Your cart items')}}</h3>
 			<div class="row">

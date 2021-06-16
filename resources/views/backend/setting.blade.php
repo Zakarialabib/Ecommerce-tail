@@ -3,12 +3,10 @@
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">Edit Post</h5>
+    <h5 class="card-header">Edit Settings</h5>
     <div class="card-body">
     <form method="post" action="{{route('settings.update')}}">
         @csrf 
-        {{-- @method('PATCH') --}}
-        {{-- {{dd($data)}} --}}
         <div class="form-group">
           <label for="short_des" class="col-form-label">Short Description <span class="text-danger">*</span></label>
           <textarea class="form-control" id="quote" name="short_des">{{$data->short_des}}</textarea>
@@ -80,6 +78,38 @@
           @enderror
         </div>
 
+        <div class="form-group">
+          <label for="ganalytics" class="col-form-label">Google Analytics Code 1</label>
+          <textarea type="text" class="form-control" name="ganalytics">{{$data->ganalytics}}</textarea>
+          @error('ganalytics')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="pixel" class="col-form-label">Facebook Analytics Code 2</label>
+          <textarea type="text" class="form-control" name="pixel">{{$data->pixel}}</textarea>
+          @error('pixel')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="klaviyo" class="col-form-label">Klaviyo Analytics Code 3</label>
+          <textarea type="text" class="form-control" name="klaviyo" >{{$data->klaviyo}}</textarea>
+          @error('klaviyo')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+        
+         <div class="form-group">
+          <label for="body_tag" class="col-form-label">Analytics Body Tag</label>
+          <textarea type="text" class="form-control" name="body_tag" >{{$data->body_tag}}</textarea>
+          @error('body_tag')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
         <div class="form-group mb-3">
            <button class="btn btn-success" type="submit">{{ __('Update')}}</button>
         </div>
@@ -90,8 +120,7 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
 
 @endpush
 @push('scripts')

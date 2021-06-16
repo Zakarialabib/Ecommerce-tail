@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || PRODUCT PAGE')
+@section('title','PRODUCT PAGE || leMotoShop')
 
 @section('main-content')
 	
@@ -20,7 +20,7 @@
 		<form action="{{route('shop.filter')}}" method="POST">
 		@csrf
 			<!-- Product Style 1 -->
-			<section class="shop-area pt-120 pb-120 shop-sidebar shop-list shop">
+			<section class="shop-area pt-60 pb-60 shop-sidebar shop-list shop">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-3 col-md-4 col-12">
@@ -77,11 +77,11 @@
 											@endphp
 											<div id="slider-range" data-min="0" data-max="{{$max}}" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"></div>
 											<div class="price-slider-amount">
-												<button type="submit" class="filter_button">{{ __('Filter')}}</button>
 												<div class="label-input">
 													<span>{{ __('Range')}}:</span>
 													<input style="" type="text" id="amount" readonly/>
 													<input type="hidden" name="price_range" id="price_range" value="@if(!empty($_GET['price'])){{$_GET['price']}}@endif"/>
+													<button type="submit" class="filter_button">{{ __('Filter')}}</button>
 												</div>
 											</div>
 									</div>
@@ -100,7 +100,7 @@
 								<!--/ End Shop By Price -->
                                 <!-- Single Widget -->
                                 <div class="sidebar-widget shop-sidebar-border mb-35 recent-post">
-                                    <h3 class="sidebar-widget-title">{{ __('Recent post')}}</h3>
+                                    <h3 class="sidebar-widget-title">{{ __('Recent products')}}</h3>
                                     {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
@@ -109,7 +109,7 @@
                                         @endphp
                                         <div class="single-post first">
                                             <div class="image">
-                                                <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
+                                                <img src="{{$photo[0]}}" alt="{{$photo[0]}}" style="max-width: 50%">
                                             </div>
                                             <div class="content">
                                                 <h5><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h5>
@@ -188,14 +188,8 @@
 																@php 
 																	$photo=explode(',',$product->photo);
 																@endphp
-																@if ($product->photo === null)
 																<img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-																<img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">	
-																@else
-																<img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-																@endif
-															</a>
-															
+															</a>															
 														</div>
 												</div>
 												<div class="col-xl-8 col-lg-7 col-md-6 col-sm-6">
@@ -212,16 +206,16 @@
 														
 														<p>{!! html_entity_decode($product->summary) !!}</p>
 														<div class="product-list-action">
-															<a title="Add To Cart" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i></a>
+															<a title="{{ __('Add to Cart')}}" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket-loaded"></i></a>
 															<a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>
 															<a title="Quick View" data-toggle="modal" data-target="#{{$product->slug}}" ><i class="icon-size-fullscreen icons"></i></a>    
-
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										<!-- End Single List -->
+										@include('frontend.layouts.quick-view-modal')
 									@endforeach
 								@else
 									<h4 class="text-warning" style="margin:100px auto;">{{ __('There are no products')}}.</h4>
@@ -238,124 +232,9 @@
 			</section>
 			<!--/ End Product Style 1  -->	
 		</form>
-		<!-- Modal -->
-		@if($products)
-			@foreach($products as $key=>$product)
-				<div class="modal fade" id="{{$product->id}}" tabindex="-1" role="dialog">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
-								</div>
-								<div class="modal-body">
-									<div class="row no-gutters">
-										<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-											<!-- Product Slider -->
-												<div class="product-gallery">
-													<div class="quickview-slider-active">
-														@php 
-															$photo=explode(',',$product->photo);
-														// dd($photo);
-														@endphp
-														@foreach($photo as $data)
-															<div class="single-slider">
-																<img src="{{$data}}" alt="{{$data}}">
-															</div>
-														@endforeach
-													</div>
-												</div>
-											<!-- End Product slider -->
-										</div>
-										<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-											<div class="quickview-content">
-												<h2>{{$product->title}}</h2>
-												<div class="quickview-ratting-review">
-													<div class="quickview-ratting-wrap">
-														<div class="quickview-ratting">
-															{{-- <i class="yellow fa fa-star"></i>
-															<i class="yellow fa fa-star"></i>
-															<i class="yellow fa fa-star"></i>
-															<i class="yellow fa fa-star"></i>
-															<i class="fa fa-star"></i> --}}
-															@php
-																$rate=DB::table('product_reviews')->where('product_id',$product->id)->avg('rate');
-																$rate_count=DB::table('product_reviews')->where('product_id',$product->id)->count();
-															@endphp
-															@for($i=1; $i<=5; $i++)
-																@if($rate>=$i)
-																	<i class="yellow fa fa-star"></i>
-																@else 
-																<i class="fa fa-star"></i>
-																@endif
-															@endfor
-														</div>
-														<a href="#"> ({{$rate_count}} customer review)</a>
-													</div>
-													<div class="quickview-stock">
-														@if($product->stock >0)
-														<span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
-														@else 
-														<span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
-														@endif
-													</div>
-												</div>
-												@php
-													$after_discount=($product->price-($product->price*$product->discount)/100);
-												@endphp
-												<h3><small><del class="text-muted">{{number_format($product->price,2)}} $</del></small>    {{number_format($after_discount,2)}} $  </h3>
-												<div class="quickview-peragraph">
-													<p>{!! html_entity_decode($product->summary) !!}</p>
-												</div>
-												@if($product->size)
-													<div class="size">
-														<h4>{{ __('Size')}}</h4>
-														<ul>
-															@php 
-																$sizes=explode(',',$product->size);
-																// dd($sizes);
-															@endphp
-															@foreach($sizes as $size)
-															<li><a href="#" class="one">{{$size}}</a></li>
-															@endforeach
-														</ul>
-													</div>
-												@endif
-												<form action="{{route('single-add-to-cart')}}" method="POST">
-													@csrf 
-													<div class="quantity">
-														<!-- Input Order -->
-														<div class="input-group">
-															<div class="button minus">
-																<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-																	<i class="ti-minus"></i>
-																</button>
-															</div>
-															<input type="hidden" name="slug" value="{{$product->slug}}">
-															<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
-															<div class="button plus">
-																<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-																	<i class="ti-plus"></i>
-																</button>
-															</div>
-														</div>
-														<!--/ End Input Order -->
-													</div>
-													<div class="add-to-cart">
-														<button type="submit" class="btn">{{ __('ADD TO CART')}}</button>
-														<a href="{{route('add-to-wishlist',$product->slug)}}" class="btn min"><i class="ti-heart"></i></a>
-													</div>
-												</form>
-										
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-				</div>
-			@endforeach
-		@endif
-			<!-- Modal end -->
+		
+
+
 @endsection
 @push ('styles')
 <style>
@@ -373,7 +252,7 @@
 </style>
 @endpush
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 
     {{-- <script>
         $('.cart').click(function(){

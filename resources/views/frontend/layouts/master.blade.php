@@ -4,7 +4,8 @@
 	@include('frontend.layouts.head')	
 </head>
 <body class="js">
-	
+	{!!$settings->body_tag!!}
+
 	<div class="main-wrapper">
 
 		@include('frontend.layouts.notification')

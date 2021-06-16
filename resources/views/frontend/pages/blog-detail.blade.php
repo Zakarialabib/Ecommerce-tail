@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-TECH || Blog Detail page')
+@section('title','Blog Details || leMotoShop')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -19,7 +19,7 @@
     <!-- End Breadcrumbs -->
         
     <!-- Start Blog Single -->
-    <section class="blog-area pt-120 pb-120">
+    <section class="blog-area pt-60 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12">

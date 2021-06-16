@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','DropshippingSupplier || Language')
+@section('title','leMotoShop || Language')
 @section('main-content')
 
 <div class="container">

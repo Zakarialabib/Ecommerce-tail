@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title','Contact page || leMotoShop')
+
 @section('main-content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumb-area bg-gray">
@@ -15,7 +17,7 @@
 	<!-- End Breadcrumbs -->
   
 	<!-- Start Contact -->
-	<section id="contact-us" class="contact-area pt-85 pb-120">
+	<section id="contact-us" class="contact-area pt-60 pb-60">
 	<div class="container">
 		<div class="container">
 			<div class="contact-info-wrap-3">

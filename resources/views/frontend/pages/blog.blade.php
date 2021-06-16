@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || Blog Page')
+@section('title','Blog Page || leMotoShop')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -17,7 +17,7 @@
     <!-- End Breadcrumbs -->
         
     <!-- Start Blog Single -->
-    <section class="blog-area pt-120 pb-120">
+    <section class="blog-area pt-60 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12">
@@ -29,11 +29,7 @@
                                 <div class="blog-wrap mb-40">
                                     <div class="blog-img mb-20">
                                         <a href="{{route('blog.detail',$post->slug)}}" class="{{$post->title}}">
-                                            @if ($post->photo === null)
                                             <img src="{{$post->photo}}" alt="{{$post->title}}">
-                                            @else
-                                            <img src="{{asset('assets/images/blog/blog-1.jpg')}}" alt="{{$post->title}}">
-                                            @endif
                                         </a>
                                     </div>
                                     <div class="blog-content">

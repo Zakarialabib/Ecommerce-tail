@@ -14,7 +14,6 @@
                                     $photo=explode(',',$product->photo);
                                 // dd($photo);
                                 @endphp
-                                @if ($product->photo === null)
                                 @foreach($photo as $data)
                                 <div class="quickview-wrap mt-15">
                                     <div class="quickview-slide-active nav-style-6 slick-initialized slick-slider">
@@ -22,10 +21,7 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                @else
-                                <img src="{{asset('assets/images/product/product-13.jpg')}}" alt="{{$photo[0]}}">
-                                @endif
-                                                                                            
+                                                                                                                          
                             </div>
                         </div>
                     </div>
@@ -51,9 +47,9 @@
                                 </div>
                                 <div class="product-review-order">
                                     @if($product->stock >0)
-                                    <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
+                                    <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} {{ __('in stock')}}</span>
                                     @else 
-                                    <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+                                    <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} {{ __('out stock')}}</span>
                                     @endif
                                 </div>
                             </div>
@@ -67,20 +63,20 @@
                                 @endif
                             </div>
                             @if($product->size)
-                            <div class="pro-details-size">
-                                <span>{{ __('Size')}}</span>
-                                <div class="pro-details-size-content">
-                                <ul>
-                                    @php 
-                                        $sizes=explode(',',$product->size);
-                                        // dd($sizes);
-                                    @endphp
-                                    @foreach($sizes as $size)
-                                    <li><a href="#" class="one">{{$size}}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            </div>
+                                <div class="pro-details-size">
+                                    <span>{{ __('Size')}}</span>
+                                    <div class="pro-details-size-content">
+                                        <ul>
+                                            @php 
+                                                $sizes=explode(',',$product->size);
+                                                // dd($sizes);
+                                            @endphp
+                                            @foreach($sizes as $size)
+                                            <li><a href="#" class="one">{{$size}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
                              @endif
                             <div class="pro-details-quality">
                                 <span>Quantity:</span>
@@ -102,7 +98,7 @@
                             </div>
                             <div class="pro-details-action-wrap">
                                 <div class="pro-details-add-to-cart">
-                                    <a title="Add to Cart" href="{{route('add-to-cart',$product->slug)}}">Add To Cart </a>
+                                    <a title="{{ __('Add to Cart')}}" href="{{route('add-to-cart',$product->slug)}}">{{ __('Add to Cart')}} </a>
                                 </div>
                                 <div class="pro-details-action">
                                     <a title="Add to Wishlist" href="{{route('add-to-wishlist',$product->slug)}}"><i class="icon-heart"></i></a>

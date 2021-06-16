@@ -110,6 +110,7 @@
               <option value="default" {{(($product->condition=='default')? 'selected':'')}}>{{ __('Default')}}</option>
               <option value="new" {{(($product->condition=='new')? 'selected':'')}}>{{ __('New')}}</option>
               <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>{{ __('Hot')}}</option>
+              <option value="sale" {{(($product->condition=='sale')? 'selected':'')}}>{{ __('Sale')}}</option>
           </select>
         </div>
 
@@ -156,13 +157,11 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 @endpush
 
 @push('scripts')
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 
 <script>
     $('#lfm').filemanager('image');

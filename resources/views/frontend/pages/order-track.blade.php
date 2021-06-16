@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || Order Track Page')
+@section('title','Order Track Page || leMotoShop')
 
 @section('main-content')
     <!-- Breadcrumbs -->

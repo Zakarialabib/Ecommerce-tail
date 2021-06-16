@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','DropshippingSupplier || Login Page')
+@section('title','Login Page || leMotoShop')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -15,7 +15,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    <div class="login-register-area pt-115 pb-120">
+    <div class="login-register-area pt-60 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-12 ml-auto mr-auto">

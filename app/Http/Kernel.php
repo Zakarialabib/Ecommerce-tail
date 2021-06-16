@@ -38,10 +38,22 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
       
+            // Page Speed
+            \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+            \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+            \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+            \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+            \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class, 
+        //   \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+        //   \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
+            
             // Set language
             \App\Http\Middleware\Locale::class,
 
-      
+            // Force redirect to HTTPS
+            \App\Http\Middleware\HttpsProtocol::class,
+
+            
         ],
 
 

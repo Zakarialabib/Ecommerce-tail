@@ -61,6 +61,10 @@ class AdminController extends Controller
             'address'=>'required|string',
             'email'=>'required|email',
             'phone'=>'required|string',
+            'ganalytics'=>'',
+            'pixel'=>'',
+            'klaviyo'=>'',
+            'body_tag'=>'',
         ]);
         $data=$request->all();
         // return $data;

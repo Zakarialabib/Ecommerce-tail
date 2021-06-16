@@ -78,7 +78,7 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
+
 @endpush
 @push('scripts')
 

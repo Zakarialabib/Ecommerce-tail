@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>DropshippingSupplier || Login Page</title>
+  <title>leMotoShop || Login Page</title>
   @include('backend.layouts.head')
 
 </head>
