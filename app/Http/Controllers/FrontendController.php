@@ -46,6 +46,13 @@ class FrontendController extends Controller
         return view('frontend.pages.about-us');
     }
 
+    public function terms(){
+        $faqs = Faq::query()
+        ->orderBy('id', 'ASC')->get();
+
+        return view('frontend.pages.termsconditions', compact('faqs'));
+    }
+
     public function contact(){
         return view('frontend.pages.contact');
     }

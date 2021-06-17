@@ -28,7 +28,6 @@ const mix = require('laravel-mix');
     'public/assets/js/vendor/jquery-3.5.1.min.js',
     'public/assets/js/vendor/jquery-migrate-3.3.0.min.js',
     'public/assets/js/vendor/bootstrap.bundle.min.js',
-    'public/assets/js/plugins/slick.js',
     'public/assets/js/plugins/jquery.syotimer.min.js',
     'public/assets/js/plugins/jquery.instagramfeed.min.js',
     'public/assets/js/plugins/jquery.nice-select.min.js',

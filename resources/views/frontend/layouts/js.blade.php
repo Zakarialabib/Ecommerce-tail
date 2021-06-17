@@ -3,6 +3,7 @@
 <script src="{{asset('assets/js/all.js')}}"></script>
 <!-- Sweetalert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="{{asset('assets/js/plugins/slick.js')}}"></script>
 
 @stack('scripts')
 

@@ -53,9 +53,8 @@
                                                     @endif
                                                 </div>
 
-                                                <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                                <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                                <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
+                                                <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="icon-social-facebook"></i></a>
+                                                <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="icon-social-google"></i></a>
 
                                                 <button type="submit">{{ __('Login')}}</button>
                                             </div>
@@ -91,10 +90,9 @@
                                                  
                                                 <div class="button-box">
                                                         <button class="btn" type="submit">{{ __('Register')}}</button>                                               
-                                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                                        <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
-                                                </div>
+                                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="icon-social-facebook"></i></a>
+                                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="icon-social-google"></i></a>
+                                                        </div>
                                             </div>
                                         </form>
                                     </div>

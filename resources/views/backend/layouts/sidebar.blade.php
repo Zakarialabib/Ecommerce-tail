@@ -2,10 +2,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">Admin</div>
+      <div class="sidebar-brand-text mx-3">{{Auth()->user()->name}}</div>
     </a>
 
     <!-- Divider -->
@@ -134,7 +131,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Posts
+      {{__('Pages')}}
     </div>
 
     <!-- Posts -->
@@ -148,6 +145,21 @@
           <h6 class="collapse-header">Post Options:</h6>
           <a class="collapse-item" href="{{route('post.index')}}">{{__('Posts')}}</a>
           <a class="collapse-item" href="{{route('post.create')}}">Add Post</a>
+        </div>
+      </div>
+    </li>
+
+     <!-- Pages -->
+     <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#faqCollapse" aria-expanded="true" aria-controls="faqCollapse">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>{{__('Pages')}}</span>
+      </a>
+      <div id="faqCollapse" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Pages Options:</h6>
+          <a class="collapse-item" href="{{route('faq')}}">{{__('FAQ')}}</a>
+          <a class="collapse-item" href="{{route('faq.add')}}">>{{__('FAQ')}}</a>
         </div>
       </div>
     </li>

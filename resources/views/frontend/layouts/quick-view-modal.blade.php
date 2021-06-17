@@ -21,7 +21,6 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                                                                                                          
                             </div>
                         </div>
                     </div>
@@ -42,24 +41,24 @@
                                         @endif
                                     @endfor
                                     <div class="product-digit">
-                                        <span>({{$rate_count}} customer review)</span>
+                                        <span>({{$rate_count}}) Reviews</span>
                                     </div>
                                 </div>
                                 <div class="product-review-order">
                                     @if($product->stock >0)
-                                    <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} {{ __('in stock')}}</span>
+                                    <span class="badge badge-success"><i class="fa fa-check-circle-o"></i> {{$product->stock}} {{ __('in stock')}}</span>
                                     @else 
-                                    <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} {{ __('out stock')}}</span>
+                                    <span class="badge badge-danger"><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} {{ __('out stock')}}</span>
                                     @endif
                                 </div>
                             </div>
                             {!!$product->summary!!}
                             <div class="pro-details-price">
                                 @if ($product->discount > 0) 
-                                <span class="new-price">${{number_format($product->price)}}</span>   
-                                <span class="old-price">${{number_format($product->price + $product->price * $product->discount / 100)}}</span>
+                                <span class="new-price">$ {{number_format($product->price)}}</span>   
+                                <span class="old-price">$ {{number_format($product->price + $product->price * $product->discount / 100)}}</span>
                                 @else
-                                <span>${{number_format($product->price)}}</span>
+                                <span class="new-price">$ {{number_format($product->price)}}</span>
                                 @endif
                             </div>
                             @if($product->size)

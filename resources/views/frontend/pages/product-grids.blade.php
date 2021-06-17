@@ -185,7 +185,9 @@
                                                     @endphp
                                                     <img src="{{$photo[0]}}" alt="{{$photo[0]}}">                                                   
                                                 </a>
+                                                @if ($product->discount)
                                                 <span class="pro-badge left bg-red">{{ $product->discount }} % Off</span>
+                                                @endif
                                             </div>
                                             <div class="product-content-wrap-2 text-center">
                                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
@@ -240,52 +242,29 @@
 @endsection
 @push('styles')
 <style>
-    .pagination{
+  .pagination{
         display:inline-flex;
     }
-    .filter_button{
-        /* height:20px; */
-        text-align: center;
-        background:#F7941D;
-        padding:8px 16px;
-        margin-top:10px;
-        color: white;
-    }
+  .pagination>li>a, .pagination>li>span { 
+      border-radius: 50% !important;margin: 0 5px;
+  }
+  
+  .page-item.active .page-link{
+    color: #fff;
+    background-color: #ff2f2f;
+    border-color: #ff2f2f;
+  }
+ .page-link{
+    color: #ff2f2f;
+ }
+ .page-link:hover{
+    color: #000;
+ }
 </style>
 @endpush
 @push('scripts')
   
-    {{-- <script>
-        $('.cart').click(function(){
-            var quantity=1;
-            var pro_id=$(this).data('id');
-            $.ajax({
-                url:"{{route('add-to-cart')}}",
-                type:"POST",
-                data:{
-                    _token:"{{csrf_token()}}",
-                    quantity:quantity,
-                    pro_id:pro_id
-                },
-                success:function(response){
-                    console.log(response);
-					if(typeof(response)!='object'){
-						response=$.parseJSON(response);
-					}
-					if(response.status){
-						swal('success',response.msg,'success').then(function(){
-							document.location.href=document.location.href;
-						});
-					}
-                    else{
-                        swal('error',response.msg,'error').then(function(){
-							// document.location.href=document.location.href;
-						});
-                    }
-                }
-            })
-        });
-    </script> --}}
+
     <script>
         $(document).ready(function(){
         /*----------------------------------------------------*/

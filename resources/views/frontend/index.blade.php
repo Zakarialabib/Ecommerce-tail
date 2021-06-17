@@ -2,7 +2,7 @@
 @section('title','Home || leMotoShop')
 @section('main-content')
 
-<div class="slider-area bg-gray pt-60 pb-60">
+<div class="slider-area bg-gray pb-60">
     <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
         @foreach($banners as $key=>$banner)
         <div class="single-hero-slider single-animation-wrap">
@@ -111,10 +111,10 @@
                                     <h4><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
                                     <div class="product-price">
                                         @if ($product->discount > 0) 
-                                        <span class="new-price">${{number_format($product->price)}}</span>   
-                                        <span class="old-price">${{number_format($product->price + $product->price * $product->discount / 100)}}</span>
+                                        <span class="new-price">$ {{number_format($product->price)}}</span>   
+                                        <span class="old-price">$ {{number_format($product->price + $product->price * $product->discount / 100)}}</span>
                                         @else
-                                        <span>${{number_format($product->price)}}</span>
+                                        <span class="new-price">$ {{number_format($product->price)}}</span>
                                         @endif
                                     </div>
                                 </div>

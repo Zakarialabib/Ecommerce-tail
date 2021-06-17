@@ -16367,7 +16367,7 @@ textarea:focus {
   }
 }
 
-.product-details-content .pro-details-action-wrap .pro-details-add-to-cart a {
+.product-details-content .pro-details-action-wrap .pro-details-add-to-cart button {
   display: inline-block;
   font-size: 16px;
   font-weight: 500;
@@ -16378,18 +16378,18 @@ textarea:focus {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .product-details-content .pro-details-action-wrap .pro-details-add-to-cart a {
+  .product-details-content .pro-details-action-wrap .pro-details-add-to-cart button {
     padding: 18px 30px 17px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .product-details-content .pro-details-action-wrap .pro-details-add-to-cart a {
+  .product-details-content .pro-details-action-wrap .pro-details-add-to-cart button {
     padding: 14px 18px 15px;
   }
 }
 
-.product-details-content .pro-details-action-wrap .pro-details-add-to-cart a:hover {
+.product-details-content .pro-details-action-wrap .pro-details-add-to-cart button:hover {
   background-color: #ff2f2f;
 }
 
@@ -18138,7 +18138,7 @@ textarea:focus {
   }
 }
 
-.shop-list-wrap .shop-list-content .product-list-action button {
+.shop-list-wrap .shop-list-content .product-list-action a {
   font-size: 16px;
   color: #000000;
   border: 1px solid #e6e6e6;
@@ -18152,7 +18152,7 @@ textarea:focus {
   margin-right: 10px;
 }
 
-.shop-list-wrap .shop-list-content .product-list-action button:hover {
+.shop-list-wrap .shop-list-content .product-list-action a:hover {
   background-color: #ff2f2f;
   color: #ffffff;
   border: 1px solid #ff2f2f;

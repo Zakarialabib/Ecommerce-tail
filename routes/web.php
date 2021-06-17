@@ -31,6 +31,7 @@ Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
 Route::get('/home', 'FrontendController@index');
+Route::get('/terms-and-conditions','FrontendController@terms')->name('terms-conditions');
 Route::get('/about-us','FrontendController@aboutUs')->name('about-us');
 Route::get('/contact','FrontendController@contact')->name('contact');
 Route::post('/contact/message','MessageController@store')->name('contact.store');
@@ -133,6 +134,15 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     Route::resource('/shipping','ShippingController');
     // Coupon
     Route::resource('/coupon','CouponController');
+
+  // FAQ Route
+  Route::get('/faq', 'FaqController@faq')->name('faq');
+  Route::get('/faq/add', 'FaqController@add')->name('faq.add');
+  Route::post('/faq/store', 'FaqController@store')->name('faq.store');
+  Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
+  Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
+  Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
+
     // Settings
     Route::get('settings','AdminController@settings')->name('settings');
     Route::post('setting/update','AdminController@settingsUpdate')->name('settings.update');

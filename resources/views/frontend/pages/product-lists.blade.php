@@ -223,7 +223,7 @@
 							</div>
 							 <div class="row">
                             <div class="col-md-12 justify-content-center d-flex">
-                                {{-- {{$products->appends($_GET)->links()}}  --}}
+                                {{$products->appends($_GET)->links()}}
                             </div>
                           </div>
 						</div>
@@ -241,50 +241,26 @@
 	 .pagination{
         display:inline-flex;
     }
-	.filter_button{
-        /* height:20px; */
-        text-align: center;
-        background:#F7941D;
-        padding:8px 16px;
-        margin-top:10px;
-        color: white;
-    }
-</style>
+  .pagination>li>a, .pagination>li>span { 
+      border-radius: 50% !important;margin: 0 5px;
+  }
+  
+  .page-item.active .page-link{
+    color: #fff;
+    background-color: #ff2f2f;
+    border-color: #ff2f2f;
+  }
+ .page-link{
+    color: #ff2f2f;
+ }
+ .page-link:hover{
+    color: #000;
+ }
+ </style>
 @endpush
 @push('scripts')
 
 
-    {{-- <script>
-        $('.cart').click(function(){
-            var quantity=1;
-            var pro_id=$(this).data('id');
-            $.ajax({
-                url:"{{route('add-to-cart')}}",
-                type:"POST",
-                data:{
-                    _token:"{{csrf_token()}}",
-                    quantity:quantity,
-                    pro_id:pro_id
-                },
-                success:function(response){
-                    console.log(response);
-					if(typeof(response)!='object'){
-						response=$.parseJSON(response);
-					}
-					if(response.status){
-						swal('success',response.msg,'success').then(function(){
-							document.location.href=document.location.href;
-						});
-					}
-					else{
-                        swal('error',response.msg,'error').then(function(){
-							// document.location.href=document.location.href;
-						}); 
-                    }
-                }
-            })
-        });
-	</script> --}}
 	<script>
         $(document).ready(function(){
         /*----------------------------------------------------*/
