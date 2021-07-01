@@ -110,7 +110,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}} $</del>   {{number_format($org,2)}} $  </p>
+                                                <p class="price"><del class="text-muted">{{ Helper::showCurrencyPrice($product->price,2) }} $</del>   {{ Helper::showCurrencyPrice($org,2) }}  </p>
                                                 
                                             </div>
                                         </div>
@@ -195,8 +195,8 @@
                                                         @php
                                                         $after_discount=($product->price-($product->price*$product->discount)/100);
                                                         @endphp
-                                                        <span class="new-price">{{number_format($after_discount,2)}} $</span>
-                                                        <del class="old-price">{{number_format($product->price,2)}} $</del>
+                                                        <span class="new-price">{{ Helper::showCurrencyPrice($after_discount,2) }}</span>
+                                                        <del class="old-price">{{ Helper::showCurrencyPrice($product->price,2) }}</del>
                                                     </div>
                                             </div>
                                                 {{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
@@ -206,8 +206,8 @@
                                                         @php
                                                         $after_discount=($product->price-($product->price*$product->discount)/100);
                                                         @endphp
-                                                        <span class="new-price">{{number_format($after_discount,2)}} $</span>
-                                                        <del class="old-price">{{number_format($product->price,2)}} $</del>
+                                                        <span class="new-price">{{ Helper::showCurrencyPrice($after_discount,2) }}</span>
+                                                        <del class="old-price">{{ Helper::showCurrencyPrice($product->price,2) }}</del>
                                                     </div>
                                                     <div class="pro-add-to-cart">                                                               
                                                         <a title="{{ __('Add to Cart')}}" href="{{route('add-to-cart',$product->slug)}}"><i class="icon-basket"></i></a>

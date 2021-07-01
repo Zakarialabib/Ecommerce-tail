@@ -1,5 +1,3 @@
-
-
 <header class="header-area section-padding-1">
     <div class="container-fluid">
         <div class="header-large-device">
@@ -39,7 +37,9 @@
                                     <a class="currency-dropdown-active" href="#">US Dollar <i class="icon-arrow-down"></i></a>
                                     <div class="currency-dropdown">
                                         <ul>
-                                            <li><a href="#">USD</a></li>
+                                            @foreach ($currencies as $currency)
+                                            <li> <a href="{{ route('changeCurrency', $currency->id) }}" class="{{ $currency->id == $currentCurrency->code ? 'active' : '' }}">{{ $currency->name }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
                             <a class="cart-active" href="#">
                                 <i class="icon-basket-loaded"></i>              
                                 <span class="pro-count red">
-                                         @if (Helper::getAllProductFromCart())
+                                        @if (Helper::getAllProductFromCart())
                                         @foreach(Helper::getAllProductFromCart() as $data)
                                         {{$data->quantity}} 
                                         @endforeach 

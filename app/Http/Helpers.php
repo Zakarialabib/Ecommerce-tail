@@ -1,4 +1,6 @@
 <?php
+
+
 use App\Models\Message;
 use App\Models\Category;
 use App\Models\PostTag;
@@ -7,8 +9,11 @@ use App\Models\Order;
 use App\Models\Wishlist;
 use App\Models\Shipping;
 use App\Models\Cart;
-// use Auth;
+use App\Models\Currency;
+use Illuminate\Support\Facades\Session;
+
 class Helper{
+
     public static function messageList()
     {
         return Message::whereNull('read_at')->orderBy('created_at', 'desc')->get();
@@ -169,6 +174,105 @@ class Helper{
     public static function shipping(){
         return Shipping::orderBy('id','DESC')->get();
     }
+    public static function showCurrencyPrice($price) {
+
+
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+
+        $price = round($price * $curr->value, 2);
+
+
+        return $curr->sign.$price;
+
+
+    }
+    
+    
+    public static function showAdminCurrencyPrice($price) {
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        $price = round($price * $curr->value,2);
+        return $curr->sign.$price;
+    }
+
+
+      public static function storePrice($price) {
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        $price = ($price / $curr->value);
+        return $price;
+    }
+
+
+    public static function showCurrency()
+    {
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        return $curr->sign;
+    }
+
+    public static function showCurrencyCode()
+    {
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        return $curr->name;
+    }
+
+    public static function showCurrencyValue()
+    {
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        return $curr->value;
+    }
+
+
+    public static function showPrice($price) {
+
+        if (Session::has('currId')){
+            $curr = Currency::where('id', session()->get('currId'))->first();
+        }
+        else
+        {
+            $curr = Currency::where('is_default', 1)->first();
+        }
+        
+        $price = $price * $curr->value;
+
+        return round($price,2);
+
+    }
+    
 }
 
 ?>

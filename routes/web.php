@@ -27,6 +27,8 @@ Route::get('password-reset', 'FrontendController@showResetForm')->name('password
 Route::get('login/{provider}/', 'Auth\LoginController@redirect')->name('login.redirect');
 Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name('login.callback');
 
+Route::get('/changecurrency/{currId}', 'FrontendController@changeCurrency')->name('changeCurrency');
+
 Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
@@ -135,13 +137,22 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     // Coupon
     Route::resource('/coupon','CouponController');
 
-  // FAQ Route
-  Route::get('/faq', 'FaqController@faq')->name('faq');
-  Route::get('/faq/add', 'FaqController@add')->name('faq.add');
-  Route::post('/faq/store', 'FaqController@store')->name('faq.store');
-  Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
-  Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
-  Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
+    // Currency  Route
+    Route::get('/currency', 'CurrencyController@currency')->name('currency');
+    Route::get('/currency/add', 'CurrencyController@add')->name('currency.add');
+    Route::post('/currency/store', 'CurrencyController@store')->name('currency.store');
+    Route::post('/currency/delete/{id}/', 'CurrencyController@delete')->name('currency.delete');
+    Route::get('/currency/edit/{id}/', 'CurrencyController@edit')->name('currency.edit');
+    Route::post('/currency/update/{id}/', 'CurrencyController@update')->name('currency.update');
+    Route::get('/currency/status/set/{id}', 'CurrencyController@status')->name('currency.status');
+  
+    // FAQ Route
+    Route::get('/faq', 'FaqController@faq')->name('faq');
+    Route::get('/faq/add', 'FaqController@add')->name('faq.add');
+    Route::post('/faq/store', 'FaqController@store')->name('faq.store');
+    Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
+    Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
+    Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
 
     // Settings
     Route::get('settings','AdminController@settings')->name('settings');

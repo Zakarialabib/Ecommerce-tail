@@ -11,16 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
+ 
+
  mix.styles([  
-   'public/assets/css/style.css',
- 'public/assets/css/vendor/bootstrap.min.css',
- 'public/assets/css/plugins/nice-select.css',
- 'public/assets/css/plugins/easyzoom.css',
- 'public/assets/css/plugins/slick.css',
- 'public/assets/css/plugins/animate.css',
- 'public/assets/css/plugins/magnific-popup.css',
- 'public/assets/css/plugins/jquery-ui.css',
- 'public/frontend/js/select2/css/select2.min.css',
+  'public/assets/css/plugins/nice-select.css',
+  'public/assets/css/plugins/easyzoom.css',
+  'public/assets/css/plugins/slick.css',
+  'public/assets/css/plugins/animate.css',
+  'public/assets/css/plugins/magnific-popup.css',
+  'public/assets/css/plugins/jquery-ui.css',
+  'public/assets/css/style.css',
 ], 'public/assets/css/all.css');
 
  mix.scripts([  
@@ -32,14 +32,14 @@ const mix = require('laravel-mix');
     'public/assets/js/plugins/jquery.instagramfeed.min.js',
     'public/assets/js/plugins/jquery.nice-select.min.js',
     'public/assets/js/plugins/wow.js',
-    'public/assets/js/plugins/jquery-ui-touch-punch.js',
     'public/assets/js/plugins/jquery-ui.js',
+    'public/assets/js/plugins/jquery-ui-touch-punch.js',
     'public/assets/js/plugins/magnific-popup.js',
     'public/assets/js/plugins/sticky-sidebar.js',
     'public/assets/js/plugins/easyzoom.js',
+    'public/assets/js/plugins/slick.js',
     'public/assets/js/plugins/scrollup.js',
     'public/assets/js/plugins/ajax-mail.js',
     'public/frontend/js/select2/js/select2.min.js',
-    'public/assets/js/main.js',
  ], 'public/assets/js/all.js');
 

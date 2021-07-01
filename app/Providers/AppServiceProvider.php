@@ -31,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
 
         $settings = DB::table('settings')->get()->first();
 
+      
+
         if (Schema::hasTable('languages')) {
             $languages = Language::query()
                 ->where('is_active', Language::STATUS_ACTIVE)
@@ -43,9 +45,14 @@ class AppServiceProvider extends ServiceProvider
         } else {
             $languages = [];
         }
+
+     
+
         View::share([
             'settings' => $settings,
             'languages' => $languages,
             'language_default' => $language_default,]);
     }
+
+    
 }

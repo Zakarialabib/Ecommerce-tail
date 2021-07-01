@@ -13,11 +13,11 @@
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-{!!$settings->ganalytics!!}	
+{{-- {!!$settings->ganalytics!!}	
 
 {!!$settings->pixel!!}
 
-{!!$settings->klaviyo!!}
+{!!$settings->klaviyo!!} --}}
 
 <link rel="stylesheet" href="{{asset('assets/css/vendor/vendor.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/plugins/plugins.min.css')}}">

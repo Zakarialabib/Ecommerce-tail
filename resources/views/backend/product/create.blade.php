@@ -77,10 +77,23 @@
           <label for="size">{{ __('Size')}}</label>
           <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
               <option value="">--{{ __('Select any size')}}--</option>
-              <option value="S">Small (S)</option>
-              <option value="M">Medium (M)</option>
-              <option value="L">Large (L)</option>
-              <option value="XL">Extra Large (XL)</option>
+              <option value="3XS">3XS</option>
+              <option value="4XS">4XS</option>
+              <option value="5XS">5XS</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL</option>
+              <option value="3XL">3XL</option>
+              <option value="4XL">4XL</option>
+              <option value="8">8</option>
+              <option value="8.5">8.5</option>
+              <option value="9">9</option>
+              <option value="9.5">9.5</option>
+              <option value="10">10</option>
+              <option value="10.5">10.5</option>
+              <option value="11">11</option>
+              <option value="11.5">11.5</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
           </select>
         </div>
 

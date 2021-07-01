@@ -3316,7 +3316,7 @@ textarea:focus {
 
 .main-menu > nav > ul > li > ul.mega-menu-style {
   width: 750px;
-  padding: 28px 30px 0px;
+  padding: 30px 30px 0px 30px;
   text-align: left;
 }
 
@@ -14904,7 +14904,7 @@ textarea:focus {
 }
 
 .contact-info-wrap .footer-logo a img {
-  max-width: 40%;
+  max-width: 60%;
   padding: 0 80px;
 }
 
@@ -17582,6 +17582,7 @@ textarea:focus {
 .sidebar-widget .shop-catigory ul li a {
   color: #000000;
   display: block;
+  margin: 10px 0;
 }
 
 .sidebar-widget .shop-catigory ul li a:hover {

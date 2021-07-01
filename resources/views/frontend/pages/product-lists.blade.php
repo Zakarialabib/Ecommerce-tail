@@ -116,7 +116,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">{{number_format($product->price,2)}} $</del>   {{number_format($org,2)}} $  </p>                                                
+                                                <p class="price"><del class="text-muted">{{ Helper::showCurrencyPrice($product->price,2) }}</del>   {{ Helper::showCurrencyPrice($org,2) }}  </p>                                                
                                             </div>
                                         </div>
                                         <!-- End Single Post -->
@@ -200,7 +200,7 @@
 																$after_discount=($product->price-($product->price*$product->discount)/100);
 																@endphp
 																<span class="new-price">{{number_format($after_discount,2)}} $</span>
-																<del class="old-price">{{number_format($product->price,2)}} $</del>
+																<del class="old-price">{{ Helper::showCurrencyPrice($product->price,2) }} $</del>
 															</div>
 														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
 														
@@ -263,9 +263,7 @@
 
 	<script>
         $(document).ready(function(){
-        /*----------------------------------------------------*/
-        /*  Jquery Ui slider js
-        /*----------------------------------------------------*/
+       
         if ($("#slider-range").length > 0) {
             const max_value = parseInt( $("#slider-range").data('max') ) || 500;
             const min_value = parseInt($("#slider-range").data('min')) || 0;

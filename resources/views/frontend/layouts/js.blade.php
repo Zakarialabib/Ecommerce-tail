@@ -4,6 +4,7 @@
 <!-- Sweetalert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="{{asset('assets/js/plugins/slick.js')}}"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 
 @stack('scripts')
 

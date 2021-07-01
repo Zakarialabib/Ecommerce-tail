@@ -19,6 +19,7 @@ use Cache;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+
 class FrontendController extends Controller
 {
    
@@ -444,6 +445,15 @@ class FrontendController extends Controller
     {
         Session::put('language_code', $locale);
         $language = Session::get('language_code');
+
+        return redirect()->back();
+    }
+
+    // Change Currency
+    public function changeCurrency($currId)
+    {
+        session()->put('currId', $currId);
+        app()->setLocale($currId);
 
         return redirect()->back();
     }

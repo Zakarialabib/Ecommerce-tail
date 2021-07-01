@@ -92,7 +92,7 @@
                                     @php 
                                     $photo=explode(',',$product->photo);
                                     @endphp
-                                    <img src="{{asset($product->photo)}}" alt="">	
+                                    <img src="{{asset($photo[0])}}" alt="">	
                                 </a>
                                 @if ($product->discount > 0)    
                                 <span class="pro-badge left bg-red">-{{$product->discount}}%</span>
@@ -111,10 +111,10 @@
                                     <h4><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
                                     <div class="product-price">
                                         @if ($product->discount > 0) 
-                                        <span class="new-price">$ {{number_format($product->price)}}</span>   
-                                        <span class="old-price">$ {{number_format($product->price + $product->price * $product->discount / 100)}}</span>
+                                        <span class="new-price">{{ Helper::showCurrencyPrice($product->price) }}</span>   
+                                        <span class="old-price">{{ Helper::showCurrencyPrice($product->price + $product->price * $product->discount / 100) }}</span>
                                         @else
-                                        <span class="new-price">$ {{number_format($product->price)}}</span>
+                                        <span class="new-price">{{ Helper::showCurrencyPrice($product->price) }} </span>
                                         @endif
                                     </div>
                                 </div>

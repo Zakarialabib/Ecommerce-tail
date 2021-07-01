@@ -86,10 +86,23 @@
                 $data=explode(',',$item->size);
                 // dd($data);
                 @endphp
-              <option value="S"  @if( in_array( "S",$data ) ) selected @endif>Small</option>
-              <option value="M"  @if( in_array( "M",$data ) ) selected @endif>Medium</option>
-              <option value="L"  @if( in_array( "L",$data ) ) selected @endif>Large</option>
-              <option value="XL"  @if( in_array( "XL",$data ) ) selected @endif>Extra Large</option>
+              <option value="3XS" @if( in_array( "3XS",$data ) ) selected @endif>3XS</option>
+              <option value="4XS" @if( in_array( "4XS",$data ) ) selected @endif>4XS</option>
+              <option value="5XS" @if( in_array( "5XS",$data ) ) selected @endif>5XS</option>
+              <option value="XL" @if( in_array( "XL",$data ) ) selected @endif>XL</option>
+              <option value="2XL" @if( in_array( "2XL",$data ) ) selected @endif>2XL</option>
+              <option value="3XL" @if( in_array( "3XL",$data ) ) selected @endif>3XL</option>
+              <option value="4XL" @if( in_array( "4XL",$data ) ) selected @endif>4XL</option>
+              <option value="8" @if( in_array( "8",$data ) ) selected @endif>8</option>
+              <option value="8.5" @if( in_array( "8.5",$data ) ) selected @endif>8.5</option>
+              <option value="9" @if( in_array( "9",$data ) ) selected @endif>9</option>
+              <option value="9.5" @if( in_array( "9.5",$data ) ) selected @endif>9.5</option>
+              <option value="10" @if( in_array( "10",$data ) ) selected @endif>10</option>
+              <option value="10.5" @if( in_array( "10.5",$data ) ) selected @endif>10.5</option>
+              <option value="11" @if( in_array( "11",$data ) ) selected @endif>11</option>
+              <option value="11.5" @if( in_array( "11.5",$data ) ) selected @endif>11.5</option>
+              <option value="12" @if( in_array( "12",$data ) ) selected @endif>12</option>
+              <option value="13" @if( in_array( "13",$data ) ) selected @endif>13</option>
               @endforeach
           </select>
         </div>

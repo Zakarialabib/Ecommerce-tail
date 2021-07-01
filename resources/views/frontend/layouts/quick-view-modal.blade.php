@@ -55,10 +55,10 @@
                             {!!$product->summary!!}
                             <div class="pro-details-price">
                                 @if ($product->discount > 0) 
-                                <span class="new-price">$ {{number_format($product->price)}}</span>   
+                                <span class="new-price">$ {{ Helper::showCurrencyPrice($product->price) }}</span>   
                                 <span class="old-price">$ {{number_format($product->price + $product->price * $product->discount / 100)}}</span>
                                 @else
-                                <span class="new-price">$ {{number_format($product->price)}}</span>
+                                <span class="new-price">$ {{ Helper::showCurrencyPrice($product->price) }}</span>
                                 @endif
                             </div>
                             @if($product->size)
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <div class="product-details-meta">
-                                <ul>
+                                {{-- <ul>
                                     <p class="cat">Category :<a
                                         href="{{ route('product-cat',$product->cat_info['slug']) }}">{{ $product->cat_info['title'] }}</a>
                                 </p>
@@ -93,7 +93,7 @@
                                             href="{{ route('product-sub-cat',[$product->cat_info['slug'],$product->sub_cat_info['slug']]) }}">{{ $product->sub_cat_info['title'] }}</a>
                                     </p>
                                 @endif
-                                </ul>
+                                </ul> --}}
                             </div>
                             <div class="pro-details-action-wrap">
                                 <div class="pro-details-add-to-cart">
