@@ -34,7 +34,7 @@
 
                                 </div>
                                 <div class="same-style same-style-border currency-wrap">
-                                    <a class="currency-dropdown-active" href="#">US Dollar <i class="icon-arrow-down"></i></a>
+                                    <a class="currency-dropdown-active" href="#">{{ $currentCurrency->sign }} {{ $currentCurrency->name }} <i class="icon-arrow-down"></i></a>
                                     <div class="currency-dropdown">
                                         <ul>
                                             @foreach ($currencies as $currency)
@@ -215,7 +215,7 @@
                     </div>
                     <div class="cart-title">
                         <h4><a href="{{route('product-detail',$data->product['slug'])}}">{{$data->product['title']}}</a></h4>
-                        <span> {{$data->quantity}} x {{number_format($data->price,2)}} $</span>
+                        <span> {{$data->quantity}} x {{ Helper::showCurrencyPrice($data->price,2) }}</span>
                     </div>
                     <div class="cart-delete">
                         <a href="{{route('cart-delete',$data->id)}}">×</a>
@@ -224,7 +224,7 @@
                 @endforeach
             </ul>
             <div class="cart-total">
-                <h4>{{ __('Subtotal')}}: <span>{{number_format(Helper::totalCartPrice(),2)}} $</span></h4>
+                <h4>{{ __('Subtotal')}}: <span>{{ Helper::showCurrencyPrice(Helper::totalCartPrice(),2) }}</span></h4>
             </div>
             @endauth
             <div class="cart-checkout-btn">

@@ -199,8 +199,8 @@
 																@php
 																$after_discount=($product->price-($product->price*$product->discount)/100);
 																@endphp
-																<span class="new-price">{{number_format($after_discount,2)}} $</span>
-																<del class="old-price">{{ Helper::showCurrencyPrice($product->price,2) }} $</del>
+																<span class="new-price">{{ Helper::showCurrencyPrice($after_discount,2) }}</span>
+																<del class="old-price">{{ Helper::showCurrencyPrice($product->price,2) }}</del>
 															</div>
 														{{-- <p>{!! html_entity_decode($product->summary) !!}</p> --}}
 														

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Language;
+use App\Models\Currency;
 use DB;
 use Illuminate\Support\Facades\View;
 
@@ -31,8 +32,6 @@ class AppServiceProvider extends ServiceProvider
 
         $settings = DB::table('settings')->get()->first();
 
-      
-
         if (Schema::hasTable('languages')) {
             $languages = Language::query()
                 ->where('is_active', Language::STATUS_ACTIVE)
@@ -45,8 +44,21 @@ class AppServiceProvider extends ServiceProvider
         } else {
             $languages = [];
         }
+        
+        View::composer('*', function ($view) {
 
-     
+        if(session()->has('currId')){
+            $currentCurrency = Currency::where('id', session()->get('currId'))->first();
+            $view->with('currentCurrency', $currentCurrency);
+        }else{
+            $currentCurrency = Currency::where('is_default', 1)->first();
+            $view->with('currentCurrency', $currentCurrency);
+        }
+
+
+        $currencies = Currency::all();
+        $view->with('currencies', $currencies );
+    });
 
         View::share([
             'settings' => $settings,

@@ -47,7 +47,7 @@
 												<p class="product-name"><a href="{{route('product-detail',$cart->product['slug'])}}" target="_blank">{{$cart->product['title']}}</a></p>
 												<p class="product-des">{!!($cart['summary']) !!}</p>
 											</td>
-											<td class="product-price-cart" data-title="Price"><span>{{number_format($cart['price'],2)}} $</span></td>
+											<td class="product-price-cart" data-title="Price"><span>{{ Helper::showCurrencyPrice($cart['price'],2) }}</span></td>
 											<td class="product-quantity pro-details-quality" data-title="Qty">
 												<div class="cart-plus-minus">
 													<div class="dec qtybutton">-</div>
@@ -116,7 +116,7 @@
 					<ul>
 						<h5 class="grand-totall-title" data-price="{{Helper::totalCartPrice()}}">
 							{{__('Cart Subtotal')}}<span>
-							{{number_format(Helper::totalCartPrice(),2)}} $</span></h5>
+							{{ Helper::showCurrencyPrice(Helper::totalCartPrice(),2) }}</span></h5>
 						<div id="shipping" style="display:none;">
 							<li class="total-shipping">
 								{{ __('Shipping')}} {{session('shipping_price')}}
@@ -146,9 +146,9 @@
 							}
 						@endphp
 						@if(session()->has('coupon'))
-							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} $</span></li>
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{ Helper::showCurrencyPrice($total_amount,2) }}</span></li>
 						@else
-							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{number_format($total_amount,2)}} $</span></li>
+							<h5 class="grand-totall-title" id="order_total_price">{{ __('Continue shopping')}}<span>{{ Helper::showCurrencyPrice($total_amount,2) }}</span></li>
 						@endif
 					</ul>
 					<div class="cart-shiping-update-wrapper">

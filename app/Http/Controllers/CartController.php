@@ -270,7 +270,7 @@ class CartController extends Controller
         
         $order = Stripe\Charge::create ([
                 "amount" => $order->total_amount * 100,
-                "currency" => "usd",
+                "currency" => Helper::showCurrencyCode(),
                 "source" => $request->stripeToken,
                 "description" => "Make payment and chill." 
         ]);

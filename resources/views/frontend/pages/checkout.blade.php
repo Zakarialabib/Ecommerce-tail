@@ -78,7 +78,7 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-group">
                                             <label>{{ __('Address Line 1')}}<span>*</span></label>
-                                            <input type="text" name="address1" placeholder="" value="{{old('address1')}}">
+                                            <input type="text" name="address1" placeholder="" required value="{{old('address1')}}">
                                             @error('address1')
                                                 <span class='text-danger'>{{$message}}</span>
                                             @enderror
@@ -114,11 +114,11 @@
                                     <div class="your-order-wrap gray-bg-4">
                                         <div class="your-order-info-wrap">
                                         <ul>
-										    <li class="your-order-info" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span> {{number_format(Helper::totalCartPrice(),2)}} $</span></li>
+										    <li class="your-order-info" data-price="{{Helper::totalCartPrice()}}">{{ __('Cart Subtotal')}}<span> {{ Helper::showCurrencyPrice(Helper::totalCartPrice(),2) }}</span></li>
                                             <li class="your-order-middle">
                                             {{ __('Shipping Cost')}}
                                                 @if(count(Helper::shipping())>0 && Helper::cartCount()>0)
-                                                    <select name="shipping" class="form-control select2" required>
+                                                    <select name="shipping" class="form-control" required>
                                                         <option value="">{{ __('Select Shipping Methode')}}</option>
                                                         @foreach(Helper::shipping() as $shipping)
                                                         <option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}} $</option>
@@ -139,9 +139,9 @@
                                                 }
                                             @endphp
                                             @if(session('coupon'))
-                                                <li class="last"  id="your-order-info order-total">Total<span> {{number_format($total_amount,2)}} $</span></li>
+                                                <li class="last"  id="your-order-info order-total">Total<span> {{ Helper::showCurrencyPrice($total_amount,2) }}</span></li>
                                             @else
-                                                <li class="last"  id="your-order-info order-total">Total<span> {{number_format($total_amount,2)}} $</span></li>
+                                                <li class="last"  id="your-order-info order-total">Total<span> {{ Helper::showCurrencyPrice($total_amount,2) }}</span></li>
                                             @endif
                                         </ul>
                                     </div>
