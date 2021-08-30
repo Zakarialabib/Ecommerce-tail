@@ -1,4 +1,4 @@
-# This is a fork from this project 
+# Ecom-Tail is a forked from this project with major fix and improvements
 
 Advance E-commerce website in  Laravel 7
 https://github.com/Prajwal100/Advance-Ecommerce-in-laravel-7
