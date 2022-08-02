@@ -297,10 +297,12 @@
                     </div>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a class="mobile-currency-active" href="#">{{__('Currency')}} <span><i class="icon-arrow-down"></i></span></a>
+                    <a class="mobile-currency-active" href="#">{{ $currentCurrency->sign }} {{ $currentCurrency->name }} <span><i class="icon-arrow-down"></i></span></a>
                     <div class="lang-curr-dropdown curr-dropdown-active">
                         <ul>
-                            <li><a href="#">USD</a></li>
+                            @foreach ($currencies as $currency)
+                            <li> <a href="{{ route('changeCurrency', $currency->id) }}" class="{{ $currency->id == $currentCurrency->code ? 'active' : '' }}">{{ $currency->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

@@ -14903,11 +14903,6 @@ textarea:focus {
   display: block;
 }
 
-.contact-info-wrap .footer-logo a img {
-  max-width: 60%;
-  padding: 0 80px;
-}
-
 .contact-info-wrap .single-contact-info {
   margin: 0 0 30px;
 }

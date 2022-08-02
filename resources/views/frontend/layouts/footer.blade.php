@@ -5,11 +5,7 @@
 <div class="subscribe-area bg-gray pt-115 pb-115">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-5">
-                <div class="section-title">
-                    <h2>{{ __('keep connected') }}</h2>
-                    <p>{{ __('Get updates by subscribe our weekly newsletter') }}</p>
-                </div>
+            <div class="col-lg-5 col-md-5"> 
             </div>
             <div class="col-lg-7 col-md-7">
                 <div id="mc_embed_signup" class="subscribe-form">

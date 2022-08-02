@@ -9,8 +9,6 @@ use App\Http\Controllers\Controller;
 
 class FaqController extends Controller
 {
-
-
     public function faq(Request $request){     
 
         $faqs = Faq::query()
@@ -74,10 +72,7 @@ class FaqController extends Controller
         $faq->content = $request->content;
         $faq->save();
 
-      
         return redirect(route('faq'));
     }
-
-
 
 }
